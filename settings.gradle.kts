@@ -1,2 +1,2 @@
 
-rootProject.name = "java-odapi-v2"
+rootProject.name = "java-odapiv2-client"

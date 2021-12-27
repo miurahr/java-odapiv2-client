@@ -8,27 +8,15 @@ plugins {
     idea
     id("com.github.spotbugs") version "5.0.3"
     id("com.diffplug.spotless") version "6.0.5"
-    id("com.palantir.git-version") version "0.12.3"
     id("com.github.kt3k.coveralls") version "2.12.0"
     id("org.sonatype.gradle.plugins.scan") version "2.2.2"
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     id("org.openapi.generator") version "5.3.1"
 }
 
-// calculate version string from git tag, hash and commit distance
-fun getVersionDetails(): com.palantir.gradle.gitversion.VersionDetails =
-        (extra["versionDetails"] as groovy.lang.Closure<*>)() as com.palantir.gradle.gitversion.VersionDetails
-if (getVersionDetails().isCleanTag) {
-    version = getVersionDetails().lastTag.substring(1)
-} else {
-    version = "%s-%s-%s-SNAPSHOT".format(
-            getVersionDetails().lastTag.substring(1),
-            getVersionDetails().commitDistance,
-            getVersionDetails().gitHash
-    )
-}
-
 group = "tokyo.northside"
+version = "2.5.1"
+
 java {
     withSourcesJar()
     withJavadocJar()
@@ -69,9 +57,9 @@ publishing {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
             pom {
-                name.set("Java Oxford Dictionaries")
+                name.set("Java ODAPI v2 client")
                 description.set("Java client for Oxford Dictionaries API v2")
-                url.set("https://github.com/miurahr/java-odapi-v2")
+                url.set("https://github.com/miurahr/java-odapiv2-client")
                 licenses {
                     license {
                         name.set("Apache License version 2.0")
@@ -87,9 +75,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection.set("scm:git:git://github.com/miurahr/java-odapi-v2.git")
-                    developerConnection.set("scm:git:git://github.com/miurahr/java-odapi-v2.git")
-                    url.set("https://github.com/miurahr/java-odapi-v2")
+                    connection.set("scm:git:git://github.com/miurahr/java-odapiv2-client.git")
+                    developerConnection.set("scm:git:git://github.com/miurahr/java-odapiv2-client.git")
+                    url.set("https://github.com/miurahr/java-odapiv2-client")
                 }
             }
         }
@@ -108,7 +96,7 @@ signing {
 }
 tasks.withType<Sign> {
     val hasKey = project.hasProperty("signingKey") || project.hasProperty("signing.gnupg.keyName")
-    onlyIf { hasKey && getVersionDetails().isCleanTag }
+    onlyIf { hasKey }
 }
 
 nexusPublishing {
