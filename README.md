@@ -172,9 +172,6 @@ Class | Method | HTTP request | Description
 - [WordlistResults](docs/WordlistResults.md)
 
 
-## Documentation for Authorization
-
-All endpoints require authorization. Authentication schemes defined for the API:
 
 ## Recommendation
 
