@@ -8,7 +8,7 @@ plugins {
     `maven-publish`
     idea
     id("com.github.spotbugs") version "5.0.3"
-    id("com.diffplug.spotless") version "6.0.5"
+    id("com.diffplug.spotless") version "6.1.0"
     id("com.github.kt3k.coveralls") version "2.12.0"
     id("org.sonatype.gradle.plugins.scan") version "2.2.2"
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
