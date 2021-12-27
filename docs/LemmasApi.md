@@ -20,11 +20,11 @@ Check a word exists in the dictionary and retrieve its root form
 
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.LemmasApi;
+import tokyo.northside.odapi.ApiClient;
+import tokyo.northside.odapi.ApiException;
+import tokyo.northside.odapi.Configuration;
+import tokyo.northside.odapi.models.*;
+import tokyo.northside.odapi.v2.LemmasApi;
 
 public class Example {
     public static void main(String[] args) {

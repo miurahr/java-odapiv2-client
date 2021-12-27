@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   ErrorSchema.JSON_PROPERTY_ERROR
 })
 @JsonTypeName("ErrorSchema")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:50:35.407+09:00[Asia/Tokyo]")
 public class ErrorSchema {
   public static final String JSON_PROPERTY_ERROR = "error";
   private String error;

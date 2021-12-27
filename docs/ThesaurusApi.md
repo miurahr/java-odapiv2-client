@@ -20,11 +20,11 @@ Use this to retrieve words that are similar/opposite in meaning to the input wor
 
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.ThesaurusApi;
+import tokyo.northside.odapi.ApiClient;
+import tokyo.northside.odapi.ApiException;
+import tokyo.northside.odapi.Configuration;
+import tokyo.northside.odapi.models.*;
+import tokyo.northside.odapi.v2.ThesaurusApi;
 
 public class Example {
     public static void main(String[] args) {

@@ -56,11 +56,11 @@ dependencies {
 
 openApiGenerate {
     generatorName.set("java")
-    packageName.set("tokyo.northside.odapi.v2")
     inputSpec.set("$rootDir/odapi_v2_live.json")
     outputDir.set("$buildDir/generated/odapi_v2")
     configOptions.set(mapOf(
-            "library" to "apache-httpclient"
+            "library" to "apache-httpclient",
+            "apiPackage" to "tokyo.northside.odapi.v2"
     ))
 }
 

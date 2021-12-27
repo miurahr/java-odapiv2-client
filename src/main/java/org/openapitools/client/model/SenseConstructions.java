@@ -42,7 +42,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   SenseConstructions.JSON_PROPERTY_TEXT
 })
 @JsonTypeName("Sense_constructions")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:50:35.407+09:00[Asia/Tokyo]")
 public class SenseConstructions {
   public static final String JSON_PROPERTY_DOMAINS = "domains";
   private DomainsList domains;

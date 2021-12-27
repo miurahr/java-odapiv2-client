@@ -32,11 +32,11 @@ Returns a list of the available [domains](documentation/glossary?term&#x3D;domai
 
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.UtilityApi;
+import tokyo.northside.odapi.ApiClient;
+import tokyo.northside.odapi.ApiException;
+import tokyo.northside.odapi.Configuration;
+import tokyo.northside.odapi.models.*;
+import tokyo.northside.odapi.v2.UtilityApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -106,11 +106,11 @@ Returns a list of the available [domains](documentation/glossary?term&#x3D;domai
 
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.UtilityApi;
+import tokyo.northside.odapi.ApiClient;
+import tokyo.northside.odapi.ApiException;
+import tokyo.northside.odapi.Configuration;
+import tokyo.northside.odapi.models.*;
+import tokyo.northside.odapi.v2.UtilityApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -177,11 +177,11 @@ Returns the lists of fields available to construct API requests for a given endp
 
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.UtilityApi;
+import tokyo.northside.odapi.ApiClient;
+import tokyo.northside.odapi.ApiException;
+import tokyo.northside.odapi.Configuration;
+import tokyo.northside.odapi.models.*;
+import tokyo.northside.odapi.v2.UtilityApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -248,11 +248,11 @@ Returns a list of the available fields to construct API requests.
 
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.UtilityApi;
+import tokyo.northside.odapi.ApiClient;
+import tokyo.northside.odapi.ApiException;
+import tokyo.northside.odapi.Configuration;
+import tokyo.northside.odapi.models.*;
+import tokyo.northside.odapi.v2.UtilityApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -316,11 +316,11 @@ Returns a list of all the valid filters by endpoint to construct API requests.
 
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.UtilityApi;
+import tokyo.northside.odapi.ApiClient;
+import tokyo.northside.odapi.ApiException;
+import tokyo.northside.odapi.Configuration;
+import tokyo.northside.odapi.models.*;
+import tokyo.northside.odapi.v2.UtilityApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -387,11 +387,11 @@ Returns a list of all the valid filters to construct API requests.
 
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.UtilityApi;
+import tokyo.northside.odapi.ApiClient;
+import tokyo.northside.odapi.ApiException;
+import tokyo.northside.odapi.Configuration;
+import tokyo.northside.odapi.models.*;
+import tokyo.northside.odapi.v2.UtilityApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -455,11 +455,11 @@ Returns a list of the available [grammatical features](documentation/glossary?te
 
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.UtilityApi;
+import tokyo.northside.odapi.ApiClient;
+import tokyo.northside.odapi.ApiException;
+import tokyo.northside.odapi.Configuration;
+import tokyo.northside.odapi.models.*;
+import tokyo.northside.odapi.v2.UtilityApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -526,11 +526,11 @@ Returns a list of the available [grammatical features](documentation/glossary?te
 
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.UtilityApi;
+import tokyo.northside.odapi.ApiClient;
+import tokyo.northside.odapi.ApiException;
+import tokyo.northside.odapi.Configuration;
+import tokyo.northside.odapi.models.*;
+import tokyo.northside.odapi.v2.UtilityApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -600,11 +600,11 @@ Returns the names of monolingual and bilingual language datasets available in th
 
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.UtilityApi;
+import tokyo.northside.odapi.ApiClient;
+import tokyo.northside.odapi.ApiException;
+import tokyo.northside.odapi.Configuration;
+import tokyo.northside.odapi.models.*;
+import tokyo.northside.odapi.v2.UtilityApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -674,11 +674,11 @@ Returns a list of available [lexical categories](documentation/glossary?term&#x3
 
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.UtilityApi;
+import tokyo.northside.odapi.ApiClient;
+import tokyo.northside.odapi.ApiException;
+import tokyo.northside.odapi.Configuration;
+import tokyo.northside.odapi.models.*;
+import tokyo.northside.odapi.v2.UtilityApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -745,11 +745,11 @@ Returns a list of available [lexical categories](documentation/glossary?term&#x3
 
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.UtilityApi;
+import tokyo.northside.odapi.ApiClient;
+import tokyo.northside.odapi.ApiException;
+import tokyo.northside.odapi.Configuration;
+import tokyo.northside.odapi.models.*;
+import tokyo.northside.odapi.v2.UtilityApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -818,11 +818,11 @@ Returns a list of the available [registers](documentation/glossary?term&#x3D;reg
 
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.UtilityApi;
+import tokyo.northside.odapi.ApiClient;
+import tokyo.northside.odapi.ApiException;
+import tokyo.northside.odapi.Configuration;
+import tokyo.northside.odapi.models.*;
+import tokyo.northside.odapi.v2.UtilityApi;
 
 public class Example {
     public static void main(String[] args) {
@@ -889,11 +889,11 @@ Returns a list of the available [registers](documentation/glossary?term&#x3D;reg
 
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.UtilityApi;
+import tokyo.northside.odapi.ApiClient;
+import tokyo.northside.odapi.ApiException;
+import tokyo.northside.odapi.Configuration;
+import tokyo.northside.odapi.models.*;
+import tokyo.northside.odapi.v2.UtilityApi;
 
 public class Example {
     public static void main(String[] args) {

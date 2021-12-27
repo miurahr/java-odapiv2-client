@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   UtilityLabels.JSON_PROPERTY_RESULTS
 })
 @JsonTypeName("UtilityLabels")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:50:35.407+09:00[Asia/Tokyo]")
 public class UtilityLabels {
   public static final String JSON_PROPERTY_METADATA = "metadata";
   private Object metadata;

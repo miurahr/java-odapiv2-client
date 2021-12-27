@@ -20,11 +20,11 @@ Retrieve translations for a given word
 
 ```java
 // Import classes:
-import org.openapitools.client.ApiClient;
-import org.openapitools.client.ApiException;
-import org.openapitools.client.Configuration;
-import org.openapitools.client.models.*;
-import org.openapitools.client.api.TranslationsApi;
+import tokyo.northside.odapi.ApiClient;
+import tokyo.northside.odapi.ApiException;
+import tokyo.northside.odapi.Configuration;
+import tokyo.northside.odapi.models.*;
+import tokyo.northside.odapi.v2.TranslationsApi;
 
 public class Example {
     public static void main(String[] args) {
