@@ -50,7 +50,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   LexicalEntry.JSON_PROPERTY_VARIANT_FORMS
 })
 @JsonTypeName("lexicalEntry")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T22:37:51.170+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T22:47:07.450+09:00[Asia/Tokyo]")
 public class LexicalEntry {
   public static final String JSON_PROPERTY_COMPOUNDS = "compounds";
   private List<Object> compounds = null;

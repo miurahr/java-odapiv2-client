@@ -16,7 +16,7 @@ plugins {
 }
 
 group = "tokyo.northside"
-version = "2.5.1"
+version = "1.0.0"
 
 java {
     withSourcesJar()
@@ -47,7 +47,7 @@ dependencies {
 openApiGenerate {
     generatorName.set("java")
     inputSpec.set("$rootDir/odapi_v2_live.json")
-    outputDir.set("$buildDir/generated/odapi_v2")
+    outputDir.set("$rootDir")
     configOptions.set(mapOf(
             "library" to "apache-httpclient",
             "apiPackage" to "tokyo.northside.odapi.v2",

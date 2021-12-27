@@ -42,7 +42,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   ThesaurusLexicalEntry.JSON_PROPERTY_VARIANT_FORMS
 })
 @JsonTypeName("ThesaurusLexicalEntry")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T22:37:51.170+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T22:47:07.450+09:00[Asia/Tokyo]")
 public class ThesaurusLexicalEntry {
   public static final String JSON_PROPERTY_ENTRIES = "entries";
   private List<ThesaurusEntry> entries = null;
