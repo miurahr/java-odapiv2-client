@@ -1,4 +1,4 @@
-# tokyo.northside.odapi.v2 - client library for Oxford Dictionaries API v2
+# Client library for Oxford Dictionaries API v2
 
 This projects aims to facilitate the interaction with the Oxford Dictionaries API.
 A complete documentation for the OD API can be reached at:

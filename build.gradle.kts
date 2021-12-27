@@ -1,4 +1,5 @@
 plugins {
+    groovy
     checkstyle
     jacoco
     signing
@@ -40,6 +41,7 @@ dependencies {
     implementation("com.github.joschi.jackson:jackson-datatype-threetenbp:2.9.10")
     implementation("jakarta.annotation:jakarta.annotation-api:1.3.5")
     testImplementation("junit:junit:4.13.1")
+    testImplementation("org.codehaus.groovy:groovy-all:3.0.9")
 }
 
 openApiGenerate {
