@@ -14,8 +14,8 @@
 package tokyo.northside.odapi.v2;
 
 import tokyo.northside.odapi.ApiException;
-import org.openapitools.client.model.ErrorSchema;
-import org.openapitools.client.model.Thesaurus;
+import tokyo.northside.odapi.model.ErrorSchema;
+import tokyo.northside.odapi.model.Thesaurus;
 import org.junit.Test;
 import org.junit.Ignore;
 import org.junit.Assert;

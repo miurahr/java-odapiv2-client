@@ -17,13 +17,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import tokyo.northside.odapi.ApiException;
 import tokyo.northside.odapi.ApiClient;
 import tokyo.northside.odapi.Configuration;
-import org.openapitools.client.model.*;
+import tokyo.northside.odapi.model.*;
 import tokyo.northside.odapi.Pair;
 
-import org.openapitools.client.model.ErrorSchema;
-import org.openapitools.client.model.Filters;
-import org.openapitools.client.model.Languages;
-import org.openapitools.client.model.UtilityLabels;
+import tokyo.northside.odapi.model.ErrorSchema;
+import tokyo.northside.odapi.model.Filters;
+import tokyo.northside.odapi.model.Languages;
+import tokyo.northside.odapi.model.UtilityLabels;
 
 
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:50:35.407+09:00[Asia/Tokyo]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T22:37:51.170+09:00[Asia/Tokyo]")
 public class UtilityApi {
   private ApiClient apiClient;
 

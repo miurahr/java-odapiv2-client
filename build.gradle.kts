@@ -50,7 +50,8 @@ openApiGenerate {
     outputDir.set("$buildDir/generated/odapi_v2")
     configOptions.set(mapOf(
             "library" to "apache-httpclient",
-            "apiPackage" to "tokyo.northside.odapi.v2"
+            "apiPackage" to "tokyo.northside.odapi.v2",
+            "modelPackage" to "tokyo.northside.odapi.model"
     ))
 }
 
