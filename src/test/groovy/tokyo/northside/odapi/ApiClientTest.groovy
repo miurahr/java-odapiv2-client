@@ -17,16 +17,17 @@ class ApiClientTest {
         def apiInstance = new EntriesApi(client)
         def resultEntry = apiInstance.entriesSourceLangWordIdGet("en-gb", "ace",
                 appId, appKey,
-                Arrays.asList("definitions"), null, null, null, null,
+                Arrays.asList("definitions"),
+                null, null, null, null,
                 true)
         def result = resultEntry.getResults()
         assertEquals(2, result.size())
-        for (int i; i < result.size(); i++) {
+        for (def i; i < result.size(); i++) {
             def lexicalEntries = result.get(i).getLexicalEntries()
-            for (int j; j < lexicalEntries.size(); j++) {
+            for (def j; j < lexicalEntries.size(); j++) {
                 def entry = lexicalEntries.get(j).getEntries().get(0)
                 def sense = entry.getSenses().get(0)
-                assetNotNull(sense.getDefinitions().get(0))
+                assertNotNull(sense.getDefinitions().get(0))
             }
         }
     }
