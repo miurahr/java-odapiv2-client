@@ -1,6 +1,5 @@
 plugins {
     groovy
-    checkstyle
     jacoco
     signing
     `java-library`

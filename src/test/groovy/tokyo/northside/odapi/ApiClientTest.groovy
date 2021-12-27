@@ -6,12 +6,12 @@ import tokyo.northside.odapi.v2.EntriesApi
 import static org.junit.Assert.*
 
 class ApiClientTest {
-    def ENDPOINT_URL = "https://od-api.oxforddictionaries.com/api/v2/"
-    def appId = System.properties.getProperty("oxfordId")
-    def appKey = System.properties.getProperty("oxfordKey")
 
     @Test
     void queryResultTest() {
+        def ENDPOINT_URL = "https://od-api.oxforddictionaries.com/api/v2/"
+        def appId = System.properties.getProperty("oxfordId")
+        def appKey = System.properties.getProperty("oxfordKey")
         def client = Configuration.getDefaultApiClient()
         client.setBasePath(ENDPOINT_URL)
         def apiInstance = new EntriesApi(client)
