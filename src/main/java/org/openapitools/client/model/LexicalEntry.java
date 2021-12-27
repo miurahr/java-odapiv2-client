@@ -15,79 +15,83 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.Entry;
 import org.openapitools.client.model.LexicalCategory;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Description of an entry for a particular part of speech
  */
 @ApiModel(description = "Description of an entry for a particular part of speech")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  LexicalEntry.JSON_PROPERTY_COMPOUNDS,
+  LexicalEntry.JSON_PROPERTY_DERIVATIVE_OF,
+  LexicalEntry.JSON_PROPERTY_DERIVATIVES,
+  LexicalEntry.JSON_PROPERTY_ENTRIES,
+  LexicalEntry.JSON_PROPERTY_GRAMMATICAL_FEATURES,
+  LexicalEntry.JSON_PROPERTY_LANGUAGE,
+  LexicalEntry.JSON_PROPERTY_LEXICAL_CATEGORY,
+  LexicalEntry.JSON_PROPERTY_NOTES,
+  LexicalEntry.JSON_PROPERTY_PHRASAL_VERBS,
+  LexicalEntry.JSON_PROPERTY_PHRASES,
+  LexicalEntry.JSON_PROPERTY_PRONUNCIATIONS,
+  LexicalEntry.JSON_PROPERTY_ROOT,
+  LexicalEntry.JSON_PROPERTY_TEXT,
+  LexicalEntry.JSON_PROPERTY_VARIANT_FORMS
+})
+@JsonTypeName("lexicalEntry")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class LexicalEntry {
-  public static final String SERIALIZED_NAME_COMPOUNDS = "compounds";
-  @SerializedName(SERIALIZED_NAME_COMPOUNDS)
+  public static final String JSON_PROPERTY_COMPOUNDS = "compounds";
   private List<Object> compounds = null;
 
-  public static final String SERIALIZED_NAME_DERIVATIVE_OF = "derivativeOf";
-  @SerializedName(SERIALIZED_NAME_DERIVATIVE_OF)
+  public static final String JSON_PROPERTY_DERIVATIVE_OF = "derivativeOf";
   private List<Object> derivativeOf = null;
 
-  public static final String SERIALIZED_NAME_DERIVATIVES = "derivatives";
-  @SerializedName(SERIALIZED_NAME_DERIVATIVES)
+  public static final String JSON_PROPERTY_DERIVATIVES = "derivatives";
   private List<Object> derivatives = null;
 
-  public static final String SERIALIZED_NAME_ENTRIES = "entries";
-  @SerializedName(SERIALIZED_NAME_ENTRIES)
+  public static final String JSON_PROPERTY_ENTRIES = "entries";
   private List<Entry> entries = null;
 
-  public static final String SERIALIZED_NAME_GRAMMATICAL_FEATURES = "grammaticalFeatures";
-  @SerializedName(SERIALIZED_NAME_GRAMMATICAL_FEATURES)
+  public static final String JSON_PROPERTY_GRAMMATICAL_FEATURES = "grammaticalFeatures";
   private List<Object> grammaticalFeatures = null;
 
-  public static final String SERIALIZED_NAME_LANGUAGE = "language";
-  @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  public static final String JSON_PROPERTY_LANGUAGE = "language";
   private String language;
 
-  public static final String SERIALIZED_NAME_LEXICAL_CATEGORY = "lexicalCategory";
-  @SerializedName(SERIALIZED_NAME_LEXICAL_CATEGORY)
+  public static final String JSON_PROPERTY_LEXICAL_CATEGORY = "lexicalCategory";
   private LexicalCategory lexicalCategory;
 
-  public static final String SERIALIZED_NAME_NOTES = "notes";
-  @SerializedName(SERIALIZED_NAME_NOTES)
+  public static final String JSON_PROPERTY_NOTES = "notes";
   private List<Object> notes = null;
 
-  public static final String SERIALIZED_NAME_PHRASAL_VERBS = "phrasalVerbs";
-  @SerializedName(SERIALIZED_NAME_PHRASAL_VERBS)
+  public static final String JSON_PROPERTY_PHRASAL_VERBS = "phrasalVerbs";
   private List<Object> phrasalVerbs = null;
 
-  public static final String SERIALIZED_NAME_PHRASES = "phrases";
-  @SerializedName(SERIALIZED_NAME_PHRASES)
+  public static final String JSON_PROPERTY_PHRASES = "phrases";
   private List<Object> phrases = null;
 
-  public static final String SERIALIZED_NAME_PRONUNCIATIONS = "pronunciations";
-  @SerializedName(SERIALIZED_NAME_PRONUNCIATIONS)
+  public static final String JSON_PROPERTY_PRONUNCIATIONS = "pronunciations";
   private List<Object> pronunciations = null;
 
-  public static final String SERIALIZED_NAME_ROOT = "root";
-  @SerializedName(SERIALIZED_NAME_ROOT)
+  public static final String JSON_PROPERTY_ROOT = "root";
   private String root;
 
-  public static final String SERIALIZED_NAME_TEXT = "text";
-  @SerializedName(SERIALIZED_NAME_TEXT)
+  public static final String JSON_PROPERTY_TEXT = "text";
   private String text;
 
-  public static final String SERIALIZED_NAME_VARIANT_FORMS = "variantForms";
-  @SerializedName(SERIALIZED_NAME_VARIANT_FORMS)
+  public static final String JSON_PROPERTY_VARIANT_FORMS = "variantForms";
   private List<Object> variantForms = null;
 
   public LexicalEntry() { 
@@ -101,7 +105,7 @@ public class LexicalEntry {
 
   public LexicalEntry addCompoundsItem(Object compoundsItem) {
     if (this.compounds == null) {
-      this.compounds = new ArrayList<Object>();
+      this.compounds = new ArrayList<>();
     }
     this.compounds.add(compoundsItem);
     return this;
@@ -113,12 +117,16 @@ public class LexicalEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of written or spoken words")
+  @JsonProperty(JSON_PROPERTY_COMPOUNDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getCompounds() {
     return compounds;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_COMPOUNDS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCompounds(List<Object> compounds) {
     this.compounds = compounds;
   }
@@ -132,7 +140,7 @@ public class LexicalEntry {
 
   public LexicalEntry addDerivativeOfItem(Object derivativeOfItem) {
     if (this.derivativeOf == null) {
-      this.derivativeOf = new ArrayList<Object>();
+      this.derivativeOf = new ArrayList<>();
     }
     this.derivativeOf.add(derivativeOfItem);
     return this;
@@ -144,12 +152,16 @@ public class LexicalEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of written or spoken words")
+  @JsonProperty(JSON_PROPERTY_DERIVATIVE_OF)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getDerivativeOf() {
     return derivativeOf;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_DERIVATIVE_OF)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDerivativeOf(List<Object> derivativeOf) {
     this.derivativeOf = derivativeOf;
   }
@@ -163,7 +175,7 @@ public class LexicalEntry {
 
   public LexicalEntry addDerivativesItem(Object derivativesItem) {
     if (this.derivatives == null) {
-      this.derivatives = new ArrayList<Object>();
+      this.derivatives = new ArrayList<>();
     }
     this.derivatives.add(derivativesItem);
     return this;
@@ -175,12 +187,16 @@ public class LexicalEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of written or spoken words")
+  @JsonProperty(JSON_PROPERTY_DERIVATIVES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getDerivatives() {
     return derivatives;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_DERIVATIVES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDerivatives(List<Object> derivatives) {
     this.derivatives = derivatives;
   }
@@ -194,7 +210,7 @@ public class LexicalEntry {
 
   public LexicalEntry addEntriesItem(Entry entriesItem) {
     if (this.entries == null) {
-      this.entries = new ArrayList<Entry>();
+      this.entries = new ArrayList<>();
     }
     this.entries.add(entriesItem);
     return this;
@@ -206,12 +222,16 @@ public class LexicalEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ENTRIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Entry> getEntries() {
     return entries;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ENTRIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEntries(List<Entry> entries) {
     this.entries = entries;
   }
@@ -225,7 +245,7 @@ public class LexicalEntry {
 
   public LexicalEntry addGrammaticalFeaturesItem(Object grammaticalFeaturesItem) {
     if (this.grammaticalFeatures == null) {
-      this.grammaticalFeatures = new ArrayList<Object>();
+      this.grammaticalFeatures = new ArrayList<>();
     }
     this.grammaticalFeatures.add(grammaticalFeaturesItem);
     return this;
@@ -237,12 +257,16 @@ public class LexicalEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The different forms are correlated with meanings or functions which we text as 'features'")
+  @JsonProperty(JSON_PROPERTY_GRAMMATICAL_FEATURES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getGrammaticalFeatures() {
     return grammaticalFeatures;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_GRAMMATICAL_FEATURES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGrammaticalFeatures(List<Object> grammaticalFeatures) {
     this.grammaticalFeatures = grammaticalFeatures;
   }
@@ -260,12 +284,16 @@ public class LexicalEntry {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "IANA language code")
+  @JsonProperty(JSON_PROPERTY_LANGUAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getLanguage() {
     return language;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_LANGUAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLanguage(String language) {
     this.language = language;
   }
@@ -283,12 +311,16 @@ public class LexicalEntry {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_LEXICAL_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public LexicalCategory getLexicalCategory() {
     return lexicalCategory;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_LEXICAL_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLexicalCategory(LexicalCategory lexicalCategory) {
     this.lexicalCategory = lexicalCategory;
   }
@@ -302,7 +334,7 @@ public class LexicalEntry {
 
   public LexicalEntry addNotesItem(Object notesItem) {
     if (this.notes == null) {
-      this.notes = new ArrayList<Object>();
+      this.notes = new ArrayList<>();
     }
     this.notes.add(notesItem);
     return this;
@@ -314,12 +346,16 @@ public class LexicalEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "various types of notes that appear")
+  @JsonProperty(JSON_PROPERTY_NOTES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getNotes() {
     return notes;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_NOTES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNotes(List<Object> notes) {
     this.notes = notes;
   }
@@ -333,7 +369,7 @@ public class LexicalEntry {
 
   public LexicalEntry addPhrasalVerbsItem(Object phrasalVerbsItem) {
     if (this.phrasalVerbs == null) {
-      this.phrasalVerbs = new ArrayList<Object>();
+      this.phrasalVerbs = new ArrayList<>();
     }
     this.phrasalVerbs.add(phrasalVerbsItem);
     return this;
@@ -345,12 +381,16 @@ public class LexicalEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of written or spoken words")
+  @JsonProperty(JSON_PROPERTY_PHRASAL_VERBS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getPhrasalVerbs() {
     return phrasalVerbs;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_PHRASAL_VERBS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPhrasalVerbs(List<Object> phrasalVerbs) {
     this.phrasalVerbs = phrasalVerbs;
   }
@@ -364,7 +404,7 @@ public class LexicalEntry {
 
   public LexicalEntry addPhrasesItem(Object phrasesItem) {
     if (this.phrases == null) {
-      this.phrases = new ArrayList<Object>();
+      this.phrases = new ArrayList<>();
     }
     this.phrases.add(phrasesItem);
     return this;
@@ -376,12 +416,16 @@ public class LexicalEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of written or spoken words")
+  @JsonProperty(JSON_PROPERTY_PHRASES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getPhrases() {
     return phrases;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_PHRASES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPhrases(List<Object> phrases) {
     this.phrases = phrases;
   }
@@ -395,7 +439,7 @@ public class LexicalEntry {
 
   public LexicalEntry addPronunciationsItem(Object pronunciationsItem) {
     if (this.pronunciations == null) {
-      this.pronunciations = new ArrayList<Object>();
+      this.pronunciations = new ArrayList<>();
     }
     this.pronunciations.add(pronunciationsItem);
     return this;
@@ -407,12 +451,16 @@ public class LexicalEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of possible pronunciations of a word")
+  @JsonProperty(JSON_PROPERTY_PRONUNCIATIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getPronunciations() {
     return pronunciations;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_PRONUNCIATIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPronunciations(List<Object> pronunciations) {
     this.pronunciations = pronunciations;
   }
@@ -430,12 +478,16 @@ public class LexicalEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Abstract root form from which this lexicalEntry is derived.")
+  @JsonProperty(JSON_PROPERTY_ROOT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRoot() {
     return root;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ROOT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRoot(String root) {
     this.root = root;
   }
@@ -453,12 +505,16 @@ public class LexicalEntry {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "A given written or spoken realisation of an entry.")
+  @JsonProperty(JSON_PROPERTY_TEXT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getText() {
     return text;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_TEXT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setText(String text) {
     this.text = text;
   }
@@ -472,7 +528,7 @@ public class LexicalEntry {
 
   public LexicalEntry addVariantFormsItem(Object variantFormsItem) {
     if (this.variantForms == null) {
-      this.variantForms = new ArrayList<Object>();
+      this.variantForms = new ArrayList<>();
     }
     this.variantForms.add(variantFormsItem);
     return this;
@@ -484,12 +540,16 @@ public class LexicalEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Various words that are used interchangeably depending on the context, e.g 'aluminium' and 'aluminum'")
+  @JsonProperty(JSON_PROPERTY_VARIANT_FORMS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getVariantForms() {
     return variantForms;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_VARIANT_FORMS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVariantForms(List<Object> variantForms) {
     this.variantForms = variantForms;
   }

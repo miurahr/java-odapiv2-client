@@ -15,42 +15,46 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.SentencesLexicalEntry;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Group of lexicalEntries related to a specific result in the Sentences endpoint for a given word ID.
  */
 @ApiModel(description = "Group of lexicalEntries related to a specific result in the Sentences endpoint for a given word ID.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  SentencesEntry.JSON_PROPERTY_ID,
+  SentencesEntry.JSON_PROPERTY_LANGUAGE,
+  SentencesEntry.JSON_PROPERTY_LEXICAL_ENTRIES,
+  SentencesEntry.JSON_PROPERTY_TYPE,
+  SentencesEntry.JSON_PROPERTY_WORD
+})
+@JsonTypeName("SentencesEntry")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class SentencesEntry {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_LANGUAGE = "language";
-  @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  public static final String JSON_PROPERTY_LANGUAGE = "language";
   private String language;
 
-  public static final String SERIALIZED_NAME_LEXICAL_ENTRIES = "lexicalEntries";
-  @SerializedName(SERIALIZED_NAME_LEXICAL_ENTRIES)
-  private List<SentencesLexicalEntry> lexicalEntries = new ArrayList<SentencesLexicalEntry>();
+  public static final String JSON_PROPERTY_LEXICAL_ENTRIES = "lexicalEntries";
+  private List<SentencesLexicalEntry> lexicalEntries = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
+  public static final String JSON_PROPERTY_TYPE = "type";
   private String type;
 
-  public static final String SERIALIZED_NAME_WORD = "word";
-  @SerializedName(SERIALIZED_NAME_WORD)
+  public static final String JSON_PROPERTY_WORD = "word";
   private String word;
 
   public SentencesEntry() { 
@@ -68,12 +72,16 @@ public class SentencesEntry {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "The identifier of a word")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getId() {
     return id;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(String id) {
     this.id = id;
   }
@@ -91,12 +99,16 @@ public class SentencesEntry {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "IANA language code")
+  @JsonProperty(JSON_PROPERTY_LANGUAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getLanguage() {
     return language;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_LANGUAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLanguage(String language) {
     this.language = language;
   }
@@ -119,12 +131,16 @@ public class SentencesEntry {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "A grouping of various senses in a specific language, and a lexical category that relates to a word")
+  @JsonProperty(JSON_PROPERTY_LEXICAL_ENTRIES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<SentencesLexicalEntry> getLexicalEntries() {
     return lexicalEntries;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_LEXICAL_ENTRIES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLexicalEntries(List<SentencesLexicalEntry> lexicalEntries) {
     this.lexicalEntries = lexicalEntries;
   }
@@ -142,12 +158,16 @@ public class SentencesEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The json object type. Could be 'headword', 'inflection' or 'phrase'")
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getType() {
     return type;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setType(String type) {
     this.type = type;
   }
@@ -165,12 +185,16 @@ public class SentencesEntry {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "(DEPRECATED) A given written or spoken realisation of an entry, lowercased.")
+  @JsonProperty(JSON_PROPERTY_WORD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getWord() {
     return word;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_WORD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setWord(String word) {
     this.word = word;
   }

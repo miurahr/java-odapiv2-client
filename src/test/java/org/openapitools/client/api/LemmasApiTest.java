@@ -18,6 +18,7 @@ import org.openapitools.client.model.ErrorSchema;
 import org.openapitools.client.model.Lemmatron;
 import org.junit.Test;
 import org.junit.Ignore;
+import org.junit.Assert;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +33,6 @@ public class LemmasApiTest {
 
     private final LemmasApi api = new LemmasApi();
 
-    
     /**
      * Check a word exists in the dictionary and retrieve its root form
      *
@@ -49,8 +49,8 @@ public class LemmasApiTest {
         String appKey = null;
         String grammaticalFeatures = null;
         String lexicalCategory = null;
-                Lemmatron response = api.lemmasSourceLangWordIdGet(sourceLang, wordId, appId, appKey, grammaticalFeatures, lexicalCategory);
+        Lemmatron response = api.lemmasSourceLangWordIdGet(sourceLang, wordId, appId, appKey, grammaticalFeatures, lexicalCategory);
+
         // TODO: test validations
     }
-    
 }

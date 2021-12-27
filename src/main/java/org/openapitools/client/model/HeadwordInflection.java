@@ -15,38 +15,42 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.InflectionLexicalEntry;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Description of an inflected form of a word
  */
 @ApiModel(description = "Description of an inflected form of a word")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  HeadwordInflection.JSON_PROPERTY_ID,
+  HeadwordInflection.JSON_PROPERTY_LANGUAGE,
+  HeadwordInflection.JSON_PROPERTY_LEXICAL_ENTRIES,
+  HeadwordInflection.JSON_PROPERTY_TEXT
+})
+@JsonTypeName("HeadwordInflection")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class HeadwordInflection {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_LANGUAGE = "language";
-  @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  public static final String JSON_PROPERTY_LANGUAGE = "language";
   private String language;
 
-  public static final String SERIALIZED_NAME_LEXICAL_ENTRIES = "lexicalEntries";
-  @SerializedName(SERIALIZED_NAME_LEXICAL_ENTRIES)
-  private List<InflectionLexicalEntry> lexicalEntries = new ArrayList<InflectionLexicalEntry>();
+  public static final String JSON_PROPERTY_LEXICAL_ENTRIES = "lexicalEntries";
+  private List<InflectionLexicalEntry> lexicalEntries = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_TEXT = "text";
-  @SerializedName(SERIALIZED_NAME_TEXT)
+  public static final String JSON_PROPERTY_TEXT = "text";
   private String text;
 
   public HeadwordInflection() { 
@@ -64,12 +68,16 @@ public class HeadwordInflection {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "The identifier of a word")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getId() {
     return id;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(String id) {
     this.id = id;
   }
@@ -87,12 +95,16 @@ public class HeadwordInflection {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "IANA language code")
+  @JsonProperty(JSON_PROPERTY_LANGUAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getLanguage() {
     return language;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_LANGUAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLanguage(String language) {
     this.language = language;
   }
@@ -115,12 +127,16 @@ public class HeadwordInflection {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "A grouping of various senses in a specific language, and a lexical category that relates to a word")
+  @JsonProperty(JSON_PROPERTY_LEXICAL_ENTRIES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<InflectionLexicalEntry> getLexicalEntries() {
     return lexicalEntries;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_LEXICAL_ENTRIES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLexicalEntries(List<InflectionLexicalEntry> lexicalEntries) {
     this.lexicalEntries = lexicalEntries;
   }
@@ -138,12 +154,16 @@ public class HeadwordInflection {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A given written or spoken realisation of an entry.")
+  @JsonProperty(JSON_PROPERTY_TEXT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getText() {
     return text;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_TEXT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setText(String text) {
     this.text = text;
   }

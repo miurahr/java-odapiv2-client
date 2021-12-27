@@ -15,39 +15,43 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Description of found word
  */
 @ApiModel(description = "Description of found word")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  WordlistResults.JSON_PROPERTY_ID,
+  WordlistResults.JSON_PROPERTY_MATCH_STRING,
+  WordlistResults.JSON_PROPERTY_MATCH_TYPE,
+  WordlistResults.JSON_PROPERTY_REGION,
+  WordlistResults.JSON_PROPERTY_WORD
+})
+@JsonTypeName("Wordlist_results")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class WordlistResults {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_MATCH_STRING = "matchString";
-  @SerializedName(SERIALIZED_NAME_MATCH_STRING)
+  public static final String JSON_PROPERTY_MATCH_STRING = "matchString";
   private String matchString;
 
-  public static final String SERIALIZED_NAME_MATCH_TYPE = "matchType";
-  @SerializedName(SERIALIZED_NAME_MATCH_TYPE)
+  public static final String JSON_PROPERTY_MATCH_TYPE = "matchType";
   private String matchType;
 
-  public static final String SERIALIZED_NAME_REGION = "region";
-  @SerializedName(SERIALIZED_NAME_REGION)
+  public static final String JSON_PROPERTY_REGION = "region";
   private String region;
 
-  public static final String SERIALIZED_NAME_WORD = "word";
-  @SerializedName(SERIALIZED_NAME_WORD)
+  public static final String JSON_PROPERTY_WORD = "word";
   private String word;
 
   public WordlistResults() { 
@@ -65,12 +69,16 @@ public class WordlistResults {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "The identifier of a word")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getId() {
     return id;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(String id) {
     this.id = id;
   }
@@ -88,12 +96,16 @@ public class WordlistResults {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_MATCH_STRING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getMatchString() {
     return matchString;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_MATCH_STRING)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMatchString(String matchString) {
     this.matchString = matchString;
   }
@@ -111,12 +123,16 @@ public class WordlistResults {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_MATCH_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getMatchType() {
     return matchType;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_MATCH_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMatchType(String matchType) {
     this.matchType = matchType;
   }
@@ -134,12 +150,16 @@ public class WordlistResults {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Name of region.")
+  @JsonProperty(JSON_PROPERTY_REGION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRegion() {
     return region;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_REGION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRegion(String region) {
     this.region = region;
   }
@@ -157,12 +177,16 @@ public class WordlistResults {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "(DEPRECATED) A given written or spoken realisation of an entry, lowercased.")
+  @JsonProperty(JSON_PROPERTY_WORD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getWord() {
     return word;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_WORD)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setWord(String word) {
     this.word = word;
   }

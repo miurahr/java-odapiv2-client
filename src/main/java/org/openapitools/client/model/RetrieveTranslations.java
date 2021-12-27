@@ -15,30 +15,34 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.BilingualHeadwordEntry;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Schema for the &#39;translations&#39; endpoints
  */
 @ApiModel(description = "Schema for the 'translations' endpoints")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  RetrieveTranslations.JSON_PROPERTY_METADATA,
+  RetrieveTranslations.JSON_PROPERTY_RESULTS
+})
+@JsonTypeName("RetrieveTranslations")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class RetrieveTranslations {
-  public static final String SERIALIZED_NAME_METADATA = "metadata";
-  @SerializedName(SERIALIZED_NAME_METADATA)
+  public static final String JSON_PROPERTY_METADATA = "metadata";
   private Object metadata;
 
-  public static final String SERIALIZED_NAME_RESULTS = "results";
-  @SerializedName(SERIALIZED_NAME_RESULTS)
+  public static final String JSON_PROPERTY_RESULTS = "results";
   private List<BilingualHeadwordEntry> results = null;
 
   public RetrieveTranslations() { 
@@ -56,12 +60,16 @@ public class RetrieveTranslations {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Additional Information provided by OUP")
+  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public Object getMetadata() {
     return metadata;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setMetadata(Object metadata) {
     this.metadata = metadata;
   }
@@ -75,7 +83,7 @@ public class RetrieveTranslations {
 
   public RetrieveTranslations addResultsItem(BilingualHeadwordEntry resultsItem) {
     if (this.results == null) {
-      this.results = new ArrayList<BilingualHeadwordEntry>();
+      this.results = new ArrayList<>();
     }
     this.results.add(resultsItem);
     return this;
@@ -87,12 +95,16 @@ public class RetrieveTranslations {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of bilingual entries and all the data related to them")
+  @JsonProperty(JSON_PROPERTY_RESULTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<BilingualHeadwordEntry> getResults() {
     return results;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_RESULTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setResults(List<BilingualHeadwordEntry> results) {
     this.results = results;
   }

@@ -15,26 +15,30 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * LexicalCategory
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  LexicalCategory.JSON_PROPERTY_ID,
+  LexicalCategory.JSON_PROPERTY_TEXT
+})
+@JsonTypeName("lexicalCategory")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class LexicalCategory {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_TEXT = "text";
-  @SerializedName(SERIALIZED_NAME_TEXT)
+  public static final String JSON_PROPERTY_TEXT = "text";
   private String text;
 
   public LexicalCategory() { 
@@ -52,12 +56,16 @@ public class LexicalCategory {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getId() {
     return id;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setId(String id) {
     this.id = id;
   }
@@ -75,12 +83,16 @@ public class LexicalCategory {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_TEXT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getText() {
     return text;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_TEXT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setText(String text) {
     this.text = text;
   }

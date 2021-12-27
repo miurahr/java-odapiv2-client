@@ -15,39 +15,43 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.InflectedForm;
 import org.openapitools.client.model.LexicalCategory;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Description of an entry for a particular part of speech and grammatical features
  */
 @ApiModel(description = "Description of an entry for a particular part of speech and grammatical features")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  InflectionLexicalEntry.JSON_PROPERTY_GRAMMATICAL_FEATURES,
+  InflectionLexicalEntry.JSON_PROPERTY_INFLECTIONS,
+  InflectionLexicalEntry.JSON_PROPERTY_LANGUAGE,
+  InflectionLexicalEntry.JSON_PROPERTY_LEXICAL_CATEGORY
+})
+@JsonTypeName("InflectionLexicalEntry")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class InflectionLexicalEntry {
-  public static final String SERIALIZED_NAME_GRAMMATICAL_FEATURES = "grammaticalFeatures";
-  @SerializedName(SERIALIZED_NAME_GRAMMATICAL_FEATURES)
+  public static final String JSON_PROPERTY_GRAMMATICAL_FEATURES = "grammaticalFeatures";
   private List<Object> grammaticalFeatures = null;
 
-  public static final String SERIALIZED_NAME_INFLECTIONS = "inflections";
-  @SerializedName(SERIALIZED_NAME_INFLECTIONS)
+  public static final String JSON_PROPERTY_INFLECTIONS = "inflections";
   private List<InflectedForm> inflections = null;
 
-  public static final String SERIALIZED_NAME_LANGUAGE = "language";
-  @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  public static final String JSON_PROPERTY_LANGUAGE = "language";
   private String language;
 
-  public static final String SERIALIZED_NAME_LEXICAL_CATEGORY = "lexicalCategory";
-  @SerializedName(SERIALIZED_NAME_LEXICAL_CATEGORY)
+  public static final String JSON_PROPERTY_LEXICAL_CATEGORY = "lexicalCategory";
   private LexicalCategory lexicalCategory;
 
   public InflectionLexicalEntry() { 
@@ -61,7 +65,7 @@ public class InflectionLexicalEntry {
 
   public InflectionLexicalEntry addGrammaticalFeaturesItem(Object grammaticalFeaturesItem) {
     if (this.grammaticalFeatures == null) {
-      this.grammaticalFeatures = new ArrayList<Object>();
+      this.grammaticalFeatures = new ArrayList<>();
     }
     this.grammaticalFeatures.add(grammaticalFeaturesItem);
     return this;
@@ -73,12 +77,16 @@ public class InflectionLexicalEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The different forms are correlated with meanings or functions which we text as 'features'")
+  @JsonProperty(JSON_PROPERTY_GRAMMATICAL_FEATURES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getGrammaticalFeatures() {
     return grammaticalFeatures;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_GRAMMATICAL_FEATURES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGrammaticalFeatures(List<Object> grammaticalFeatures) {
     this.grammaticalFeatures = grammaticalFeatures;
   }
@@ -92,7 +100,7 @@ public class InflectionLexicalEntry {
 
   public InflectionLexicalEntry addInflectionsItem(InflectedForm inflectionsItem) {
     if (this.inflections == null) {
-      this.inflections = new ArrayList<InflectedForm>();
+      this.inflections = new ArrayList<>();
     }
     this.inflections.add(inflectionsItem);
     return this;
@@ -104,12 +112,16 @@ public class InflectionLexicalEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of inflected forms for a lexicalEntry.")
+  @JsonProperty(JSON_PROPERTY_INFLECTIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<InflectedForm> getInflections() {
     return inflections;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_INFLECTIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setInflections(List<InflectedForm> inflections) {
     this.inflections = inflections;
   }
@@ -127,12 +139,16 @@ public class InflectionLexicalEntry {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "IANA language code")
+  @JsonProperty(JSON_PROPERTY_LANGUAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getLanguage() {
     return language;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_LANGUAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLanguage(String language) {
     this.language = language;
   }
@@ -150,12 +166,16 @@ public class InflectionLexicalEntry {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_LEXICAL_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public LexicalCategory getLexicalCategory() {
     return lexicalCategory;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_LEXICAL_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLexicalCategory(LexicalCategory lexicalCategory) {
     this.lexicalCategory = lexicalCategory;
   }

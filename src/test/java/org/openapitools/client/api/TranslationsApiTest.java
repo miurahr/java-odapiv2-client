@@ -18,6 +18,7 @@ import org.openapitools.client.model.ErrorSchema;
 import org.openapitools.client.model.RetrieveTranslations;
 import org.junit.Test;
 import org.junit.Ignore;
+import org.junit.Assert;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +33,6 @@ public class TranslationsApiTest {
 
     private final TranslationsApi api = new TranslationsApi();
 
-    
     /**
      * Retrieve translations for a given word
      *
@@ -54,8 +54,8 @@ public class TranslationsApiTest {
         String lexicalCategory = null;
         String domains = null;
         String registers = null;
-                RetrieveTranslations response = api.translationsSourceLangTranslateTargetLangTranslateWordIdGet(sourceLangTranslate, targetLangTranslate, wordId, appId, appKey, strictMatch, fields, grammaticalFeatures, lexicalCategory, domains, registers);
+        RetrieveTranslations response = api.translationsSourceLangTranslateTargetLangTranslateWordIdGet(sourceLangTranslate, targetLangTranslate, wordId, appId, appKey, strictMatch, fields, grammaticalFeatures, lexicalCategory, domains, registers);
+
         // TODO: test validations
     }
-    
 }

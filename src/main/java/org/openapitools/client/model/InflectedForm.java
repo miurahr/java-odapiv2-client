@@ -15,53 +15,57 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.DomainsList;
 import org.openapitools.client.model.LexicalCategory;
 import org.openapitools.client.model.RegionsList;
 import org.openapitools.client.model.RegistersList;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Description of an Inflected form.
  */
 @ApiModel(description = "Description of an Inflected form.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  InflectedForm.JSON_PROPERTY_DOMAINS,
+  InflectedForm.JSON_PROPERTY_GRAMMATICAL_FEATURES,
+  InflectedForm.JSON_PROPERTY_INFLECTED_FORM,
+  InflectedForm.JSON_PROPERTY_LEXICAL_CATEGORY,
+  InflectedForm.JSON_PROPERTY_PRONUNCIATIONS,
+  InflectedForm.JSON_PROPERTY_REGIONS,
+  InflectedForm.JSON_PROPERTY_REGISTERS
+})
+@JsonTypeName("InflectedForm")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class InflectedForm {
-  public static final String SERIALIZED_NAME_DOMAINS = "domains";
-  @SerializedName(SERIALIZED_NAME_DOMAINS)
+  public static final String JSON_PROPERTY_DOMAINS = "domains";
   private DomainsList domains;
 
-  public static final String SERIALIZED_NAME_GRAMMATICAL_FEATURES = "grammaticalFeatures";
-  @SerializedName(SERIALIZED_NAME_GRAMMATICAL_FEATURES)
+  public static final String JSON_PROPERTY_GRAMMATICAL_FEATURES = "grammaticalFeatures";
   private List<Object> grammaticalFeatures = null;
 
-  public static final String SERIALIZED_NAME_INFLECTED_FORM = "inflectedForm";
-  @SerializedName(SERIALIZED_NAME_INFLECTED_FORM)
+  public static final String JSON_PROPERTY_INFLECTED_FORM = "inflectedForm";
   private String inflectedForm;
 
-  public static final String SERIALIZED_NAME_LEXICAL_CATEGORY = "lexicalCategory";
-  @SerializedName(SERIALIZED_NAME_LEXICAL_CATEGORY)
+  public static final String JSON_PROPERTY_LEXICAL_CATEGORY = "lexicalCategory";
   private LexicalCategory lexicalCategory;
 
-  public static final String SERIALIZED_NAME_PRONUNCIATIONS = "pronunciations";
-  @SerializedName(SERIALIZED_NAME_PRONUNCIATIONS)
+  public static final String JSON_PROPERTY_PRONUNCIATIONS = "pronunciations";
   private List<Object> pronunciations = null;
 
-  public static final String SERIALIZED_NAME_REGIONS = "regions";
-  @SerializedName(SERIALIZED_NAME_REGIONS)
+  public static final String JSON_PROPERTY_REGIONS = "regions";
   private RegionsList regions;
 
-  public static final String SERIALIZED_NAME_REGISTERS = "registers";
-  @SerializedName(SERIALIZED_NAME_REGISTERS)
+  public static final String JSON_PROPERTY_REGISTERS = "registers";
   private RegistersList registers;
 
   public InflectedForm() { 
@@ -79,12 +83,16 @@ public class InflectedForm {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_DOMAINS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public DomainsList getDomains() {
     return domains;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_DOMAINS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDomains(DomainsList domains) {
     this.domains = domains;
   }
@@ -98,7 +106,7 @@ public class InflectedForm {
 
   public InflectedForm addGrammaticalFeaturesItem(Object grammaticalFeaturesItem) {
     if (this.grammaticalFeatures == null) {
-      this.grammaticalFeatures = new ArrayList<Object>();
+      this.grammaticalFeatures = new ArrayList<>();
     }
     this.grammaticalFeatures.add(grammaticalFeaturesItem);
     return this;
@@ -110,12 +118,16 @@ public class InflectedForm {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The different forms are correlated with meanings or functions which we text as 'features'")
+  @JsonProperty(JSON_PROPERTY_GRAMMATICAL_FEATURES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getGrammaticalFeatures() {
     return grammaticalFeatures;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_GRAMMATICAL_FEATURES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGrammaticalFeatures(List<Object> grammaticalFeatures) {
     this.grammaticalFeatures = grammaticalFeatures;
   }
@@ -133,12 +145,16 @@ public class InflectedForm {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "Canonical form of an inflection")
+  @JsonProperty(JSON_PROPERTY_INFLECTED_FORM)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getInflectedForm() {
     return inflectedForm;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_INFLECTED_FORM)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setInflectedForm(String inflectedForm) {
     this.inflectedForm = inflectedForm;
   }
@@ -156,12 +172,16 @@ public class InflectedForm {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_LEXICAL_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public LexicalCategory getLexicalCategory() {
     return lexicalCategory;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_LEXICAL_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLexicalCategory(LexicalCategory lexicalCategory) {
     this.lexicalCategory = lexicalCategory;
   }
@@ -175,7 +195,7 @@ public class InflectedForm {
 
   public InflectedForm addPronunciationsItem(Object pronunciationsItem) {
     if (this.pronunciations == null) {
-      this.pronunciations = new ArrayList<Object>();
+      this.pronunciations = new ArrayList<>();
     }
     this.pronunciations.add(pronunciationsItem);
     return this;
@@ -187,12 +207,16 @@ public class InflectedForm {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of possible pronunciations of a word")
+  @JsonProperty(JSON_PROPERTY_PRONUNCIATIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getPronunciations() {
     return pronunciations;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_PRONUNCIATIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPronunciations(List<Object> pronunciations) {
     this.pronunciations = pronunciations;
   }
@@ -210,12 +234,16 @@ public class InflectedForm {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_REGIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public RegionsList getRegions() {
     return regions;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_REGIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRegions(RegionsList regions) {
     this.regions = regions;
   }
@@ -233,12 +261,16 @@ public class InflectedForm {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_REGISTERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public RegistersList getRegisters() {
     return registers;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_REGISTERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRegisters(RegistersList registers) {
     this.registers = registers;
   }

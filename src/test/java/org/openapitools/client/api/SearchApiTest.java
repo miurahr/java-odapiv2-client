@@ -18,6 +18,7 @@ import org.openapitools.client.model.ErrorSchema;
 import org.openapitools.client.model.Wordlist;
 import org.junit.Test;
 import org.junit.Ignore;
+import org.junit.Assert;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +33,6 @@ public class SearchApiTest {
 
     private final SearchApi api = new SearchApi();
 
-    
     /**
      * Retrieves possible dictionary matches to an input string
      *
@@ -50,10 +50,10 @@ public class SearchApiTest {
         Boolean prefix = null;
         Integer limit = null;
         Integer offset = null;
-                Wordlist response = api.searchSourceLangGet(sourceLang, q, appId, appKey, prefix, limit, offset);
+        Wordlist response = api.searchSourceLangGet(sourceLang, q, appId, appKey, prefix, limit, offset);
+
         // TODO: test validations
     }
-    
     /**
      * Retrieves possible dictionary matches to an input string
      *
@@ -71,10 +71,10 @@ public class SearchApiTest {
         Boolean prefix = null;
         Integer limit = null;
         Integer offset = null;
-                Wordlist response = api.searchThesaurusSourceLangGet(sourceLang, q, appId, appKey, prefix, limit, offset);
+        Wordlist response = api.searchThesaurusSourceLangGet(sourceLang, q, appId, appKey, prefix, limit, offset);
+
         // TODO: test validations
     }
-    
     /**
      * Retrieves possible headwords with translations
      *
@@ -93,8 +93,8 @@ public class SearchApiTest {
         Boolean prefix = null;
         Integer limit = null;
         Integer offset = null;
-                Wordlist response = api.searchTranslationsSourceLangSearchTargetLangSearchGet(sourceLangSearch, targetLangSearch, q, appId, appKey, prefix, limit, offset);
+        Wordlist response = api.searchTranslationsSourceLangSearchTargetLangSearchGet(sourceLangSearch, targetLangSearch, q, appId, appKey, prefix, limit, offset);
+
         // TODO: test validations
     }
-    
 }

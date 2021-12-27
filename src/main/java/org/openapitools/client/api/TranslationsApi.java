@@ -10,301 +10,143 @@
  * Do not edit the class manually.
  */
 
-
 package org.openapitools.client.api;
 
-import org.openapitools.client.ApiCallback;
-import org.openapitools.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import org.openapitools.client.ApiException;
-import org.openapitools.client.ApiResponse;
+import org.openapitools.client.ApiClient;
 import org.openapitools.client.Configuration;
+import org.openapitools.client.model.*;
 import org.openapitools.client.Pair;
-import org.openapitools.client.ProgressRequestBody;
-import org.openapitools.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import org.openapitools.client.model.ErrorSchema;
 import org.openapitools.client.model.RetrieveTranslations;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class TranslationsApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+  private ApiClient apiClient;
 
-    public TranslationsApi() {
-        this(Configuration.getDefaultApiClient());
+  public TranslationsApi() {
+    this(Configuration.getDefaultApiClient());
+  }
+
+  public TranslationsApi(ApiClient apiClient) {
+    this.apiClient = apiClient;
+  }
+
+  public ApiClient getApiClient() {
+    return apiClient;
+  }
+
+  public void setApiClient(ApiClient apiClient) {
+    this.apiClient = apiClient;
+  }
+
+  /**
+   * Retrieve translations for a given word
+   *  Use this to return translations for a given word. In the event that a word in the dataset does not have a direct translation, the response will be a [definition](documentation/glossary?term&#x3D;entry) in the target language.    &lt;div id&#x3D;\&quot;translation\&quot;&gt;&lt;/div&gt; 
+   * @param sourceLangTranslate Language code of the source language in a bilingual dataset. (required)
+   * @param targetLangTranslate Language code of the target language in a bilingual dataset. (required)
+   * @param wordId The identifier for an Entry (case-sensitive). (required)
+   * @param appId App ID Authentication Parameter (required)
+   * @param appKey App Key Authentication Parameter (required)
+   * @param strictMatch Specifies whether diacritics must match exactly. If \&quot;false\&quot;, near-homographs for the given word_id will also be selected (e.g., *rose* matches both *rose* and *rosé*; similarly *rosé* matches both). (optional, default to false)
+   * @param fields A comma-separated list of data fields to return for the matched entries. Valid field names are &#39;definitions&#39;, &#39;domains&#39;, &#39;etymologies&#39;, &#39;examples&#39;, &#39;pronunciations&#39;, &#39;regions&#39;, &#39;registers&#39;, &#39;variantForms&#39;, &#39;translations&#39;. (a) If not specified, all available fields for each word_id are returned. (b) If specified and empty, the minimum payload for each word_id is returned. (c) If more field names are specified, then the minimum payload plus the specified fields for each word_id are returned.  (optional
+   * @param grammaticalFeatures Selection filter: a comma-separated list of grammatical features ids to match on (default: all features). The available grammatical features for a given language (or language pair) can be obtained from the /grammaticalfeatures/ endpoint.  The filter keeps all the entries in the response whose grammaticalFeatures \&quot;id\&quot; matches the values in the grammaticalFeatures parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;grammaticalFeatures\&quot;: [                           {                               \&quot;id\&quot;: \&quot;mass\&quot;,                               \&quot;text\&quot;: \&quot;Mass\&quot;,                               \&quot;type\&quot;: \&quot;Countability\&quot;                           }                       ] } &#x60;&#x60;&#x60;  (optional)
+   * @param lexicalCategory Selection filter: a comma-separated list of lexical categories ids to match on (default: all categories). The available lexical categories for a given language (or language pair) can be obtained from the /lexicalcategories/ endpoint.  The filter keeps all the entries in the response whose lexicalCategory \&quot;id\&quot; matches the values in the lexicalCategory parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;lexicalCategory\&quot;: {                   \&quot;id\&quot;: \&quot;adjective\&quot;,                   \&quot;text\&quot;: \&quot;Adjective\&quot;               } } &#x60;&#x60;&#x60;  (optional)
+   * @param domains Selection filter: a comma-separated list of domains ids to match on (default: all domains). The available domains for a given language (or language pair) can be obtained from the /domains/ endpoint.  The filter keeps all the senses and subsenses in the response whose domains \&quot;id\&quot; matches the values in the domains parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;domains\&quot;: [     {       \&quot;id\&quot;: \&quot;jazz\&quot;,       \&quot;text\&quot;: \&quot;Jazz\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
+   * @param registers Selection filter: a comma-separated list of registers ids to match on (default: all registers). The available registers for a given language (or language pair) can be obtained from the /registers/ endpoint.  The filter keeps all the senses and subsenses in the response whose registers \&quot;id\&quot; matches the values in the registers parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;registers\&quot;: [     {       \&quot;id\&quot;: \&quot;informal\&quot;,       \&quot;text\&quot;: \&quot;Informal\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
+   * @return RetrieveTranslations
+   * @throws ApiException if fails to make API call
+   */
+  public RetrieveTranslations translationsSourceLangTranslateTargetLangTranslateWordIdGet(String sourceLangTranslate, String targetLangTranslate, String wordId, String appId, String appKey, Boolean strictMatch, List<String> fields, String grammaticalFeatures, String lexicalCategory, String domains, String registers) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'sourceLangTranslate' is set
+    if (sourceLangTranslate == null) {
+      throw new ApiException(400, "Missing the required parameter 'sourceLangTranslate' when calling translationsSourceLangTranslateTargetLangTranslateWordIdGet");
     }
-
-    public TranslationsApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    
+    // verify the required parameter 'targetLangTranslate' is set
+    if (targetLangTranslate == null) {
+      throw new ApiException(400, "Missing the required parameter 'targetLangTranslate' when calling translationsSourceLangTranslateTargetLangTranslateWordIdGet");
     }
-
-    public ApiClient getApiClient() {
-        return localVarApiClient;
+    
+    // verify the required parameter 'wordId' is set
+    if (wordId == null) {
+      throw new ApiException(400, "Missing the required parameter 'wordId' when calling translationsSourceLangTranslateTargetLangTranslateWordIdGet");
     }
-
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    
+    // verify the required parameter 'appId' is set
+    if (appId == null) {
+      throw new ApiException(400, "Missing the required parameter 'appId' when calling translationsSourceLangTranslateTargetLangTranslateWordIdGet");
     }
-
-    public int getHostIndex() {
-        return localHostIndex;
+    
+    // verify the required parameter 'appKey' is set
+    if (appKey == null) {
+      throw new ApiException(400, "Missing the required parameter 'appKey' when calling translationsSourceLangTranslateTargetLangTranslateWordIdGet");
     }
+    
+    // create path and map variables
+    String localVarPath = "/translations/{source_lang_translate}/{target_lang_translate}/{word_id}"
+      .replaceAll("\\{" + "source_lang_translate" + "\\}", apiClient.escapeString(sourceLangTranslate.toString()))
+      .replaceAll("\\{" + "target_lang_translate" + "\\}", apiClient.escapeString(targetLangTranslate.toString()))
+      .replaceAll("\\{" + "word_id" + "\\}", apiClient.escapeString(wordId.toString()));
 
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
-    }
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
-    }
+    localVarQueryParams.addAll(apiClient.parameterToPair("strictMatch", strictMatch));
+    localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "fields", fields));
+    localVarQueryParams.addAll(apiClient.parameterToPair("grammaticalFeatures", grammaticalFeatures));
+    localVarQueryParams.addAll(apiClient.parameterToPair("lexicalCategory", lexicalCategory));
+    localVarQueryParams.addAll(apiClient.parameterToPair("domains", domains));
+    localVarQueryParams.addAll(apiClient.parameterToPair("registers", registers));
 
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
-    }
+    if (appId != null)
+      localVarHeaderParams.put("app_id", apiClient.parameterToString(appId));
+if (appKey != null)
+      localVarHeaderParams.put("app_key", apiClient.parameterToString(appKey));
 
-    /**
-     * Build call for translationsSourceLangTranslateTargetLangTranslateWordIdGet
-     * @param sourceLangTranslate Language code of the source language in a bilingual dataset. (required)
-     * @param targetLangTranslate Language code of the target language in a bilingual dataset. (required)
-     * @param wordId The identifier for an Entry (case-sensitive). (required)
-     * @param appId App ID Authentication Parameter (required)
-     * @param appKey App Key Authentication Parameter (required)
-     * @param strictMatch Specifies whether diacritics must match exactly. If \&quot;false\&quot;, near-homographs for the given word_id will also be selected (e.g., *rose* matches both *rose* and *rosé*; similarly *rosé* matches both). (optional, default to false)
-     * @param fields A comma-separated list of data fields to return for the matched entries. Valid field names are &#39;definitions&#39;, &#39;domains&#39;, &#39;etymologies&#39;, &#39;examples&#39;, &#39;pronunciations&#39;, &#39;regions&#39;, &#39;registers&#39;, &#39;variantForms&#39;, &#39;translations&#39;. (a) If not specified, all available fields for each word_id are returned. (b) If specified and empty, the minimum payload for each word_id is returned. (c) If more field names are specified, then the minimum payload plus the specified fields for each word_id are returned.  (optional)
-     * @param grammaticalFeatures Selection filter: a comma-separated list of grammatical features ids to match on (default: all features). The available grammatical features for a given language (or language pair) can be obtained from the /grammaticalfeatures/ endpoint.  The filter keeps all the entries in the response whose grammaticalFeatures \&quot;id\&quot; matches the values in the grammaticalFeatures parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;grammaticalFeatures\&quot;: [                           {                               \&quot;id\&quot;: \&quot;mass\&quot;,                               \&quot;text\&quot;: \&quot;Mass\&quot;,                               \&quot;type\&quot;: \&quot;Countability\&quot;                           }                       ] } &#x60;&#x60;&#x60;  (optional)
-     * @param lexicalCategory Selection filter: a comma-separated list of lexical categories ids to match on (default: all categories). The available lexical categories for a given language (or language pair) can be obtained from the /lexicalcategories/ endpoint.  The filter keeps all the entries in the response whose lexicalCategory \&quot;id\&quot; matches the values in the lexicalCategory parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;lexicalCategory\&quot;: {                   \&quot;id\&quot;: \&quot;adjective\&quot;,                   \&quot;text\&quot;: \&quot;Adjective\&quot;               } } &#x60;&#x60;&#x60;  (optional)
-     * @param domains Selection filter: a comma-separated list of domains ids to match on (default: all domains). The available domains for a given language (or language pair) can be obtained from the /domains/ endpoint.  The filter keeps all the senses and subsenses in the response whose domains \&quot;id\&quot; matches the values in the domains parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;domains\&quot;: [     {       \&quot;id\&quot;: \&quot;jazz\&quot;,       \&quot;text\&quot;: \&quot;Jazz\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
-     * @param registers Selection filter: a comma-separated list of registers ids to match on (default: all registers). The available registers for a given language (or language pair) can be obtained from the /registers/ endpoint.  The filter keeps all the senses and subsenses in the response whose registers \&quot;id\&quot; matches the values in the registers parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;registers\&quot;: [     {       \&quot;id\&quot;: \&quot;informal\&quot;,       \&quot;text\&quot;: \&quot;Informal\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Successful response. </td><td>  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  </td></tr>
-        <tr><td> 404 </td><td> no bilingual entry is found matching supplied source_lang and id and/or that entry has no senses with translations in the target language.  </td><td>  -  </td></tr>
-        <tr><td> 414 </td><td> URL is too long. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal error. An error occurred during processing. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call translationsSourceLangTranslateTargetLangTranslateWordIdGetCall(String sourceLangTranslate, String targetLangTranslate, String wordId, String appId, String appKey, Boolean strictMatch, List<String> fields, String grammaticalFeatures, String lexicalCategory, String domains, String registers, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
+    
+    
+    final String[] localVarAccepts = {
+      "*/*"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
+    String[] localVarAuthNames = new String[] {  };
 
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/translations/{source_lang_translate}/{target_lang_translate}/{word_id}"
-            .replaceAll("\\{" + "source_lang_translate" + "\\}", localVarApiClient.escapeString(sourceLangTranslate.toString()))
-            .replaceAll("\\{" + "target_lang_translate" + "\\}", localVarApiClient.escapeString(targetLangTranslate.toString()))
-            .replaceAll("\\{" + "word_id" + "\\}", localVarApiClient.escapeString(wordId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (strictMatch != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("strictMatch", strictMatch));
-        }
-
-        if (fields != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "fields", fields));
-        }
-
-        if (grammaticalFeatures != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("grammaticalFeatures", grammaticalFeatures));
-        }
-
-        if (lexicalCategory != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("lexicalCategory", lexicalCategory));
-        }
-
-        if (domains != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("domains", domains));
-        }
-
-        if (registers != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("registers", registers));
-        }
-
-        if (appId != null) {
-            localVarHeaderParams.put("app_id", localVarApiClient.parameterToString(appId));
-        }
-
-        if (appKey != null) {
-            localVarHeaderParams.put("app_key", localVarApiClient.parameterToString(appKey));
-        }
-
-        final String[] localVarAccepts = {
-            "*/*"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarHeaderParams != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call translationsSourceLangTranslateTargetLangTranslateWordIdGetValidateBeforeCall(String sourceLangTranslate, String targetLangTranslate, String wordId, String appId, String appKey, Boolean strictMatch, List<String> fields, String grammaticalFeatures, String lexicalCategory, String domains, String registers, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'sourceLangTranslate' is set
-        if (sourceLangTranslate == null) {
-            throw new ApiException("Missing the required parameter 'sourceLangTranslate' when calling translationsSourceLangTranslateTargetLangTranslateWordIdGet(Async)");
-        }
-        
-        // verify the required parameter 'targetLangTranslate' is set
-        if (targetLangTranslate == null) {
-            throw new ApiException("Missing the required parameter 'targetLangTranslate' when calling translationsSourceLangTranslateTargetLangTranslateWordIdGet(Async)");
-        }
-        
-        // verify the required parameter 'wordId' is set
-        if (wordId == null) {
-            throw new ApiException("Missing the required parameter 'wordId' when calling translationsSourceLangTranslateTargetLangTranslateWordIdGet(Async)");
-        }
-        
-        // verify the required parameter 'appId' is set
-        if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling translationsSourceLangTranslateTargetLangTranslateWordIdGet(Async)");
-        }
-        
-        // verify the required parameter 'appKey' is set
-        if (appKey == null) {
-            throw new ApiException("Missing the required parameter 'appKey' when calling translationsSourceLangTranslateTargetLangTranslateWordIdGet(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = translationsSourceLangTranslateTargetLangTranslateWordIdGetCall(sourceLangTranslate, targetLangTranslate, wordId, appId, appKey, strictMatch, fields, grammaticalFeatures, lexicalCategory, domains, registers, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * Retrieve translations for a given word
-     *  Use this to return translations for a given word. In the event that a word in the dataset does not have a direct translation, the response will be a [definition](documentation/glossary?term&#x3D;entry) in the target language.    &lt;div id&#x3D;\&quot;translation\&quot;&gt;&lt;/div&gt; 
-     * @param sourceLangTranslate Language code of the source language in a bilingual dataset. (required)
-     * @param targetLangTranslate Language code of the target language in a bilingual dataset. (required)
-     * @param wordId The identifier for an Entry (case-sensitive). (required)
-     * @param appId App ID Authentication Parameter (required)
-     * @param appKey App Key Authentication Parameter (required)
-     * @param strictMatch Specifies whether diacritics must match exactly. If \&quot;false\&quot;, near-homographs for the given word_id will also be selected (e.g., *rose* matches both *rose* and *rosé*; similarly *rosé* matches both). (optional, default to false)
-     * @param fields A comma-separated list of data fields to return for the matched entries. Valid field names are &#39;definitions&#39;, &#39;domains&#39;, &#39;etymologies&#39;, &#39;examples&#39;, &#39;pronunciations&#39;, &#39;regions&#39;, &#39;registers&#39;, &#39;variantForms&#39;, &#39;translations&#39;. (a) If not specified, all available fields for each word_id are returned. (b) If specified and empty, the minimum payload for each word_id is returned. (c) If more field names are specified, then the minimum payload plus the specified fields for each word_id are returned.  (optional)
-     * @param grammaticalFeatures Selection filter: a comma-separated list of grammatical features ids to match on (default: all features). The available grammatical features for a given language (or language pair) can be obtained from the /grammaticalfeatures/ endpoint.  The filter keeps all the entries in the response whose grammaticalFeatures \&quot;id\&quot; matches the values in the grammaticalFeatures parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;grammaticalFeatures\&quot;: [                           {                               \&quot;id\&quot;: \&quot;mass\&quot;,                               \&quot;text\&quot;: \&quot;Mass\&quot;,                               \&quot;type\&quot;: \&quot;Countability\&quot;                           }                       ] } &#x60;&#x60;&#x60;  (optional)
-     * @param lexicalCategory Selection filter: a comma-separated list of lexical categories ids to match on (default: all categories). The available lexical categories for a given language (or language pair) can be obtained from the /lexicalcategories/ endpoint.  The filter keeps all the entries in the response whose lexicalCategory \&quot;id\&quot; matches the values in the lexicalCategory parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;lexicalCategory\&quot;: {                   \&quot;id\&quot;: \&quot;adjective\&quot;,                   \&quot;text\&quot;: \&quot;Adjective\&quot;               } } &#x60;&#x60;&#x60;  (optional)
-     * @param domains Selection filter: a comma-separated list of domains ids to match on (default: all domains). The available domains for a given language (or language pair) can be obtained from the /domains/ endpoint.  The filter keeps all the senses and subsenses in the response whose domains \&quot;id\&quot; matches the values in the domains parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;domains\&quot;: [     {       \&quot;id\&quot;: \&quot;jazz\&quot;,       \&quot;text\&quot;: \&quot;Jazz\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
-     * @param registers Selection filter: a comma-separated list of registers ids to match on (default: all registers). The available registers for a given language (or language pair) can be obtained from the /registers/ endpoint.  The filter keeps all the senses and subsenses in the response whose registers \&quot;id\&quot; matches the values in the registers parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;registers\&quot;: [     {       \&quot;id\&quot;: \&quot;informal\&quot;,       \&quot;text\&quot;: \&quot;Informal\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
-     * @return RetrieveTranslations
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Successful response. </td><td>  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  </td></tr>
-        <tr><td> 404 </td><td> no bilingual entry is found matching supplied source_lang and id and/or that entry has no senses with translations in the target language.  </td><td>  -  </td></tr>
-        <tr><td> 414 </td><td> URL is too long. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal error. An error occurred during processing. </td><td>  -  </td></tr>
-     </table>
-     */
-    public RetrieveTranslations translationsSourceLangTranslateTargetLangTranslateWordIdGet(String sourceLangTranslate, String targetLangTranslate, String wordId, String appId, String appKey, Boolean strictMatch, List<String> fields, String grammaticalFeatures, String lexicalCategory, String domains, String registers) throws ApiException {
-        ApiResponse<RetrieveTranslations> localVarResp = translationsSourceLangTranslateTargetLangTranslateWordIdGetWithHttpInfo(sourceLangTranslate, targetLangTranslate, wordId, appId, appKey, strictMatch, fields, grammaticalFeatures, lexicalCategory, domains, registers);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Retrieve translations for a given word
-     *  Use this to return translations for a given word. In the event that a word in the dataset does not have a direct translation, the response will be a [definition](documentation/glossary?term&#x3D;entry) in the target language.    &lt;div id&#x3D;\&quot;translation\&quot;&gt;&lt;/div&gt; 
-     * @param sourceLangTranslate Language code of the source language in a bilingual dataset. (required)
-     * @param targetLangTranslate Language code of the target language in a bilingual dataset. (required)
-     * @param wordId The identifier for an Entry (case-sensitive). (required)
-     * @param appId App ID Authentication Parameter (required)
-     * @param appKey App Key Authentication Parameter (required)
-     * @param strictMatch Specifies whether diacritics must match exactly. If \&quot;false\&quot;, near-homographs for the given word_id will also be selected (e.g., *rose* matches both *rose* and *rosé*; similarly *rosé* matches both). (optional, default to false)
-     * @param fields A comma-separated list of data fields to return for the matched entries. Valid field names are &#39;definitions&#39;, &#39;domains&#39;, &#39;etymologies&#39;, &#39;examples&#39;, &#39;pronunciations&#39;, &#39;regions&#39;, &#39;registers&#39;, &#39;variantForms&#39;, &#39;translations&#39;. (a) If not specified, all available fields for each word_id are returned. (b) If specified and empty, the minimum payload for each word_id is returned. (c) If more field names are specified, then the minimum payload plus the specified fields for each word_id are returned.  (optional)
-     * @param grammaticalFeatures Selection filter: a comma-separated list of grammatical features ids to match on (default: all features). The available grammatical features for a given language (or language pair) can be obtained from the /grammaticalfeatures/ endpoint.  The filter keeps all the entries in the response whose grammaticalFeatures \&quot;id\&quot; matches the values in the grammaticalFeatures parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;grammaticalFeatures\&quot;: [                           {                               \&quot;id\&quot;: \&quot;mass\&quot;,                               \&quot;text\&quot;: \&quot;Mass\&quot;,                               \&quot;type\&quot;: \&quot;Countability\&quot;                           }                       ] } &#x60;&#x60;&#x60;  (optional)
-     * @param lexicalCategory Selection filter: a comma-separated list of lexical categories ids to match on (default: all categories). The available lexical categories for a given language (or language pair) can be obtained from the /lexicalcategories/ endpoint.  The filter keeps all the entries in the response whose lexicalCategory \&quot;id\&quot; matches the values in the lexicalCategory parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;lexicalCategory\&quot;: {                   \&quot;id\&quot;: \&quot;adjective\&quot;,                   \&quot;text\&quot;: \&quot;Adjective\&quot;               } } &#x60;&#x60;&#x60;  (optional)
-     * @param domains Selection filter: a comma-separated list of domains ids to match on (default: all domains). The available domains for a given language (or language pair) can be obtained from the /domains/ endpoint.  The filter keeps all the senses and subsenses in the response whose domains \&quot;id\&quot; matches the values in the domains parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;domains\&quot;: [     {       \&quot;id\&quot;: \&quot;jazz\&quot;,       \&quot;text\&quot;: \&quot;Jazz\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
-     * @param registers Selection filter: a comma-separated list of registers ids to match on (default: all registers). The available registers for a given language (or language pair) can be obtained from the /registers/ endpoint.  The filter keeps all the senses and subsenses in the response whose registers \&quot;id\&quot; matches the values in the registers parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;registers\&quot;: [     {       \&quot;id\&quot;: \&quot;informal\&quot;,       \&quot;text\&quot;: \&quot;Informal\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
-     * @return ApiResponse&lt;RetrieveTranslations&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Successful response. </td><td>  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  </td></tr>
-        <tr><td> 404 </td><td> no bilingual entry is found matching supplied source_lang and id and/or that entry has no senses with translations in the target language.  </td><td>  -  </td></tr>
-        <tr><td> 414 </td><td> URL is too long. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal error. An error occurred during processing. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<RetrieveTranslations> translationsSourceLangTranslateTargetLangTranslateWordIdGetWithHttpInfo(String sourceLangTranslate, String targetLangTranslate, String wordId, String appId, String appKey, Boolean strictMatch, List<String> fields, String grammaticalFeatures, String lexicalCategory, String domains, String registers) throws ApiException {
-        okhttp3.Call localVarCall = translationsSourceLangTranslateTargetLangTranslateWordIdGetValidateBeforeCall(sourceLangTranslate, targetLangTranslate, wordId, appId, appKey, strictMatch, fields, grammaticalFeatures, lexicalCategory, domains, registers, null);
-        Type localVarReturnType = new TypeToken<RetrieveTranslations>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Retrieve translations for a given word (asynchronously)
-     *  Use this to return translations for a given word. In the event that a word in the dataset does not have a direct translation, the response will be a [definition](documentation/glossary?term&#x3D;entry) in the target language.    &lt;div id&#x3D;\&quot;translation\&quot;&gt;&lt;/div&gt; 
-     * @param sourceLangTranslate Language code of the source language in a bilingual dataset. (required)
-     * @param targetLangTranslate Language code of the target language in a bilingual dataset. (required)
-     * @param wordId The identifier for an Entry (case-sensitive). (required)
-     * @param appId App ID Authentication Parameter (required)
-     * @param appKey App Key Authentication Parameter (required)
-     * @param strictMatch Specifies whether diacritics must match exactly. If \&quot;false\&quot;, near-homographs for the given word_id will also be selected (e.g., *rose* matches both *rose* and *rosé*; similarly *rosé* matches both). (optional, default to false)
-     * @param fields A comma-separated list of data fields to return for the matched entries. Valid field names are &#39;definitions&#39;, &#39;domains&#39;, &#39;etymologies&#39;, &#39;examples&#39;, &#39;pronunciations&#39;, &#39;regions&#39;, &#39;registers&#39;, &#39;variantForms&#39;, &#39;translations&#39;. (a) If not specified, all available fields for each word_id are returned. (b) If specified and empty, the minimum payload for each word_id is returned. (c) If more field names are specified, then the minimum payload plus the specified fields for each word_id are returned.  (optional)
-     * @param grammaticalFeatures Selection filter: a comma-separated list of grammatical features ids to match on (default: all features). The available grammatical features for a given language (or language pair) can be obtained from the /grammaticalfeatures/ endpoint.  The filter keeps all the entries in the response whose grammaticalFeatures \&quot;id\&quot; matches the values in the grammaticalFeatures parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;grammaticalFeatures\&quot;: [                           {                               \&quot;id\&quot;: \&quot;mass\&quot;,                               \&quot;text\&quot;: \&quot;Mass\&quot;,                               \&quot;type\&quot;: \&quot;Countability\&quot;                           }                       ] } &#x60;&#x60;&#x60;  (optional)
-     * @param lexicalCategory Selection filter: a comma-separated list of lexical categories ids to match on (default: all categories). The available lexical categories for a given language (or language pair) can be obtained from the /lexicalcategories/ endpoint.  The filter keeps all the entries in the response whose lexicalCategory \&quot;id\&quot; matches the values in the lexicalCategory parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;lexicalCategory\&quot;: {                   \&quot;id\&quot;: \&quot;adjective\&quot;,                   \&quot;text\&quot;: \&quot;Adjective\&quot;               } } &#x60;&#x60;&#x60;  (optional)
-     * @param domains Selection filter: a comma-separated list of domains ids to match on (default: all domains). The available domains for a given language (or language pair) can be obtained from the /domains/ endpoint.  The filter keeps all the senses and subsenses in the response whose domains \&quot;id\&quot; matches the values in the domains parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;domains\&quot;: [     {       \&quot;id\&quot;: \&quot;jazz\&quot;,       \&quot;text\&quot;: \&quot;Jazz\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
-     * @param registers Selection filter: a comma-separated list of registers ids to match on (default: all registers). The available registers for a given language (or language pair) can be obtained from the /registers/ endpoint.  The filter keeps all the senses and subsenses in the response whose registers \&quot;id\&quot; matches the values in the registers parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;registers\&quot;: [     {       \&quot;id\&quot;: \&quot;informal\&quot;,       \&quot;text\&quot;: \&quot;Informal\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Successful response. </td><td>  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  </td></tr>
-        <tr><td> 404 </td><td> no bilingual entry is found matching supplied source_lang and id and/or that entry has no senses with translations in the target language.  </td><td>  -  </td></tr>
-        <tr><td> 414 </td><td> URL is too long. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal error. An error occurred during processing. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call translationsSourceLangTranslateTargetLangTranslateWordIdGetAsync(String sourceLangTranslate, String targetLangTranslate, String wordId, String appId, String appKey, Boolean strictMatch, List<String> fields, String grammaticalFeatures, String lexicalCategory, String domains, String registers, final ApiCallback<RetrieveTranslations> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = translationsSourceLangTranslateTargetLangTranslateWordIdGetValidateBeforeCall(sourceLangTranslate, targetLangTranslate, wordId, appId, appKey, strictMatch, fields, grammaticalFeatures, lexicalCategory, domains, registers, _callback);
-        Type localVarReturnType = new TypeToken<RetrieveTranslations>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
+    TypeReference<RetrieveTranslations> localVarReturnType = new TypeReference<RetrieveTranslations>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
 }

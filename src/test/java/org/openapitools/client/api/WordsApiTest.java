@@ -18,6 +18,7 @@ import org.openapitools.client.model.ErrorSchema;
 import org.openapitools.client.model.RetrieveEntry;
 import org.junit.Test;
 import org.junit.Ignore;
+import org.junit.Assert;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +33,6 @@ public class WordsApiTest {
 
     private final WordsApi api = new WordsApi();
 
-    
     /**
      * Check if an inflected form exists in the dictionary and retrieve the entries data of its root form.
      *
@@ -52,8 +52,8 @@ public class WordsApiTest {
         String lexicalCategory = null;
         String domains = null;
         String registers = null;
-                RetrieveEntry response = api.wordsSourceLangGet(sourceLang, q, appId, appKey, fields, grammaticalFeatures, lexicalCategory, domains, registers);
+        RetrieveEntry response = api.wordsSourceLangGet(sourceLang, q, appId, appKey, fields, grammaticalFeatures, lexicalCategory, domains, registers);
+
         // TODO: test validations
     }
-    
 }

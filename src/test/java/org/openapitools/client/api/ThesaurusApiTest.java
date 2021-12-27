@@ -18,6 +18,7 @@ import org.openapitools.client.model.ErrorSchema;
 import org.openapitools.client.model.Thesaurus;
 import org.junit.Test;
 import org.junit.Ignore;
+import org.junit.Assert;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +33,6 @@ public class ThesaurusApiTest {
 
     private final ThesaurusApi api = new ThesaurusApi();
 
-    
     /**
      * Retrieve words that are similar to a given word
      *
@@ -49,8 +49,8 @@ public class ThesaurusApiTest {
         String appKey = null;
         List<String> fields = null;
         Boolean strictMatch = null;
-                Thesaurus response = api.thesaurusSourceLangWordIdGet(sourceLang, wordId, appId, appKey, fields, strictMatch);
+        Thesaurus response = api.thesaurusSourceLangWordIdGet(sourceLang, wordId, appId, appKey, fields, strictMatch);
+
         // TODO: test validations
     }
-    
 }

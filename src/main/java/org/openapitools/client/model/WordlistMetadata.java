@@ -15,23 +15,27 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Additional Information provided by OUP
  */
 @ApiModel(description = "Additional Information provided by OUP")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  WordlistMetadata.JSON_PROPERTY_TOTAL
+})
+@JsonTypeName("Wordlist_metadata")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class WordlistMetadata {
-  public static final String SERIALIZED_NAME_TOTAL = "total";
-  @SerializedName(SERIALIZED_NAME_TOTAL)
+  public static final String JSON_PROPERTY_TOTAL = "total";
   private String total;
 
   public WordlistMetadata() { 
@@ -49,12 +53,16 @@ public class WordlistMetadata {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Approximate number of results that match the given query.")
+  @JsonProperty(JSON_PROPERTY_TOTAL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getTotal() {
     return total;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_TOTAL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTotal(String total) {
     this.total = total;
   }

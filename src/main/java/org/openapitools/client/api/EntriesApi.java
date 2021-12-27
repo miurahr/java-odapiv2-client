@@ -10,295 +10,136 @@
  * Do not edit the class manually.
  */
 
-
 package org.openapitools.client.api;
 
-import org.openapitools.client.ApiCallback;
-import org.openapitools.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import org.openapitools.client.ApiException;
-import org.openapitools.client.ApiResponse;
+import org.openapitools.client.ApiClient;
 import org.openapitools.client.Configuration;
+import org.openapitools.client.model.*;
 import org.openapitools.client.Pair;
-import org.openapitools.client.ProgressRequestBody;
-import org.openapitools.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import org.openapitools.client.model.ErrorSchema;
 import org.openapitools.client.model.RetrieveEntry;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class EntriesApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+  private ApiClient apiClient;
 
-    public EntriesApi() {
-        this(Configuration.getDefaultApiClient());
+  public EntriesApi() {
+    this(Configuration.getDefaultApiClient());
+  }
+
+  public EntriesApi(ApiClient apiClient) {
+    this.apiClient = apiClient;
+  }
+
+  public ApiClient getApiClient() {
+    return apiClient;
+  }
+
+  public void setApiClient(ApiClient apiClient) {
+    this.apiClient = apiClient;
+  }
+
+  /**
+   * Retrieve dictionary information for a given word
+   *  Use this to retrieve definitions, [pronunciations](documentation/glossary?term&#x3D;pronunciation), example sentences, [grammatical information](documentation/glossary?term&#x3D;grammaticalfeatures) and [word origins](documentation/glossary?term&#x3D;etymology).  TIP: Entries ONLY works for dictionary headwords. You may need to use the Lemmas endpoint first to link an inflected form back to its headword (e.g., pixels --&gt; pixel). Alternatively, you can use the Words endpoint, a feature that enables you to retrieve definitions, pronunciations, word origins, and grammatical data across headwords and inflected words with just one call to the API.  Use filters to limit the [entry](documentation/glossary?term&#x3D;entry) information that is returned. For example, you may only require definitions and not everything else, or just [pronunciations](documentation/glossary?term&#x3D;pronunciation). The full list of filters can be retrieved from the filters Utility endpoint. You can also specify values within the filter using &#39;&#x3D;&#39;. For example &#39;grammaticalFeatures&#x3D;singular&#39;. Filters can also be combined.  Combining different filters will build a query using &#39;AND&#39; operators, while if a filter contains more than one value it will build a query using &#39;OR&#39; operators. For example, a combination of filters like &#39;?grammaticalFeatures&#x3D;singular&amp;lexicalCategory&#x3D;noun,verb&#39; will return entries which match the query (&#39;noun&#39; OR &#39;verb&#39;) AND &#39;singular&#39;.  &lt;div id&#x3D;\&quot;dictionary_entries_filters\&quot;&gt;&lt;/div&gt; 
+   * @param sourceLang Language code of the source language in a monolingual dataset. (required)
+   * @param wordId The identifier for an Entry (case-sensitive). (required)
+   * @param appId App ID Authentication Parameter (required)
+   * @param appKey App Key Authentication Parameter (required)
+   * @param fields A comma-separated list of data fields to return for the matched entries. Valid field names are &#39;definitions&#39;, &#39;domains&#39;, &#39;etymologies&#39;, &#39;examples&#39;, &#39;pronunciations&#39;, &#39;regions&#39;, &#39;registers&#39; and &#39;variantForms&#39;. (a) If not specified, all available fields for each word_id are returned. (b) If specified and empty, the minimum payload for each word_id is returned. (c) If more field names are specified, then the minimum payload plus the specified fields for each word_id are returned.  (optional
+   * @param grammaticalFeatures Selection filter: a comma-separated list of grammatical features ids to match on (default: all features). The available grammatical features for a given language (or language pair) can be obtained from the /grammaticalfeatures/ endpoint.  The filter keeps all the entries in the response whose grammaticalFeatures \&quot;id\&quot; matches the values in the grammaticalFeatures parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;grammaticalFeatures\&quot;: [                           {                               \&quot;id\&quot;: \&quot;mass\&quot;,                               \&quot;text\&quot;: \&quot;Mass\&quot;,                               \&quot;type\&quot;: \&quot;Countability\&quot;                           }                       ] } &#x60;&#x60;&#x60;  (optional)
+   * @param lexicalCategory Selection filter: a comma-separated list of lexical categories ids to match on (default: all categories). The available lexical categories for a given language (or language pair) can be obtained from the /lexicalcategories/ endpoint.  The filter keeps all the entries in the response whose lexicalCategory \&quot;id\&quot; matches the values in the lexicalCategory parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;lexicalCategory\&quot;: {                   \&quot;id\&quot;: \&quot;adjective\&quot;,                   \&quot;text\&quot;: \&quot;Adjective\&quot;               } } &#x60;&#x60;&#x60;  (optional)
+   * @param domains Selection filter: a comma-separated list of domains ids to match on (default: all domains). The available domains for a given language (or language pair) can be obtained from the /domains/ endpoint.  The filter keeps all the senses and subsenses in the response whose domains \&quot;id\&quot; matches the values in the domains parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;domains\&quot;: [     {       \&quot;id\&quot;: \&quot;jazz\&quot;,       \&quot;text\&quot;: \&quot;Jazz\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
+   * @param registers Selection filter: a comma-separated list of registers ids to match on (default: all registers). The available registers for a given language (or language pair) can be obtained from the /registers/ endpoint.  The filter keeps all the senses and subsenses in the response whose registers \&quot;id\&quot; matches the values in the registers parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;registers\&quot;: [     {       \&quot;id\&quot;: \&quot;informal\&quot;,       \&quot;text\&quot;: \&quot;Informal\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
+   * @param strictMatch Specifies whether diacritics must match exactly. If \&quot;false\&quot;, near-homographs for the given word_id will also be selected (e.g., *rose* matches both *rose* and *rosé*; similarly *rosé* matches both). (optional, default to false)
+   * @return RetrieveEntry
+   * @throws ApiException if fails to make API call
+   */
+  public RetrieveEntry entriesSourceLangWordIdGet(String sourceLang, String wordId, String appId, String appKey, List<String> fields, String grammaticalFeatures, String lexicalCategory, String domains, String registers, Boolean strictMatch) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'sourceLang' is set
+    if (sourceLang == null) {
+      throw new ApiException(400, "Missing the required parameter 'sourceLang' when calling entriesSourceLangWordIdGet");
     }
-
-    public EntriesApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    
+    // verify the required parameter 'wordId' is set
+    if (wordId == null) {
+      throw new ApiException(400, "Missing the required parameter 'wordId' when calling entriesSourceLangWordIdGet");
     }
-
-    public ApiClient getApiClient() {
-        return localVarApiClient;
+    
+    // verify the required parameter 'appId' is set
+    if (appId == null) {
+      throw new ApiException(400, "Missing the required parameter 'appId' when calling entriesSourceLangWordIdGet");
     }
-
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    
+    // verify the required parameter 'appKey' is set
+    if (appKey == null) {
+      throw new ApiException(400, "Missing the required parameter 'appKey' when calling entriesSourceLangWordIdGet");
     }
+    
+    // create path and map variables
+    String localVarPath = "/entries/{source_lang}/{word_id}"
+      .replaceAll("\\{" + "source_lang" + "\\}", apiClient.escapeString(sourceLang.toString()))
+      .replaceAll("\\{" + "word_id" + "\\}", apiClient.escapeString(wordId.toString()));
 
-    public int getHostIndex() {
-        return localHostIndex;
-    }
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
-    }
+    localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "fields", fields));
+    localVarQueryParams.addAll(apiClient.parameterToPair("grammaticalFeatures", grammaticalFeatures));
+    localVarQueryParams.addAll(apiClient.parameterToPair("lexicalCategory", lexicalCategory));
+    localVarQueryParams.addAll(apiClient.parameterToPair("domains", domains));
+    localVarQueryParams.addAll(apiClient.parameterToPair("registers", registers));
+    localVarQueryParams.addAll(apiClient.parameterToPair("strictMatch", strictMatch));
 
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
-    }
+    if (appId != null)
+      localVarHeaderParams.put("app_id", apiClient.parameterToString(appId));
+if (appKey != null)
+      localVarHeaderParams.put("app_key", apiClient.parameterToString(appKey));
 
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
-    }
+    
+    
+    final String[] localVarAccepts = {
+      "*/*"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    /**
-     * Build call for entriesSourceLangWordIdGet
-     * @param sourceLang Language code of the source language in a monolingual dataset. (required)
-     * @param wordId The identifier for an Entry (case-sensitive). (required)
-     * @param appId App ID Authentication Parameter (required)
-     * @param appKey App Key Authentication Parameter (required)
-     * @param fields A comma-separated list of data fields to return for the matched entries. Valid field names are &#39;definitions&#39;, &#39;domains&#39;, &#39;etymologies&#39;, &#39;examples&#39;, &#39;pronunciations&#39;, &#39;regions&#39;, &#39;registers&#39; and &#39;variantForms&#39;. (a) If not specified, all available fields for each word_id are returned. (b) If specified and empty, the minimum payload for each word_id is returned. (c) If more field names are specified, then the minimum payload plus the specified fields for each word_id are returned.  (optional)
-     * @param grammaticalFeatures Selection filter: a comma-separated list of grammatical features ids to match on (default: all features). The available grammatical features for a given language (or language pair) can be obtained from the /grammaticalfeatures/ endpoint.  The filter keeps all the entries in the response whose grammaticalFeatures \&quot;id\&quot; matches the values in the grammaticalFeatures parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;grammaticalFeatures\&quot;: [                           {                               \&quot;id\&quot;: \&quot;mass\&quot;,                               \&quot;text\&quot;: \&quot;Mass\&quot;,                               \&quot;type\&quot;: \&quot;Countability\&quot;                           }                       ] } &#x60;&#x60;&#x60;  (optional)
-     * @param lexicalCategory Selection filter: a comma-separated list of lexical categories ids to match on (default: all categories). The available lexical categories for a given language (or language pair) can be obtained from the /lexicalcategories/ endpoint.  The filter keeps all the entries in the response whose lexicalCategory \&quot;id\&quot; matches the values in the lexicalCategory parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;lexicalCategory\&quot;: {                   \&quot;id\&quot;: \&quot;adjective\&quot;,                   \&quot;text\&quot;: \&quot;Adjective\&quot;               } } &#x60;&#x60;&#x60;  (optional)
-     * @param domains Selection filter: a comma-separated list of domains ids to match on (default: all domains). The available domains for a given language (or language pair) can be obtained from the /domains/ endpoint.  The filter keeps all the senses and subsenses in the response whose domains \&quot;id\&quot; matches the values in the domains parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;domains\&quot;: [     {       \&quot;id\&quot;: \&quot;jazz\&quot;,       \&quot;text\&quot;: \&quot;Jazz\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
-     * @param registers Selection filter: a comma-separated list of registers ids to match on (default: all registers). The available registers for a given language (or language pair) can be obtained from the /registers/ endpoint.  The filter keeps all the senses and subsenses in the response whose registers \&quot;id\&quot; matches the values in the registers parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;registers\&quot;: [     {       \&quot;id\&quot;: \&quot;informal\&quot;,       \&quot;text\&quot;: \&quot;Informal\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
-     * @param strictMatch Specifies whether diacritics must match exactly. If \&quot;false\&quot;, near-homographs for the given word_id will also be selected (e.g., *rose* matches both *rose* and *rosé*; similarly *rosé* matches both). (optional, default to false)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Successful response. </td><td>  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  </td></tr>
-        <tr><td> 400 </td><td> Invalid value for filters such as lexicalCategory, registers, domains, etc. Invalid value for fields projections accepted. It is not possible to project a non-existing field.  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> No entry was found matching the selection parameters; OR an invalid filter was specified.  </td><td>  -  </td></tr>
-        <tr><td> 414 </td><td> URL is too long. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal error. An error occurred during processing. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call entriesSourceLangWordIdGetCall(String sourceLang, String wordId, String appId, String appKey, List<String> fields, String grammaticalFeatures, String lexicalCategory, String domains, String registers, Boolean strictMatch, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
+    String[] localVarAuthNames = new String[] {  };
 
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/entries/{source_lang}/{word_id}"
-            .replaceAll("\\{" + "source_lang" + "\\}", localVarApiClient.escapeString(sourceLang.toString()))
-            .replaceAll("\\{" + "word_id" + "\\}", localVarApiClient.escapeString(wordId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (fields != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "fields", fields));
-        }
-
-        if (grammaticalFeatures != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("grammaticalFeatures", grammaticalFeatures));
-        }
-
-        if (lexicalCategory != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("lexicalCategory", lexicalCategory));
-        }
-
-        if (domains != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("domains", domains));
-        }
-
-        if (registers != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("registers", registers));
-        }
-
-        if (strictMatch != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("strictMatch", strictMatch));
-        }
-
-        if (appId != null) {
-            localVarHeaderParams.put("app_id", localVarApiClient.parameterToString(appId));
-        }
-
-        if (appKey != null) {
-            localVarHeaderParams.put("app_key", localVarApiClient.parameterToString(appKey));
-        }
-
-        final String[] localVarAccepts = {
-            "*/*"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarHeaderParams != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call entriesSourceLangWordIdGetValidateBeforeCall(String sourceLang, String wordId, String appId, String appKey, List<String> fields, String grammaticalFeatures, String lexicalCategory, String domains, String registers, Boolean strictMatch, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'sourceLang' is set
-        if (sourceLang == null) {
-            throw new ApiException("Missing the required parameter 'sourceLang' when calling entriesSourceLangWordIdGet(Async)");
-        }
-        
-        // verify the required parameter 'wordId' is set
-        if (wordId == null) {
-            throw new ApiException("Missing the required parameter 'wordId' when calling entriesSourceLangWordIdGet(Async)");
-        }
-        
-        // verify the required parameter 'appId' is set
-        if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling entriesSourceLangWordIdGet(Async)");
-        }
-        
-        // verify the required parameter 'appKey' is set
-        if (appKey == null) {
-            throw new ApiException("Missing the required parameter 'appKey' when calling entriesSourceLangWordIdGet(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = entriesSourceLangWordIdGetCall(sourceLang, wordId, appId, appKey, fields, grammaticalFeatures, lexicalCategory, domains, registers, strictMatch, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * Retrieve dictionary information for a given word
-     *  Use this to retrieve definitions, [pronunciations](documentation/glossary?term&#x3D;pronunciation), example sentences, [grammatical information](documentation/glossary?term&#x3D;grammaticalfeatures) and [word origins](documentation/glossary?term&#x3D;etymology).  TIP: Entries ONLY works for dictionary headwords. You may need to use the Lemmas endpoint first to link an inflected form back to its headword (e.g., pixels --&gt; pixel). Alternatively, you can use the Words endpoint, a feature that enables you to retrieve definitions, pronunciations, word origins, and grammatical data across headwords and inflected words with just one call to the API.  Use filters to limit the [entry](documentation/glossary?term&#x3D;entry) information that is returned. For example, you may only require definitions and not everything else, or just [pronunciations](documentation/glossary?term&#x3D;pronunciation). The full list of filters can be retrieved from the filters Utility endpoint. You can also specify values within the filter using &#39;&#x3D;&#39;. For example &#39;grammaticalFeatures&#x3D;singular&#39;. Filters can also be combined.  Combining different filters will build a query using &#39;AND&#39; operators, while if a filter contains more than one value it will build a query using &#39;OR&#39; operators. For example, a combination of filters like &#39;?grammaticalFeatures&#x3D;singular&amp;lexicalCategory&#x3D;noun,verb&#39; will return entries which match the query (&#39;noun&#39; OR &#39;verb&#39;) AND &#39;singular&#39;.  &lt;div id&#x3D;\&quot;dictionary_entries_filters\&quot;&gt;&lt;/div&gt; 
-     * @param sourceLang Language code of the source language in a monolingual dataset. (required)
-     * @param wordId The identifier for an Entry (case-sensitive). (required)
-     * @param appId App ID Authentication Parameter (required)
-     * @param appKey App Key Authentication Parameter (required)
-     * @param fields A comma-separated list of data fields to return for the matched entries. Valid field names are &#39;definitions&#39;, &#39;domains&#39;, &#39;etymologies&#39;, &#39;examples&#39;, &#39;pronunciations&#39;, &#39;regions&#39;, &#39;registers&#39; and &#39;variantForms&#39;. (a) If not specified, all available fields for each word_id are returned. (b) If specified and empty, the minimum payload for each word_id is returned. (c) If more field names are specified, then the minimum payload plus the specified fields for each word_id are returned.  (optional)
-     * @param grammaticalFeatures Selection filter: a comma-separated list of grammatical features ids to match on (default: all features). The available grammatical features for a given language (or language pair) can be obtained from the /grammaticalfeatures/ endpoint.  The filter keeps all the entries in the response whose grammaticalFeatures \&quot;id\&quot; matches the values in the grammaticalFeatures parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;grammaticalFeatures\&quot;: [                           {                               \&quot;id\&quot;: \&quot;mass\&quot;,                               \&quot;text\&quot;: \&quot;Mass\&quot;,                               \&quot;type\&quot;: \&quot;Countability\&quot;                           }                       ] } &#x60;&#x60;&#x60;  (optional)
-     * @param lexicalCategory Selection filter: a comma-separated list of lexical categories ids to match on (default: all categories). The available lexical categories for a given language (or language pair) can be obtained from the /lexicalcategories/ endpoint.  The filter keeps all the entries in the response whose lexicalCategory \&quot;id\&quot; matches the values in the lexicalCategory parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;lexicalCategory\&quot;: {                   \&quot;id\&quot;: \&quot;adjective\&quot;,                   \&quot;text\&quot;: \&quot;Adjective\&quot;               } } &#x60;&#x60;&#x60;  (optional)
-     * @param domains Selection filter: a comma-separated list of domains ids to match on (default: all domains). The available domains for a given language (or language pair) can be obtained from the /domains/ endpoint.  The filter keeps all the senses and subsenses in the response whose domains \&quot;id\&quot; matches the values in the domains parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;domains\&quot;: [     {       \&quot;id\&quot;: \&quot;jazz\&quot;,       \&quot;text\&quot;: \&quot;Jazz\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
-     * @param registers Selection filter: a comma-separated list of registers ids to match on (default: all registers). The available registers for a given language (or language pair) can be obtained from the /registers/ endpoint.  The filter keeps all the senses and subsenses in the response whose registers \&quot;id\&quot; matches the values in the registers parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;registers\&quot;: [     {       \&quot;id\&quot;: \&quot;informal\&quot;,       \&quot;text\&quot;: \&quot;Informal\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
-     * @param strictMatch Specifies whether diacritics must match exactly. If \&quot;false\&quot;, near-homographs for the given word_id will also be selected (e.g., *rose* matches both *rose* and *rosé*; similarly *rosé* matches both). (optional, default to false)
-     * @return RetrieveEntry
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Successful response. </td><td>  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  </td></tr>
-        <tr><td> 400 </td><td> Invalid value for filters such as lexicalCategory, registers, domains, etc. Invalid value for fields projections accepted. It is not possible to project a non-existing field.  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> No entry was found matching the selection parameters; OR an invalid filter was specified.  </td><td>  -  </td></tr>
-        <tr><td> 414 </td><td> URL is too long. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal error. An error occurred during processing. </td><td>  -  </td></tr>
-     </table>
-     */
-    public RetrieveEntry entriesSourceLangWordIdGet(String sourceLang, String wordId, String appId, String appKey, List<String> fields, String grammaticalFeatures, String lexicalCategory, String domains, String registers, Boolean strictMatch) throws ApiException {
-        ApiResponse<RetrieveEntry> localVarResp = entriesSourceLangWordIdGetWithHttpInfo(sourceLang, wordId, appId, appKey, fields, grammaticalFeatures, lexicalCategory, domains, registers, strictMatch);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Retrieve dictionary information for a given word
-     *  Use this to retrieve definitions, [pronunciations](documentation/glossary?term&#x3D;pronunciation), example sentences, [grammatical information](documentation/glossary?term&#x3D;grammaticalfeatures) and [word origins](documentation/glossary?term&#x3D;etymology).  TIP: Entries ONLY works for dictionary headwords. You may need to use the Lemmas endpoint first to link an inflected form back to its headword (e.g., pixels --&gt; pixel). Alternatively, you can use the Words endpoint, a feature that enables you to retrieve definitions, pronunciations, word origins, and grammatical data across headwords and inflected words with just one call to the API.  Use filters to limit the [entry](documentation/glossary?term&#x3D;entry) information that is returned. For example, you may only require definitions and not everything else, or just [pronunciations](documentation/glossary?term&#x3D;pronunciation). The full list of filters can be retrieved from the filters Utility endpoint. You can also specify values within the filter using &#39;&#x3D;&#39;. For example &#39;grammaticalFeatures&#x3D;singular&#39;. Filters can also be combined.  Combining different filters will build a query using &#39;AND&#39; operators, while if a filter contains more than one value it will build a query using &#39;OR&#39; operators. For example, a combination of filters like &#39;?grammaticalFeatures&#x3D;singular&amp;lexicalCategory&#x3D;noun,verb&#39; will return entries which match the query (&#39;noun&#39; OR &#39;verb&#39;) AND &#39;singular&#39;.  &lt;div id&#x3D;\&quot;dictionary_entries_filters\&quot;&gt;&lt;/div&gt; 
-     * @param sourceLang Language code of the source language in a monolingual dataset. (required)
-     * @param wordId The identifier for an Entry (case-sensitive). (required)
-     * @param appId App ID Authentication Parameter (required)
-     * @param appKey App Key Authentication Parameter (required)
-     * @param fields A comma-separated list of data fields to return for the matched entries. Valid field names are &#39;definitions&#39;, &#39;domains&#39;, &#39;etymologies&#39;, &#39;examples&#39;, &#39;pronunciations&#39;, &#39;regions&#39;, &#39;registers&#39; and &#39;variantForms&#39;. (a) If not specified, all available fields for each word_id are returned. (b) If specified and empty, the minimum payload for each word_id is returned. (c) If more field names are specified, then the minimum payload plus the specified fields for each word_id are returned.  (optional)
-     * @param grammaticalFeatures Selection filter: a comma-separated list of grammatical features ids to match on (default: all features). The available grammatical features for a given language (or language pair) can be obtained from the /grammaticalfeatures/ endpoint.  The filter keeps all the entries in the response whose grammaticalFeatures \&quot;id\&quot; matches the values in the grammaticalFeatures parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;grammaticalFeatures\&quot;: [                           {                               \&quot;id\&quot;: \&quot;mass\&quot;,                               \&quot;text\&quot;: \&quot;Mass\&quot;,                               \&quot;type\&quot;: \&quot;Countability\&quot;                           }                       ] } &#x60;&#x60;&#x60;  (optional)
-     * @param lexicalCategory Selection filter: a comma-separated list of lexical categories ids to match on (default: all categories). The available lexical categories for a given language (or language pair) can be obtained from the /lexicalcategories/ endpoint.  The filter keeps all the entries in the response whose lexicalCategory \&quot;id\&quot; matches the values in the lexicalCategory parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;lexicalCategory\&quot;: {                   \&quot;id\&quot;: \&quot;adjective\&quot;,                   \&quot;text\&quot;: \&quot;Adjective\&quot;               } } &#x60;&#x60;&#x60;  (optional)
-     * @param domains Selection filter: a comma-separated list of domains ids to match on (default: all domains). The available domains for a given language (or language pair) can be obtained from the /domains/ endpoint.  The filter keeps all the senses and subsenses in the response whose domains \&quot;id\&quot; matches the values in the domains parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;domains\&quot;: [     {       \&quot;id\&quot;: \&quot;jazz\&quot;,       \&quot;text\&quot;: \&quot;Jazz\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
-     * @param registers Selection filter: a comma-separated list of registers ids to match on (default: all registers). The available registers for a given language (or language pair) can be obtained from the /registers/ endpoint.  The filter keeps all the senses and subsenses in the response whose registers \&quot;id\&quot; matches the values in the registers parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;registers\&quot;: [     {       \&quot;id\&quot;: \&quot;informal\&quot;,       \&quot;text\&quot;: \&quot;Informal\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
-     * @param strictMatch Specifies whether diacritics must match exactly. If \&quot;false\&quot;, near-homographs for the given word_id will also be selected (e.g., *rose* matches both *rose* and *rosé*; similarly *rosé* matches both). (optional, default to false)
-     * @return ApiResponse&lt;RetrieveEntry&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Successful response. </td><td>  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  </td></tr>
-        <tr><td> 400 </td><td> Invalid value for filters such as lexicalCategory, registers, domains, etc. Invalid value for fields projections accepted. It is not possible to project a non-existing field.  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> No entry was found matching the selection parameters; OR an invalid filter was specified.  </td><td>  -  </td></tr>
-        <tr><td> 414 </td><td> URL is too long. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal error. An error occurred during processing. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<RetrieveEntry> entriesSourceLangWordIdGetWithHttpInfo(String sourceLang, String wordId, String appId, String appKey, List<String> fields, String grammaticalFeatures, String lexicalCategory, String domains, String registers, Boolean strictMatch) throws ApiException {
-        okhttp3.Call localVarCall = entriesSourceLangWordIdGetValidateBeforeCall(sourceLang, wordId, appId, appKey, fields, grammaticalFeatures, lexicalCategory, domains, registers, strictMatch, null);
-        Type localVarReturnType = new TypeToken<RetrieveEntry>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Retrieve dictionary information for a given word (asynchronously)
-     *  Use this to retrieve definitions, [pronunciations](documentation/glossary?term&#x3D;pronunciation), example sentences, [grammatical information](documentation/glossary?term&#x3D;grammaticalfeatures) and [word origins](documentation/glossary?term&#x3D;etymology).  TIP: Entries ONLY works for dictionary headwords. You may need to use the Lemmas endpoint first to link an inflected form back to its headword (e.g., pixels --&gt; pixel). Alternatively, you can use the Words endpoint, a feature that enables you to retrieve definitions, pronunciations, word origins, and grammatical data across headwords and inflected words with just one call to the API.  Use filters to limit the [entry](documentation/glossary?term&#x3D;entry) information that is returned. For example, you may only require definitions and not everything else, or just [pronunciations](documentation/glossary?term&#x3D;pronunciation). The full list of filters can be retrieved from the filters Utility endpoint. You can also specify values within the filter using &#39;&#x3D;&#39;. For example &#39;grammaticalFeatures&#x3D;singular&#39;. Filters can also be combined.  Combining different filters will build a query using &#39;AND&#39; operators, while if a filter contains more than one value it will build a query using &#39;OR&#39; operators. For example, a combination of filters like &#39;?grammaticalFeatures&#x3D;singular&amp;lexicalCategory&#x3D;noun,verb&#39; will return entries which match the query (&#39;noun&#39; OR &#39;verb&#39;) AND &#39;singular&#39;.  &lt;div id&#x3D;\&quot;dictionary_entries_filters\&quot;&gt;&lt;/div&gt; 
-     * @param sourceLang Language code of the source language in a monolingual dataset. (required)
-     * @param wordId The identifier for an Entry (case-sensitive). (required)
-     * @param appId App ID Authentication Parameter (required)
-     * @param appKey App Key Authentication Parameter (required)
-     * @param fields A comma-separated list of data fields to return for the matched entries. Valid field names are &#39;definitions&#39;, &#39;domains&#39;, &#39;etymologies&#39;, &#39;examples&#39;, &#39;pronunciations&#39;, &#39;regions&#39;, &#39;registers&#39; and &#39;variantForms&#39;. (a) If not specified, all available fields for each word_id are returned. (b) If specified and empty, the minimum payload for each word_id is returned. (c) If more field names are specified, then the minimum payload plus the specified fields for each word_id are returned.  (optional)
-     * @param grammaticalFeatures Selection filter: a comma-separated list of grammatical features ids to match on (default: all features). The available grammatical features for a given language (or language pair) can be obtained from the /grammaticalfeatures/ endpoint.  The filter keeps all the entries in the response whose grammaticalFeatures \&quot;id\&quot; matches the values in the grammaticalFeatures parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;grammaticalFeatures\&quot;: [                           {                               \&quot;id\&quot;: \&quot;mass\&quot;,                               \&quot;text\&quot;: \&quot;Mass\&quot;,                               \&quot;type\&quot;: \&quot;Countability\&quot;                           }                       ] } &#x60;&#x60;&#x60;  (optional)
-     * @param lexicalCategory Selection filter: a comma-separated list of lexical categories ids to match on (default: all categories). The available lexical categories for a given language (or language pair) can be obtained from the /lexicalcategories/ endpoint.  The filter keeps all the entries in the response whose lexicalCategory \&quot;id\&quot; matches the values in the lexicalCategory parameter. &#x60;&#x60;&#x60;@javascript {   \&quot;lexicalCategory\&quot;: {                   \&quot;id\&quot;: \&quot;adjective\&quot;,                   \&quot;text\&quot;: \&quot;Adjective\&quot;               } } &#x60;&#x60;&#x60;  (optional)
-     * @param domains Selection filter: a comma-separated list of domains ids to match on (default: all domains). The available domains for a given language (or language pair) can be obtained from the /domains/ endpoint.  The filter keeps all the senses and subsenses in the response whose domains \&quot;id\&quot; matches the values in the domains parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;domains\&quot;: [     {       \&quot;id\&quot;: \&quot;jazz\&quot;,       \&quot;text\&quot;: \&quot;Jazz\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
-     * @param registers Selection filter: a comma-separated list of registers ids to match on (default: all registers). The available registers for a given language (or language pair) can be obtained from the /registers/ endpoint.  The filter keeps all the senses and subsenses in the response whose registers \&quot;id\&quot; matches the values in the registers parameter.  &#x60;&#x60;&#x60;@javascript {   \&quot;registers\&quot;: [     {       \&quot;id\&quot;: \&quot;informal\&quot;,       \&quot;text\&quot;: \&quot;Informal\&quot;      }] } &#x60;&#x60;&#x60;  (optional)
-     * @param strictMatch Specifies whether diacritics must match exactly. If \&quot;false\&quot;, near-homographs for the given word_id will also be selected (e.g., *rose* matches both *rose* and *rosé*; similarly *rosé* matches both). (optional, default to false)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Successful response. </td><td>  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  </td></tr>
-        <tr><td> 400 </td><td> Invalid value for filters such as lexicalCategory, registers, domains, etc. Invalid value for fields projections accepted. It is not possible to project a non-existing field.  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> No entry was found matching the selection parameters; OR an invalid filter was specified.  </td><td>  -  </td></tr>
-        <tr><td> 414 </td><td> URL is too long. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal error. An error occurred during processing. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call entriesSourceLangWordIdGetAsync(String sourceLang, String wordId, String appId, String appKey, List<String> fields, String grammaticalFeatures, String lexicalCategory, String domains, String registers, Boolean strictMatch, final ApiCallback<RetrieveEntry> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = entriesSourceLangWordIdGetValidateBeforeCall(sourceLang, wordId, appId, appKey, fields, grammaticalFeatures, lexicalCategory, domains, registers, strictMatch, _callback);
-        Type localVarReturnType = new TypeToken<RetrieveEntry>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
+    TypeReference<RetrieveEntry> localVarReturnType = new TypeReference<RetrieveEntry>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
 }

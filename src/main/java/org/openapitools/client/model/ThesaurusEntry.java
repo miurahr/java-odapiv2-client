@@ -15,37 +15,41 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.ThesaurusSense;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ThesaurusEntry
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  ThesaurusEntry.JSON_PROPERTY_GRAMMATICAL_FEATURES,
+  ThesaurusEntry.JSON_PROPERTY_HOMOGRAPH_NUMBER,
+  ThesaurusEntry.JSON_PROPERTY_SENSES,
+  ThesaurusEntry.JSON_PROPERTY_VARIANT_FORMS
+})
+@JsonTypeName("ThesaurusEntry")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class ThesaurusEntry {
-  public static final String SERIALIZED_NAME_GRAMMATICAL_FEATURES = "grammaticalFeatures";
-  @SerializedName(SERIALIZED_NAME_GRAMMATICAL_FEATURES)
+  public static final String JSON_PROPERTY_GRAMMATICAL_FEATURES = "grammaticalFeatures";
   private List<Object> grammaticalFeatures = null;
 
-  public static final String SERIALIZED_NAME_HOMOGRAPH_NUMBER = "homographNumber";
-  @SerializedName(SERIALIZED_NAME_HOMOGRAPH_NUMBER)
+  public static final String JSON_PROPERTY_HOMOGRAPH_NUMBER = "homographNumber";
   private String homographNumber;
 
-  public static final String SERIALIZED_NAME_SENSES = "senses";
-  @SerializedName(SERIALIZED_NAME_SENSES)
+  public static final String JSON_PROPERTY_SENSES = "senses";
   private List<ThesaurusSense> senses = null;
 
-  public static final String SERIALIZED_NAME_VARIANT_FORMS = "variantForms";
-  @SerializedName(SERIALIZED_NAME_VARIANT_FORMS)
+  public static final String JSON_PROPERTY_VARIANT_FORMS = "variantForms";
   private List<Object> variantForms = null;
 
   public ThesaurusEntry() { 
@@ -59,7 +63,7 @@ public class ThesaurusEntry {
 
   public ThesaurusEntry addGrammaticalFeaturesItem(Object grammaticalFeaturesItem) {
     if (this.grammaticalFeatures == null) {
-      this.grammaticalFeatures = new ArrayList<Object>();
+      this.grammaticalFeatures = new ArrayList<>();
     }
     this.grammaticalFeatures.add(grammaticalFeaturesItem);
     return this;
@@ -71,12 +75,16 @@ public class ThesaurusEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The different forms are correlated with meanings or functions which we text as 'features'")
+  @JsonProperty(JSON_PROPERTY_GRAMMATICAL_FEATURES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getGrammaticalFeatures() {
     return grammaticalFeatures;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_GRAMMATICAL_FEATURES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGrammaticalFeatures(List<Object> grammaticalFeatures) {
     this.grammaticalFeatures = grammaticalFeatures;
   }
@@ -94,12 +102,16 @@ public class ThesaurusEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Identifies the homograph grouping. The last two digits identify different entries of the same homograph. The first one/two digits identify the homograph number.")
+  @JsonProperty(JSON_PROPERTY_HOMOGRAPH_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getHomographNumber() {
     return homographNumber;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_HOMOGRAPH_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setHomographNumber(String homographNumber) {
     this.homographNumber = homographNumber;
   }
@@ -113,7 +125,7 @@ public class ThesaurusEntry {
 
   public ThesaurusEntry addSensesItem(ThesaurusSense sensesItem) {
     if (this.senses == null) {
-      this.senses = new ArrayList<ThesaurusSense>();
+      this.senses = new ArrayList<>();
     }
     this.senses.add(sensesItem);
     return this;
@@ -125,12 +137,16 @@ public class ThesaurusEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Complete list of senses")
+  @JsonProperty(JSON_PROPERTY_SENSES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<ThesaurusSense> getSenses() {
     return senses;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_SENSES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSenses(List<ThesaurusSense> senses) {
     this.senses = senses;
   }
@@ -144,7 +160,7 @@ public class ThesaurusEntry {
 
   public ThesaurusEntry addVariantFormsItem(Object variantFormsItem) {
     if (this.variantForms == null) {
-      this.variantForms = new ArrayList<Object>();
+      this.variantForms = new ArrayList<>();
     }
     this.variantForms.add(variantFormsItem);
     return this;
@@ -156,12 +172,16 @@ public class ThesaurusEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Various words that are used interchangeably depending on the context, e.g 'aluminium' and 'aluminum'")
+  @JsonProperty(JSON_PROPERTY_VARIANT_FORMS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getVariantForms() {
     return variantForms;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_VARIANT_FORMS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVariantForms(List<Object> variantForms) {
     this.variantForms = variantForms;
   }

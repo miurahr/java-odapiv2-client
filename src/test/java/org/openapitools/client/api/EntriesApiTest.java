@@ -18,6 +18,7 @@ import org.openapitools.client.model.ErrorSchema;
 import org.openapitools.client.model.RetrieveEntry;
 import org.junit.Test;
 import org.junit.Ignore;
+import org.junit.Assert;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +33,6 @@ public class EntriesApiTest {
 
     private final EntriesApi api = new EntriesApi();
 
-    
     /**
      * Retrieve dictionary information for a given word
      *
@@ -53,8 +53,8 @@ public class EntriesApiTest {
         String domains = null;
         String registers = null;
         Boolean strictMatch = null;
-                RetrieveEntry response = api.entriesSourceLangWordIdGet(sourceLang, wordId, appId, appKey, fields, grammaticalFeatures, lexicalCategory, domains, registers, strictMatch);
+        RetrieveEntry response = api.entriesSourceLangWordIdGet(sourceLang, wordId, appId, appKey, fields, grammaticalFeatures, lexicalCategory, domains, registers, strictMatch);
+
         // TODO: test validations
     }
-    
 }

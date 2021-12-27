@@ -10,263 +10,128 @@
  * Do not edit the class manually.
  */
 
-
 package org.openapitools.client.api;
 
-import org.openapitools.client.ApiCallback;
-import org.openapitools.client.ApiClient;
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import org.openapitools.client.ApiException;
-import org.openapitools.client.ApiResponse;
+import org.openapitools.client.ApiClient;
 import org.openapitools.client.Configuration;
+import org.openapitools.client.model.*;
 import org.openapitools.client.Pair;
-import org.openapitools.client.ProgressRequestBody;
-import org.openapitools.client.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
-
-import java.io.IOException;
-
 
 import org.openapitools.client.model.ErrorSchema;
 import org.openapitools.client.model.Thesaurus;
 
-import java.lang.reflect.Type;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class ThesaurusApi {
-    private ApiClient localVarApiClient;
-    private int localHostIndex;
-    private String localCustomBaseUrl;
+  private ApiClient apiClient;
 
-    public ThesaurusApi() {
-        this(Configuration.getDefaultApiClient());
+  public ThesaurusApi() {
+    this(Configuration.getDefaultApiClient());
+  }
+
+  public ThesaurusApi(ApiClient apiClient) {
+    this.apiClient = apiClient;
+  }
+
+  public ApiClient getApiClient() {
+    return apiClient;
+  }
+
+  public void setApiClient(ApiClient apiClient) {
+    this.apiClient = apiClient;
+  }
+
+  /**
+   * Retrieve words that are similar to a given word
+   * Use this to retrieve words that are similar/opposite in meaning to the input word ([synonym](documentation/glossary?term&#x3D;synonym)/[antonym](documentation/glossary?term&#x3D;antonym)).  Tip: Some Entries responses contain sense-level links to a Thesaurus entry by the property \&quot;thesaurusLink\&quot;. For instance:  &#x60;&#x60;&#x60;@javascript   {     \&quot;thesaurusLinks\&quot;: [                             {                                 \&quot;entry_id\&quot;: \&quot;abide_by\&quot;,                                 \&quot;sense_id\&quot;: \&quot;t_en_gb0000029.003\&quot;                             }                         ]   }  &#x60;&#x60;&#x60; &lt;div id&#x3D;\&quot;synonyms\&quot;&gt;&lt;/div&gt; 
+   * @param sourceLang Language code of the source language in a Thesaurus dataset. (required)
+   * @param wordId The identifier for an Entry (case-sensitive). (required)
+   * @param appId App ID Authentication Parameter (required)
+   * @param appKey App Key Authentication Parameter (required)
+   * @param fields A comma-separated list of data fields to return for the matched entries. What to return - if specified, either &#39;synonyms&#39;, &#39;antonyms&#39; or &#39;synonyms,antonyms&#39; It cannot be empty.  (optional
+   * @param strictMatch Specifies whether diacritics must match exactly. If \&quot;false\&quot;, near-homographs for the given word_id will also be selected (e.g., *rose* matches both *rose* and *rosé*; similarly *rosé* matches both). (optional, default to false)
+   * @return Thesaurus
+   * @throws ApiException if fails to make API call
+   */
+  public Thesaurus thesaurusSourceLangWordIdGet(String sourceLang, String wordId, String appId, String appKey, List<String> fields, Boolean strictMatch) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'sourceLang' is set
+    if (sourceLang == null) {
+      throw new ApiException(400, "Missing the required parameter 'sourceLang' when calling thesaurusSourceLangWordIdGet");
     }
-
-    public ThesaurusApi(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    
+    // verify the required parameter 'wordId' is set
+    if (wordId == null) {
+      throw new ApiException(400, "Missing the required parameter 'wordId' when calling thesaurusSourceLangWordIdGet");
     }
-
-    public ApiClient getApiClient() {
-        return localVarApiClient;
+    
+    // verify the required parameter 'appId' is set
+    if (appId == null) {
+      throw new ApiException(400, "Missing the required parameter 'appId' when calling thesaurusSourceLangWordIdGet");
     }
-
-    public void setApiClient(ApiClient apiClient) {
-        this.localVarApiClient = apiClient;
+    
+    // verify the required parameter 'appKey' is set
+    if (appKey == null) {
+      throw new ApiException(400, "Missing the required parameter 'appKey' when calling thesaurusSourceLangWordIdGet");
     }
+    
+    // create path and map variables
+    String localVarPath = "/thesaurus/{source_lang}/{word_id}"
+      .replaceAll("\\{" + "source_lang" + "\\}", apiClient.escapeString(sourceLang.toString()))
+      .replaceAll("\\{" + "word_id" + "\\}", apiClient.escapeString(wordId.toString()));
 
-    public int getHostIndex() {
-        return localHostIndex;
-    }
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    public void setHostIndex(int hostIndex) {
-        this.localHostIndex = hostIndex;
-    }
+    localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "fields", fields));
+    localVarQueryParams.addAll(apiClient.parameterToPair("strictMatch", strictMatch));
 
-    public String getCustomBaseUrl() {
-        return localCustomBaseUrl;
-    }
+    if (appId != null)
+      localVarHeaderParams.put("app_id", apiClient.parameterToString(appId));
+if (appKey != null)
+      localVarHeaderParams.put("app_key", apiClient.parameterToString(appKey));
 
-    public void setCustomBaseUrl(String customBaseUrl) {
-        this.localCustomBaseUrl = customBaseUrl;
-    }
+    
+    
+    final String[] localVarAccepts = {
+      "*/*"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
-    /**
-     * Build call for thesaurusSourceLangWordIdGet
-     * @param sourceLang Language code of the source language in a Thesaurus dataset. (required)
-     * @param wordId The identifier for an Entry (case-sensitive). (required)
-     * @param appId App ID Authentication Parameter (required)
-     * @param appKey App Key Authentication Parameter (required)
-     * @param fields A comma-separated list of data fields to return for the matched entries. What to return - if specified, either &#39;synonyms&#39;, &#39;antonyms&#39; or &#39;synonyms,antonyms&#39; It cannot be empty.  (optional)
-     * @param strictMatch Specifies whether diacritics must match exactly. If \&quot;false\&quot;, near-homographs for the given word_id will also be selected (e.g., *rose* matches both *rose* and *rosé*; similarly *rosé* matches both). (optional, default to false)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Successful response. </td><td>  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  </td></tr>
-        <tr><td> 400 </td><td> Invalid value for filters such as lexicalCategory, registers, domains, etc. Invalid value for fields projections accepted. It is not possible to project a non-existing field.  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> No entry was found matching the selection parameters; OR an invalid filter was specified.  </td><td>  -  </td></tr>
-        <tr><td> 414 </td><td> URL is too long. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal error. An error occurred during processing. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call thesaurusSourceLangWordIdGetCall(String sourceLang, String wordId, String appId, String appKey, List<String> fields, Boolean strictMatch, final ApiCallback _callback) throws ApiException {
-        String basePath = null;
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-        // Operation Servers
-        String[] localBasePaths = new String[] {  };
+    String[] localVarAuthNames = new String[] {  };
 
-        // Determine Base Path to Use
-        if (localCustomBaseUrl != null){
-            basePath = localCustomBaseUrl;
-        } else if ( localBasePaths.length > 0 ) {
-            basePath = localBasePaths[localHostIndex];
-        } else {
-            basePath = null;
-        }
-
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/thesaurus/{source_lang}/{word_id}"
-            .replaceAll("\\{" + "source_lang" + "\\}", localVarApiClient.escapeString(sourceLang.toString()))
-            .replaceAll("\\{" + "word_id" + "\\}", localVarApiClient.escapeString(wordId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (fields != null) {
-            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("csv", "fields", fields));
-        }
-
-        if (strictMatch != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("strictMatch", strictMatch));
-        }
-
-        if (appId != null) {
-            localVarHeaderParams.put("app_id", localVarApiClient.parameterToString(appId));
-        }
-
-        if (appKey != null) {
-            localVarHeaderParams.put("app_key", localVarApiClient.parameterToString(appKey));
-        }
-
-        final String[] localVarAccepts = {
-            "*/*"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarHeaderParams != null) {
-            localVarHeaderParams.put("Content-Type", localVarContentType);
-        }
-
-        String[] localVarAuthNames = new String[] {  };
-        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call thesaurusSourceLangWordIdGetValidateBeforeCall(String sourceLang, String wordId, String appId, String appKey, List<String> fields, Boolean strictMatch, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'sourceLang' is set
-        if (sourceLang == null) {
-            throw new ApiException("Missing the required parameter 'sourceLang' when calling thesaurusSourceLangWordIdGet(Async)");
-        }
-        
-        // verify the required parameter 'wordId' is set
-        if (wordId == null) {
-            throw new ApiException("Missing the required parameter 'wordId' when calling thesaurusSourceLangWordIdGet(Async)");
-        }
-        
-        // verify the required parameter 'appId' is set
-        if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling thesaurusSourceLangWordIdGet(Async)");
-        }
-        
-        // verify the required parameter 'appKey' is set
-        if (appKey == null) {
-            throw new ApiException("Missing the required parameter 'appKey' when calling thesaurusSourceLangWordIdGet(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = thesaurusSourceLangWordIdGetCall(sourceLang, wordId, appId, appKey, fields, strictMatch, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * Retrieve words that are similar to a given word
-     * Use this to retrieve words that are similar/opposite in meaning to the input word ([synonym](documentation/glossary?term&#x3D;synonym)/[antonym](documentation/glossary?term&#x3D;antonym)).  Tip: Some Entries responses contain sense-level links to a Thesaurus entry by the property \&quot;thesaurusLink\&quot;. For instance:  &#x60;&#x60;&#x60;@javascript   {     \&quot;thesaurusLinks\&quot;: [                             {                                 \&quot;entry_id\&quot;: \&quot;abide_by\&quot;,                                 \&quot;sense_id\&quot;: \&quot;t_en_gb0000029.003\&quot;                             }                         ]   }  &#x60;&#x60;&#x60; &lt;div id&#x3D;\&quot;synonyms\&quot;&gt;&lt;/div&gt; 
-     * @param sourceLang Language code of the source language in a Thesaurus dataset. (required)
-     * @param wordId The identifier for an Entry (case-sensitive). (required)
-     * @param appId App ID Authentication Parameter (required)
-     * @param appKey App Key Authentication Parameter (required)
-     * @param fields A comma-separated list of data fields to return for the matched entries. What to return - if specified, either &#39;synonyms&#39;, &#39;antonyms&#39; or &#39;synonyms,antonyms&#39; It cannot be empty.  (optional)
-     * @param strictMatch Specifies whether diacritics must match exactly. If \&quot;false\&quot;, near-homographs for the given word_id will also be selected (e.g., *rose* matches both *rose* and *rosé*; similarly *rosé* matches both). (optional, default to false)
-     * @return Thesaurus
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Successful response. </td><td>  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  </td></tr>
-        <tr><td> 400 </td><td> Invalid value for filters such as lexicalCategory, registers, domains, etc. Invalid value for fields projections accepted. It is not possible to project a non-existing field.  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> No entry was found matching the selection parameters; OR an invalid filter was specified.  </td><td>  -  </td></tr>
-        <tr><td> 414 </td><td> URL is too long. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal error. An error occurred during processing. </td><td>  -  </td></tr>
-     </table>
-     */
-    public Thesaurus thesaurusSourceLangWordIdGet(String sourceLang, String wordId, String appId, String appKey, List<String> fields, Boolean strictMatch) throws ApiException {
-        ApiResponse<Thesaurus> localVarResp = thesaurusSourceLangWordIdGetWithHttpInfo(sourceLang, wordId, appId, appKey, fields, strictMatch);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Retrieve words that are similar to a given word
-     * Use this to retrieve words that are similar/opposite in meaning to the input word ([synonym](documentation/glossary?term&#x3D;synonym)/[antonym](documentation/glossary?term&#x3D;antonym)).  Tip: Some Entries responses contain sense-level links to a Thesaurus entry by the property \&quot;thesaurusLink\&quot;. For instance:  &#x60;&#x60;&#x60;@javascript   {     \&quot;thesaurusLinks\&quot;: [                             {                                 \&quot;entry_id\&quot;: \&quot;abide_by\&quot;,                                 \&quot;sense_id\&quot;: \&quot;t_en_gb0000029.003\&quot;                             }                         ]   }  &#x60;&#x60;&#x60; &lt;div id&#x3D;\&quot;synonyms\&quot;&gt;&lt;/div&gt; 
-     * @param sourceLang Language code of the source language in a Thesaurus dataset. (required)
-     * @param wordId The identifier for an Entry (case-sensitive). (required)
-     * @param appId App ID Authentication Parameter (required)
-     * @param appKey App Key Authentication Parameter (required)
-     * @param fields A comma-separated list of data fields to return for the matched entries. What to return - if specified, either &#39;synonyms&#39;, &#39;antonyms&#39; or &#39;synonyms,antonyms&#39; It cannot be empty.  (optional)
-     * @param strictMatch Specifies whether diacritics must match exactly. If \&quot;false\&quot;, near-homographs for the given word_id will also be selected (e.g., *rose* matches both *rose* and *rosé*; similarly *rosé* matches both). (optional, default to false)
-     * @return ApiResponse&lt;Thesaurus&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Successful response. </td><td>  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  </td></tr>
-        <tr><td> 400 </td><td> Invalid value for filters such as lexicalCategory, registers, domains, etc. Invalid value for fields projections accepted. It is not possible to project a non-existing field.  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> No entry was found matching the selection parameters; OR an invalid filter was specified.  </td><td>  -  </td></tr>
-        <tr><td> 414 </td><td> URL is too long. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal error. An error occurred during processing. </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<Thesaurus> thesaurusSourceLangWordIdGetWithHttpInfo(String sourceLang, String wordId, String appId, String appKey, List<String> fields, Boolean strictMatch) throws ApiException {
-        okhttp3.Call localVarCall = thesaurusSourceLangWordIdGetValidateBeforeCall(sourceLang, wordId, appId, appKey, fields, strictMatch, null);
-        Type localVarReturnType = new TypeToken<Thesaurus>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Retrieve words that are similar to a given word (asynchronously)
-     * Use this to retrieve words that are similar/opposite in meaning to the input word ([synonym](documentation/glossary?term&#x3D;synonym)/[antonym](documentation/glossary?term&#x3D;antonym)).  Tip: Some Entries responses contain sense-level links to a Thesaurus entry by the property \&quot;thesaurusLink\&quot;. For instance:  &#x60;&#x60;&#x60;@javascript   {     \&quot;thesaurusLinks\&quot;: [                             {                                 \&quot;entry_id\&quot;: \&quot;abide_by\&quot;,                                 \&quot;sense_id\&quot;: \&quot;t_en_gb0000029.003\&quot;                             }                         ]   }  &#x60;&#x60;&#x60; &lt;div id&#x3D;\&quot;synonyms\&quot;&gt;&lt;/div&gt; 
-     * @param sourceLang Language code of the source language in a Thesaurus dataset. (required)
-     * @param wordId The identifier for an Entry (case-sensitive). (required)
-     * @param appId App ID Authentication Parameter (required)
-     * @param appKey App Key Authentication Parameter (required)
-     * @param fields A comma-separated list of data fields to return for the matched entries. What to return - if specified, either &#39;synonyms&#39;, &#39;antonyms&#39; or &#39;synonyms,antonyms&#39; It cannot be empty.  (optional)
-     * @param strictMatch Specifies whether diacritics must match exactly. If \&quot;false\&quot;, near-homographs for the given word_id will also be selected (e.g., *rose* matches both *rose* and *rosé*; similarly *rosé* matches both). (optional, default to false)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Successful response. </td><td>  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  </td></tr>
-        <tr><td> 400 </td><td> Invalid value for filters such as lexicalCategory, registers, domains, etc. Invalid value for fields projections accepted. It is not possible to project a non-existing field.  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> No entry was found matching the selection parameters; OR an invalid filter was specified.  </td><td>  -  </td></tr>
-        <tr><td> 414 </td><td> URL is too long. </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td> Internal error. An error occurred during processing. </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call thesaurusSourceLangWordIdGetAsync(String sourceLang, String wordId, String appId, String appKey, List<String> fields, Boolean strictMatch, final ApiCallback<Thesaurus> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = thesaurusSourceLangWordIdGetValidateBeforeCall(sourceLang, wordId, appId, appKey, fields, strictMatch, _callback);
-        Type localVarReturnType = new TypeToken<Thesaurus>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
+    TypeReference<Thesaurus> localVarReturnType = new TypeReference<Thesaurus>() {};
+    return apiClient.invokeAPI(
+        localVarPath,
+        "GET",
+        localVarQueryParams,
+        localVarCollectionQueryParams,
+        localVarPostBody,
+        localVarHeaderParams,
+        localVarCookieParams,
+        localVarFormParams,
+        localVarAccept,
+        localVarContentType,
+        localVarAuthNames,
+        localVarReturnType
+    );
+  }
 }

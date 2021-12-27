@@ -15,62 +15,66 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.InflectedForm;
 import org.openapitools.client.model.Sense;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Entry
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  Entry.JSON_PROPERTY_CROSS_REFERENCE_MARKERS,
+  Entry.JSON_PROPERTY_CROSS_REFERENCES,
+  Entry.JSON_PROPERTY_ETYMOLOGIES,
+  Entry.JSON_PROPERTY_GRAMMATICAL_FEATURES,
+  Entry.JSON_PROPERTY_HOMOGRAPH_NUMBER,
+  Entry.JSON_PROPERTY_INFLECTIONS,
+  Entry.JSON_PROPERTY_NOTES,
+  Entry.JSON_PROPERTY_PRONUNCIATIONS,
+  Entry.JSON_PROPERTY_SENSES,
+  Entry.JSON_PROPERTY_VARIANT_FORMS
+})
+@JsonTypeName("Entry")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class Entry {
-  public static final String SERIALIZED_NAME_CROSS_REFERENCE_MARKERS = "crossReferenceMarkers";
-  @SerializedName(SERIALIZED_NAME_CROSS_REFERENCE_MARKERS)
+  public static final String JSON_PROPERTY_CROSS_REFERENCE_MARKERS = "crossReferenceMarkers";
   private List<String> crossReferenceMarkers = null;
 
-  public static final String SERIALIZED_NAME_CROSS_REFERENCES = "crossReferences";
-  @SerializedName(SERIALIZED_NAME_CROSS_REFERENCES)
+  public static final String JSON_PROPERTY_CROSS_REFERENCES = "crossReferences";
   private List<Object> crossReferences = null;
 
-  public static final String SERIALIZED_NAME_ETYMOLOGIES = "etymologies";
-  @SerializedName(SERIALIZED_NAME_ETYMOLOGIES)
+  public static final String JSON_PROPERTY_ETYMOLOGIES = "etymologies";
   private List<String> etymologies = null;
 
-  public static final String SERIALIZED_NAME_GRAMMATICAL_FEATURES = "grammaticalFeatures";
-  @SerializedName(SERIALIZED_NAME_GRAMMATICAL_FEATURES)
+  public static final String JSON_PROPERTY_GRAMMATICAL_FEATURES = "grammaticalFeatures";
   private List<Object> grammaticalFeatures = null;
 
-  public static final String SERIALIZED_NAME_HOMOGRAPH_NUMBER = "homographNumber";
-  @SerializedName(SERIALIZED_NAME_HOMOGRAPH_NUMBER)
+  public static final String JSON_PROPERTY_HOMOGRAPH_NUMBER = "homographNumber";
   private String homographNumber;
 
-  public static final String SERIALIZED_NAME_INFLECTIONS = "inflections";
-  @SerializedName(SERIALIZED_NAME_INFLECTIONS)
+  public static final String JSON_PROPERTY_INFLECTIONS = "inflections";
   private List<InflectedForm> inflections = null;
 
-  public static final String SERIALIZED_NAME_NOTES = "notes";
-  @SerializedName(SERIALIZED_NAME_NOTES)
+  public static final String JSON_PROPERTY_NOTES = "notes";
   private List<Object> notes = null;
 
-  public static final String SERIALIZED_NAME_PRONUNCIATIONS = "pronunciations";
-  @SerializedName(SERIALIZED_NAME_PRONUNCIATIONS)
+  public static final String JSON_PROPERTY_PRONUNCIATIONS = "pronunciations";
   private List<Object> pronunciations = null;
 
-  public static final String SERIALIZED_NAME_SENSES = "senses";
-  @SerializedName(SERIALIZED_NAME_SENSES)
+  public static final String JSON_PROPERTY_SENSES = "senses";
   private List<Sense> senses = null;
 
-  public static final String SERIALIZED_NAME_VARIANT_FORMS = "variantForms";
-  @SerializedName(SERIALIZED_NAME_VARIANT_FORMS)
+  public static final String JSON_PROPERTY_VARIANT_FORMS = "variantForms";
   private List<Object> variantForms = null;
 
   public Entry() { 
@@ -84,7 +88,7 @@ public class Entry {
 
   public Entry addCrossReferenceMarkersItem(String crossReferenceMarkersItem) {
     if (this.crossReferenceMarkers == null) {
-      this.crossReferenceMarkers = new ArrayList<String>();
+      this.crossReferenceMarkers = new ArrayList<>();
     }
     this.crossReferenceMarkers.add(crossReferenceMarkersItem);
     return this;
@@ -96,12 +100,16 @@ public class Entry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_CROSS_REFERENCE_MARKERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getCrossReferenceMarkers() {
     return crossReferenceMarkers;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_CROSS_REFERENCE_MARKERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCrossReferenceMarkers(List<String> crossReferenceMarkers) {
     this.crossReferenceMarkers = crossReferenceMarkers;
   }
@@ -115,7 +123,7 @@ public class Entry {
 
   public Entry addCrossReferencesItem(Object crossReferencesItem) {
     if (this.crossReferences == null) {
-      this.crossReferences = new ArrayList<Object>();
+      this.crossReferences = new ArrayList<>();
     }
     this.crossReferences.add(crossReferencesItem);
     return this;
@@ -127,12 +135,16 @@ public class Entry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A reference to another word that is closely related, might provide additional information about the subject, has a variant spelling or is an abbreviated form of it.")
+  @JsonProperty(JSON_PROPERTY_CROSS_REFERENCES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getCrossReferences() {
     return crossReferences;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_CROSS_REFERENCES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setCrossReferences(List<Object> crossReferences) {
     this.crossReferences = crossReferences;
   }
@@ -146,7 +158,7 @@ public class Entry {
 
   public Entry addEtymologiesItem(String etymologiesItem) {
     if (this.etymologies == null) {
-      this.etymologies = new ArrayList<String>();
+      this.etymologies = new ArrayList<>();
     }
     this.etymologies.add(etymologiesItem);
     return this;
@@ -158,12 +170,16 @@ public class Entry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ETYMOLOGIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getEtymologies() {
     return etymologies;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ETYMOLOGIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEtymologies(List<String> etymologies) {
     this.etymologies = etymologies;
   }
@@ -177,7 +193,7 @@ public class Entry {
 
   public Entry addGrammaticalFeaturesItem(Object grammaticalFeaturesItem) {
     if (this.grammaticalFeatures == null) {
-      this.grammaticalFeatures = new ArrayList<Object>();
+      this.grammaticalFeatures = new ArrayList<>();
     }
     this.grammaticalFeatures.add(grammaticalFeaturesItem);
     return this;
@@ -189,12 +205,16 @@ public class Entry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The different forms are correlated with meanings or functions which we text as 'features'")
+  @JsonProperty(JSON_PROPERTY_GRAMMATICAL_FEATURES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getGrammaticalFeatures() {
     return grammaticalFeatures;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_GRAMMATICAL_FEATURES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGrammaticalFeatures(List<Object> grammaticalFeatures) {
     this.grammaticalFeatures = grammaticalFeatures;
   }
@@ -212,12 +232,16 @@ public class Entry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Identifies the homograph grouping. The last two digits identify different entries of the same homograph. The first one/two digits identify the homograph number.")
+  @JsonProperty(JSON_PROPERTY_HOMOGRAPH_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getHomographNumber() {
     return homographNumber;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_HOMOGRAPH_NUMBER)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setHomographNumber(String homographNumber) {
     this.homographNumber = homographNumber;
   }
@@ -231,7 +255,7 @@ public class Entry {
 
   public Entry addInflectionsItem(InflectedForm inflectionsItem) {
     if (this.inflections == null) {
-      this.inflections = new ArrayList<InflectedForm>();
+      this.inflections = new ArrayList<>();
     }
     this.inflections.add(inflectionsItem);
     return this;
@@ -243,12 +267,16 @@ public class Entry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of inflected forms for an Entry.")
+  @JsonProperty(JSON_PROPERTY_INFLECTIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<InflectedForm> getInflections() {
     return inflections;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_INFLECTIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setInflections(List<InflectedForm> inflections) {
     this.inflections = inflections;
   }
@@ -262,7 +290,7 @@ public class Entry {
 
   public Entry addNotesItem(Object notesItem) {
     if (this.notes == null) {
-      this.notes = new ArrayList<Object>();
+      this.notes = new ArrayList<>();
     }
     this.notes.add(notesItem);
     return this;
@@ -274,12 +302,16 @@ public class Entry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "various types of notes that appear")
+  @JsonProperty(JSON_PROPERTY_NOTES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getNotes() {
     return notes;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_NOTES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNotes(List<Object> notes) {
     this.notes = notes;
   }
@@ -293,7 +325,7 @@ public class Entry {
 
   public Entry addPronunciationsItem(Object pronunciationsItem) {
     if (this.pronunciations == null) {
-      this.pronunciations = new ArrayList<Object>();
+      this.pronunciations = new ArrayList<>();
     }
     this.pronunciations.add(pronunciationsItem);
     return this;
@@ -305,12 +337,16 @@ public class Entry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of possible pronunciations of a word")
+  @JsonProperty(JSON_PROPERTY_PRONUNCIATIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getPronunciations() {
     return pronunciations;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_PRONUNCIATIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setPronunciations(List<Object> pronunciations) {
     this.pronunciations = pronunciations;
   }
@@ -324,7 +360,7 @@ public class Entry {
 
   public Entry addSensesItem(Sense sensesItem) {
     if (this.senses == null) {
-      this.senses = new ArrayList<Sense>();
+      this.senses = new ArrayList<>();
     }
     this.senses.add(sensesItem);
     return this;
@@ -336,12 +372,16 @@ public class Entry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Complete list of senses")
+  @JsonProperty(JSON_PROPERTY_SENSES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Sense> getSenses() {
     return senses;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_SENSES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSenses(List<Sense> senses) {
     this.senses = senses;
   }
@@ -355,7 +395,7 @@ public class Entry {
 
   public Entry addVariantFormsItem(Object variantFormsItem) {
     if (this.variantForms == null) {
-      this.variantForms = new ArrayList<Object>();
+      this.variantForms = new ArrayList<>();
     }
     this.variantForms.add(variantFormsItem);
     return this;
@@ -367,12 +407,16 @@ public class Entry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Various words that are used interchangeably depending on the context, e.g 'aluminium' and 'aluminum'")
+  @JsonProperty(JSON_PROPERTY_VARIANT_FORMS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getVariantForms() {
     return variantForms;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_VARIANT_FORMS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setVariantForms(List<Object> variantForms) {
     this.variantForms = variantForms;
   }

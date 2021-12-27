@@ -18,6 +18,7 @@ import org.openapitools.client.model.ErrorSchema;
 import org.openapitools.client.model.SentencesResults;
 import org.junit.Test;
 import org.junit.Ignore;
+import org.junit.Assert;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +33,6 @@ public class SentencesApiTest {
 
     private final SentencesApi api = new SentencesApi();
 
-    
     /**
      * Retrieve real example sentences of a word in use
      *
@@ -48,8 +48,8 @@ public class SentencesApiTest {
         String appId = null;
         String appKey = null;
         Boolean strictMatch = null;
-                SentencesResults response = api.sentencesSourceLangWordIdGet(sourceLang, wordId, appId, appKey, strictMatch);
+        SentencesResults response = api.sentencesSourceLangWordIdGet(sourceLang, wordId, appId, appKey, strictMatch);
+
         // TODO: test validations
     }
-    
 }

@@ -15,24 +15,29 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ToneGroupTones
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  ToneGroupTones.JSON_PROPERTY_TYPE,
+  ToneGroupTones.JSON_PROPERTY_VALUE
+})
+@JsonTypeName("ToneGroup_tones")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class ToneGroupTones {
   /**
    * Gets or Sets type
    */
-  @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
     IPA("ipa"),
     
@@ -46,6 +51,7 @@ public class ToneGroupTones {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -55,6 +61,7 @@ public class ToneGroupTones {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static TypeEnum fromValue(String value) {
       for (TypeEnum b : TypeEnum.values()) {
         if (b.value.equals(value)) {
@@ -63,27 +70,12 @@ public class ToneGroupTones {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
   }
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
+  public static final String JSON_PROPERTY_TYPE = "type";
   private TypeEnum type;
 
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
+  public static final String JSON_PROPERTY_VALUE = "value";
   private String value;
 
   public ToneGroupTones() { 
@@ -101,12 +93,16 @@ public class ToneGroupTones {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public TypeEnum getType() {
     return type;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setType(TypeEnum type) {
     this.type = type;
   }
@@ -124,12 +120,16 @@ public class ToneGroupTones {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getValue() {
     return value;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_VALUE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setValue(String value) {
     this.value = value;
   }

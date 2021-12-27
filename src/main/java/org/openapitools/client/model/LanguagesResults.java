@@ -15,42 +15,46 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import org.openapitools.client.model.LanguagesSourceLanguage;
 import org.openapitools.client.model.LanguagesTargetLanguage;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * LanguagesResults
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  LanguagesResults.JSON_PROPERTY_REGION,
+  LanguagesResults.JSON_PROPERTY_SOURCE,
+  LanguagesResults.JSON_PROPERTY_SOURCE_LANGUAGE,
+  LanguagesResults.JSON_PROPERTY_TARGET_LANGUAGE,
+  LanguagesResults.JSON_PROPERTY_TYPE
+})
+@JsonTypeName("Languages_results")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class LanguagesResults {
-  public static final String SERIALIZED_NAME_REGION = "region";
-  @SerializedName(SERIALIZED_NAME_REGION)
+  public static final String JSON_PROPERTY_REGION = "region";
   private String region;
 
-  public static final String SERIALIZED_NAME_SOURCE = "source";
-  @SerializedName(SERIALIZED_NAME_SOURCE)
+  public static final String JSON_PROPERTY_SOURCE = "source";
   private String source;
 
-  public static final String SERIALIZED_NAME_SOURCE_LANGUAGE = "sourceLanguage";
-  @SerializedName(SERIALIZED_NAME_SOURCE_LANGUAGE)
+  public static final String JSON_PROPERTY_SOURCE_LANGUAGE = "sourceLanguage";
   private LanguagesSourceLanguage sourceLanguage;
 
-  public static final String SERIALIZED_NAME_TARGET_LANGUAGE = "targetLanguage";
-  @SerializedName(SERIALIZED_NAME_TARGET_LANGUAGE)
+  public static final String JSON_PROPERTY_TARGET_LANGUAGE = "targetLanguage";
   private LanguagesTargetLanguage targetLanguage;
 
   /**
    * whether monolingual or bilingual.
    */
-  @JsonAdapter(TypeEnum.Adapter.class)
   public enum TypeEnum {
     MONOLINGUAL("monolingual"),
     
@@ -64,6 +68,7 @@ public class LanguagesResults {
       this.value = value;
     }
 
+    @JsonValue
     public String getValue() {
       return value;
     }
@@ -73,6 +78,7 @@ public class LanguagesResults {
       return String.valueOf(value);
     }
 
+    @JsonCreator
     public static TypeEnum fromValue(String value) {
       for (TypeEnum b : TypeEnum.values()) {
         if (b.value.equals(value)) {
@@ -81,23 +87,9 @@ public class LanguagesResults {
       }
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
-
-    public static class Adapter extends TypeAdapter<TypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TypeEnum.fromValue(value);
-      }
-    }
   }
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
+  public static final String JSON_PROPERTY_TYPE = "type";
   private TypeEnum type;
 
   public LanguagesResults() { 
@@ -115,12 +107,16 @@ public class LanguagesResults {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Name of region.")
+  @JsonProperty(JSON_PROPERTY_REGION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getRegion() {
     return region;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_REGION)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRegion(String region) {
     this.region = region;
   }
@@ -138,12 +134,16 @@ public class LanguagesResults {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Name of source dictionary.")
+  @JsonProperty(JSON_PROPERTY_SOURCE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getSource() {
     return source;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_SOURCE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSource(String source) {
     this.source = source;
   }
@@ -161,12 +161,16 @@ public class LanguagesResults {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_SOURCE_LANGUAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public LanguagesSourceLanguage getSourceLanguage() {
     return sourceLanguage;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_SOURCE_LANGUAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSourceLanguage(LanguagesSourceLanguage sourceLanguage) {
     this.sourceLanguage = sourceLanguage;
   }
@@ -184,12 +188,16 @@ public class LanguagesResults {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_TARGET_LANGUAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public LanguagesTargetLanguage getTargetLanguage() {
     return targetLanguage;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_TARGET_LANGUAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTargetLanguage(LanguagesTargetLanguage targetLanguage) {
     this.targetLanguage = targetLanguage;
   }
@@ -207,12 +215,16 @@ public class LanguagesResults {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "whether monolingual or bilingual.")
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public TypeEnum getType() {
     return type;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setType(TypeEnum type) {
     this.type = type;
   }

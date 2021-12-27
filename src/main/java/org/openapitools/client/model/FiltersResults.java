@@ -15,41 +15,45 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * A mapping of filters available per endpoints.
  */
 @ApiModel(description = "A mapping of filters available per endpoints.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  FiltersResults.JSON_PROPERTY_ENTRIES,
+  FiltersResults.JSON_PROPERTY_LEMMAS,
+  FiltersResults.JSON_PROPERTY_SENTENCES,
+  FiltersResults.JSON_PROPERTY_THESAURUS,
+  FiltersResults.JSON_PROPERTY_TRANSLATIONS
+})
+@JsonTypeName("Filters_results")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class FiltersResults {
-  public static final String SERIALIZED_NAME_ENTRIES = "entries";
-  @SerializedName(SERIALIZED_NAME_ENTRIES)
+  public static final String JSON_PROPERTY_ENTRIES = "entries";
   private List<String> entries = null;
 
-  public static final String SERIALIZED_NAME_LEMMAS = "lemmas";
-  @SerializedName(SERIALIZED_NAME_LEMMAS)
+  public static final String JSON_PROPERTY_LEMMAS = "lemmas";
   private List<String> lemmas = null;
 
-  public static final String SERIALIZED_NAME_SENTENCES = "sentences";
-  @SerializedName(SERIALIZED_NAME_SENTENCES)
+  public static final String JSON_PROPERTY_SENTENCES = "sentences";
   private List<String> sentences = null;
 
-  public static final String SERIALIZED_NAME_THESAURUS = "thesaurus";
-  @SerializedName(SERIALIZED_NAME_THESAURUS)
+  public static final String JSON_PROPERTY_THESAURUS = "thesaurus";
   private List<String> thesaurus = null;
 
-  public static final String SERIALIZED_NAME_TRANSLATIONS = "translations";
-  @SerializedName(SERIALIZED_NAME_TRANSLATIONS)
+  public static final String JSON_PROPERTY_TRANSLATIONS = "translations";
   private List<String> translations = null;
 
   public FiltersResults() { 
@@ -63,7 +67,7 @@ public class FiltersResults {
 
   public FiltersResults addEntriesItem(String entriesItem) {
     if (this.entries == null) {
-      this.entries = new ArrayList<String>();
+      this.entries = new ArrayList<>();
     }
     this.entries.add(entriesItem);
     return this;
@@ -75,12 +79,16 @@ public class FiltersResults {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ENTRIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getEntries() {
     return entries;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ENTRIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEntries(List<String> entries) {
     this.entries = entries;
   }
@@ -94,7 +102,7 @@ public class FiltersResults {
 
   public FiltersResults addLemmasItem(String lemmasItem) {
     if (this.lemmas == null) {
-      this.lemmas = new ArrayList<String>();
+      this.lemmas = new ArrayList<>();
     }
     this.lemmas.add(lemmasItem);
     return this;
@@ -106,12 +114,16 @@ public class FiltersResults {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_LEMMAS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getLemmas() {
     return lemmas;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_LEMMAS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLemmas(List<String> lemmas) {
     this.lemmas = lemmas;
   }
@@ -125,7 +137,7 @@ public class FiltersResults {
 
   public FiltersResults addSentencesItem(String sentencesItem) {
     if (this.sentences == null) {
-      this.sentences = new ArrayList<String>();
+      this.sentences = new ArrayList<>();
     }
     this.sentences.add(sentencesItem);
     return this;
@@ -137,12 +149,16 @@ public class FiltersResults {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_SENTENCES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getSentences() {
     return sentences;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_SENTENCES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSentences(List<String> sentences) {
     this.sentences = sentences;
   }
@@ -156,7 +172,7 @@ public class FiltersResults {
 
   public FiltersResults addThesaurusItem(String thesaurusItem) {
     if (this.thesaurus == null) {
-      this.thesaurus = new ArrayList<String>();
+      this.thesaurus = new ArrayList<>();
     }
     this.thesaurus.add(thesaurusItem);
     return this;
@@ -168,12 +184,16 @@ public class FiltersResults {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_THESAURUS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getThesaurus() {
     return thesaurus;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_THESAURUS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setThesaurus(List<String> thesaurus) {
     this.thesaurus = thesaurus;
   }
@@ -187,7 +207,7 @@ public class FiltersResults {
 
   public FiltersResults addTranslationsItem(String translationsItem) {
     if (this.translations == null) {
-      this.translations = new ArrayList<String>();
+      this.translations = new ArrayList<>();
     }
     this.translations.add(translationsItem);
     return this;
@@ -199,12 +219,16 @@ public class FiltersResults {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_TRANSLATIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<String> getTranslations() {
     return translations;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_TRANSLATIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setTranslations(List<String> translations) {
     this.translations = translations;
   }

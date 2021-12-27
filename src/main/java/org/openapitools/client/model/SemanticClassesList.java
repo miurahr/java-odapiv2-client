@@ -15,11 +15,16 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * SemanticClassesList
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+})
+@JsonTypeName("semanticClassesList")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class SemanticClassesList {
   public SemanticClassesList() { 
   }

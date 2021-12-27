@@ -15,14 +15,13 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.DomainClassesList;
@@ -30,51 +29,56 @@ import org.openapitools.client.model.DomainsList;
 import org.openapitools.client.model.RegionsList;
 import org.openapitools.client.model.RegistersList;
 import org.openapitools.client.model.SemanticClassesList;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * A lexical sense represents the lexical meaning of a lexical entry when interpreted as referring to the corresponding ontology element
  */
 @ApiModel(description = "A lexical sense represents the lexical meaning of a lexical entry when interpreted as referring to the corresponding ontology element")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  ThesaurusSense.JSON_PROPERTY_ANTONYMS,
+  ThesaurusSense.JSON_PROPERTY_DOMAIN_CLASSES,
+  ThesaurusSense.JSON_PROPERTY_DOMAINS,
+  ThesaurusSense.JSON_PROPERTY_EXAMPLES,
+  ThesaurusSense.JSON_PROPERTY_ID,
+  ThesaurusSense.JSON_PROPERTY_REGIONS,
+  ThesaurusSense.JSON_PROPERTY_REGISTERS,
+  ThesaurusSense.JSON_PROPERTY_SEMANTIC_CLASSES,
+  ThesaurusSense.JSON_PROPERTY_SUBSENSES,
+  ThesaurusSense.JSON_PROPERTY_SYNONYMS
+})
+@JsonTypeName("ThesaurusSense")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class ThesaurusSense {
-  public static final String SERIALIZED_NAME_ANTONYMS = "antonyms";
-  @SerializedName(SERIALIZED_NAME_ANTONYMS)
+  public static final String JSON_PROPERTY_ANTONYMS = "antonyms";
   private List<Object> antonyms = null;
 
-  public static final String SERIALIZED_NAME_DOMAIN_CLASSES = "domainClasses";
-  @SerializedName(SERIALIZED_NAME_DOMAIN_CLASSES)
+  public static final String JSON_PROPERTY_DOMAIN_CLASSES = "domainClasses";
   private DomainClassesList domainClasses;
 
-  public static final String SERIALIZED_NAME_DOMAINS = "domains";
-  @SerializedName(SERIALIZED_NAME_DOMAINS)
+  public static final String JSON_PROPERTY_DOMAINS = "domains";
   private DomainsList domains;
 
-  public static final String SERIALIZED_NAME_EXAMPLES = "examples";
-  @SerializedName(SERIALIZED_NAME_EXAMPLES)
+  public static final String JSON_PROPERTY_EXAMPLES = "examples";
   private List<Object> examples = null;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
+  public static final String JSON_PROPERTY_ID = "id";
   private String id;
 
-  public static final String SERIALIZED_NAME_REGIONS = "regions";
-  @SerializedName(SERIALIZED_NAME_REGIONS)
+  public static final String JSON_PROPERTY_REGIONS = "regions";
   private RegionsList regions;
 
-  public static final String SERIALIZED_NAME_REGISTERS = "registers";
-  @SerializedName(SERIALIZED_NAME_REGISTERS)
+  public static final String JSON_PROPERTY_REGISTERS = "registers";
   private RegistersList registers;
 
-  public static final String SERIALIZED_NAME_SEMANTIC_CLASSES = "semanticClasses";
-  @SerializedName(SERIALIZED_NAME_SEMANTIC_CLASSES)
+  public static final String JSON_PROPERTY_SEMANTIC_CLASSES = "semanticClasses";
   private SemanticClassesList semanticClasses;
 
-  public static final String SERIALIZED_NAME_SUBSENSES = "subsenses";
-  @SerializedName(SERIALIZED_NAME_SUBSENSES)
+  public static final String JSON_PROPERTY_SUBSENSES = "subsenses";
   private List<ThesaurusSense> subsenses = null;
 
-  public static final String SERIALIZED_NAME_SYNONYMS = "synonyms";
-  @SerializedName(SERIALIZED_NAME_SYNONYMS)
+  public static final String JSON_PROPERTY_SYNONYMS = "synonyms";
   private List<Object> synonyms = null;
 
   public ThesaurusSense() { 
@@ -88,7 +92,7 @@ public class ThesaurusSense {
 
   public ThesaurusSense addAntonymsItem(Object antonymsItem) {
     if (this.antonyms == null) {
-      this.antonyms = new ArrayList<Object>();
+      this.antonyms = new ArrayList<>();
     }
     this.antonyms.add(antonymsItem);
     return this;
@@ -100,12 +104,16 @@ public class ThesaurusSense {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_ANTONYMS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getAntonyms() {
     return antonyms;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ANTONYMS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setAntonyms(List<Object> antonyms) {
     this.antonyms = antonyms;
   }
@@ -123,12 +131,16 @@ public class ThesaurusSense {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_DOMAIN_CLASSES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public DomainClassesList getDomainClasses() {
     return domainClasses;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_DOMAIN_CLASSES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDomainClasses(DomainClassesList domainClasses) {
     this.domainClasses = domainClasses;
   }
@@ -146,12 +158,16 @@ public class ThesaurusSense {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_DOMAINS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public DomainsList getDomains() {
     return domains;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_DOMAINS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDomains(DomainsList domains) {
     this.domains = domains;
   }
@@ -165,7 +181,7 @@ public class ThesaurusSense {
 
   public ThesaurusSense addExamplesItem(Object examplesItem) {
     if (this.examples == null) {
-      this.examples = new ArrayList<Object>();
+      this.examples = new ArrayList<>();
     }
     this.examples.add(examplesItem);
     return this;
@@ -177,12 +193,16 @@ public class ThesaurusSense {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "A list of written or spoken rendering of examples of use of a word or text")
+  @JsonProperty(JSON_PROPERTY_EXAMPLES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getExamples() {
     return examples;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_EXAMPLES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setExamples(List<Object> examples) {
     this.examples = examples;
   }
@@ -200,12 +220,16 @@ public class ThesaurusSense {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The id of the sense that is required for the delete procedure")
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getId() {
     return id;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setId(String id) {
     this.id = id;
   }
@@ -223,12 +247,16 @@ public class ThesaurusSense {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_REGIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public RegionsList getRegions() {
     return regions;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_REGIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRegions(RegionsList regions) {
     this.regions = regions;
   }
@@ -246,12 +274,16 @@ public class ThesaurusSense {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_REGISTERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public RegistersList getRegisters() {
     return registers;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_REGISTERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRegisters(RegistersList registers) {
     this.registers = registers;
   }
@@ -269,12 +301,16 @@ public class ThesaurusSense {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_SEMANTIC_CLASSES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public SemanticClassesList getSemanticClasses() {
     return semanticClasses;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_SEMANTIC_CLASSES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSemanticClasses(SemanticClassesList semanticClasses) {
     this.semanticClasses = semanticClasses;
   }
@@ -288,7 +324,7 @@ public class ThesaurusSense {
 
   public ThesaurusSense addSubsensesItem(ThesaurusSense subsensesItem) {
     if (this.subsenses == null) {
-      this.subsenses = new ArrayList<ThesaurusSense>();
+      this.subsenses = new ArrayList<>();
     }
     this.subsenses.add(subsensesItem);
     return this;
@@ -300,12 +336,16 @@ public class ThesaurusSense {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "subsenses of word")
+  @JsonProperty(JSON_PROPERTY_SUBSENSES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<ThesaurusSense> getSubsenses() {
     return subsenses;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_SUBSENSES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSubsenses(List<ThesaurusSense> subsenses) {
     this.subsenses = subsenses;
   }
@@ -319,7 +359,7 @@ public class ThesaurusSense {
 
   public ThesaurusSense addSynonymsItem(Object synonymsItem) {
     if (this.synonyms == null) {
-      this.synonyms = new ArrayList<Object>();
+      this.synonyms = new ArrayList<>();
     }
     this.synonyms.add(synonymsItem);
     return this;
@@ -331,12 +371,16 @@ public class ThesaurusSense {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_SYNONYMS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getSynonyms() {
     return synonyms;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_SYNONYMS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setSynonyms(List<Object> synonyms) {
     this.synonyms = synonyms;
   }

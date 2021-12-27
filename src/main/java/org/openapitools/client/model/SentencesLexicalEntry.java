@@ -15,42 +15,46 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.LexicalCategory;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Description of an entry for a particular part of speech
  */
 @ApiModel(description = "Description of an entry for a particular part of speech")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  SentencesLexicalEntry.JSON_PROPERTY_GRAMMATICAL_FEATURES,
+  SentencesLexicalEntry.JSON_PROPERTY_LANGUAGE,
+  SentencesLexicalEntry.JSON_PROPERTY_LEXICAL_CATEGORY,
+  SentencesLexicalEntry.JSON_PROPERTY_SENTENCES,
+  SentencesLexicalEntry.JSON_PROPERTY_TEXT
+})
+@JsonTypeName("SentencesLexicalEntry")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class SentencesLexicalEntry {
-  public static final String SERIALIZED_NAME_GRAMMATICAL_FEATURES = "grammaticalFeatures";
-  @SerializedName(SERIALIZED_NAME_GRAMMATICAL_FEATURES)
+  public static final String JSON_PROPERTY_GRAMMATICAL_FEATURES = "grammaticalFeatures";
   private List<Object> grammaticalFeatures = null;
 
-  public static final String SERIALIZED_NAME_LANGUAGE = "language";
-  @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  public static final String JSON_PROPERTY_LANGUAGE = "language";
   private String language;
 
-  public static final String SERIALIZED_NAME_LEXICAL_CATEGORY = "lexicalCategory";
-  @SerializedName(SERIALIZED_NAME_LEXICAL_CATEGORY)
+  public static final String JSON_PROPERTY_LEXICAL_CATEGORY = "lexicalCategory";
   private LexicalCategory lexicalCategory;
 
-  public static final String SERIALIZED_NAME_SENTENCES = "sentences";
-  @SerializedName(SERIALIZED_NAME_SENTENCES)
-  private List<Object> sentences = new ArrayList<Object>();
+  public static final String JSON_PROPERTY_SENTENCES = "sentences";
+  private List<Object> sentences = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_TEXT = "text";
-  @SerializedName(SERIALIZED_NAME_TEXT)
+  public static final String JSON_PROPERTY_TEXT = "text";
   private String text;
 
   public SentencesLexicalEntry() { 
@@ -64,7 +68,7 @@ public class SentencesLexicalEntry {
 
   public SentencesLexicalEntry addGrammaticalFeaturesItem(Object grammaticalFeaturesItem) {
     if (this.grammaticalFeatures == null) {
-      this.grammaticalFeatures = new ArrayList<Object>();
+      this.grammaticalFeatures = new ArrayList<>();
     }
     this.grammaticalFeatures.add(grammaticalFeaturesItem);
     return this;
@@ -76,12 +80,16 @@ public class SentencesLexicalEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "The different forms are correlated with meanings or functions which we text as 'features'")
+  @JsonProperty(JSON_PROPERTY_GRAMMATICAL_FEATURES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getGrammaticalFeatures() {
     return grammaticalFeatures;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_GRAMMATICAL_FEATURES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setGrammaticalFeatures(List<Object> grammaticalFeatures) {
     this.grammaticalFeatures = grammaticalFeatures;
   }
@@ -99,12 +107,16 @@ public class SentencesLexicalEntry {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "IANA language code")
+  @JsonProperty(JSON_PROPERTY_LANGUAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getLanguage() {
     return language;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_LANGUAGE)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setLanguage(String language) {
     this.language = language;
   }
@@ -122,12 +134,16 @@ public class SentencesLexicalEntry {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_LEXICAL_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public LexicalCategory getLexicalCategory() {
     return lexicalCategory;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_LEXICAL_CATEGORY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLexicalCategory(LexicalCategory lexicalCategory) {
     this.lexicalCategory = lexicalCategory;
   }
@@ -150,12 +166,16 @@ public class SentencesLexicalEntry {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "A list of written or spoken rendering of examples of use of a word or text")
+  @JsonProperty(JSON_PROPERTY_SENTENCES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<Object> getSentences() {
     return sentences;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_SENTENCES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSentences(List<Object> sentences) {
     this.sentences = sentences;
   }
@@ -173,12 +193,16 @@ public class SentencesLexicalEntry {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "A given written or spoken realisation of an entry.")
+  @JsonProperty(JSON_PROPERTY_TEXT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getText() {
     return text;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_TEXT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setText(String text) {
     this.text = text;
   }

@@ -15,27 +15,31 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.ToneGroupTones;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * One or more encodings of a distinct tonal variation for a lexical item or its translation
  */
 @ApiModel(description = "One or more encodings of a distinct tonal variation for a lexical item or its translation")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  ToneGroup.JSON_PROPERTY_TONES
+})
+@JsonTypeName("ToneGroup")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class ToneGroup {
-  public static final String SERIALIZED_NAME_TONES = "tones";
-  @SerializedName(SERIALIZED_NAME_TONES)
-  private List<ToneGroupTones> tones = new ArrayList<ToneGroupTones>();
+  public static final String JSON_PROPERTY_TONES = "tones";
+  private List<ToneGroupTones> tones = new ArrayList<>();
 
   public ToneGroup() { 
   }
@@ -57,12 +61,16 @@ public class ToneGroup {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
+  @JsonProperty(JSON_PROPERTY_TONES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public List<ToneGroupTones> getTones() {
     return tones;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_TONES)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setTones(List<ToneGroupTones> tones) {
     this.tones = tones;
   }

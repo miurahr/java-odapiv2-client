@@ -15,23 +15,27 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * the list of labels for an object. Every object can be a lexical category, or a register, or a domain.
  */
 @ApiModel(description = "the list of labels for an object. Every object can be a lexical category, or a register, or a domain.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  UtilityLabelsResults.JSON_PROPERTY_EN
+})
+@JsonTypeName("UtilityLabels_results")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class UtilityLabelsResults {
-  public static final String SERIALIZED_NAME_EN = "en";
-  @SerializedName(SERIALIZED_NAME_EN)
+  public static final String JSON_PROPERTY_EN = "en";
   private String en;
 
   public UtilityLabelsResults() { 
@@ -49,12 +53,16 @@ public class UtilityLabelsResults {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "Label in English")
+  @JsonProperty(JSON_PROPERTY_EN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getEn() {
     return en;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_EN)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setEn(String en) {
     this.en = en;
   }

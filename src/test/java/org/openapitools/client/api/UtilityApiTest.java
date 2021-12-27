@@ -20,6 +20,7 @@ import org.openapitools.client.model.Languages;
 import org.openapitools.client.model.UtilityLabels;
 import org.junit.Test;
 import org.junit.Ignore;
+import org.junit.Assert;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +35,6 @@ public class UtilityApiTest {
 
     private final UtilityApi api = new UtilityApi();
 
-    
     /**
      * Lists available domains in a bilingual dataset
      *
@@ -49,10 +49,10 @@ public class UtilityApiTest {
         String targetLangDomains = null;
         String appId = null;
         String appKey = null;
-                UtilityLabels response = api.domainsSourceLangDomainsTargetLangDomainsGet(sourceLangDomains, targetLangDomains, appId, appKey);
+        UtilityLabels response = api.domainsSourceLangDomainsTargetLangDomainsGet(sourceLangDomains, targetLangDomains, appId, appKey);
+
         // TODO: test validations
     }
-    
     /**
      * Lists available domains in a monolingual dataset
      *
@@ -66,10 +66,10 @@ public class UtilityApiTest {
         String sourceLang = null;
         String appId = null;
         String appKey = null;
-                UtilityLabels response = api.domainsSourceLangGet(sourceLang, appId, appKey);
+        UtilityLabels response = api.domainsSourceLangGet(sourceLang, appId, appKey);
+
         // TODO: test validations
     }
-    
     /**
      * Lists available fields for specific endpoint
      *
@@ -83,10 +83,10 @@ public class UtilityApiTest {
         String endpoint = null;
         String appId = null;
         String appKey = null;
-                Filters response = api.fieldsEndpointGet(endpoint, appId, appKey);
+        Filters response = api.fieldsEndpointGet(endpoint, appId, appKey);
+
         // TODO: test validations
     }
-    
     /**
      * Lists available fields
      *
@@ -99,10 +99,10 @@ public class UtilityApiTest {
     public void fieldsGetTest() throws ApiException {
         String appId = null;
         String appKey = null;
-                Filters response = api.fieldsGet(appId, appKey);
+        Filters response = api.fieldsGet(appId, appKey);
+
         // TODO: test validations
     }
-    
     /**
      * Lists available filters for specific endpoint
      *
@@ -116,10 +116,10 @@ public class UtilityApiTest {
         String endpoint = null;
         String appId = null;
         String appKey = null;
-                Filters response = api.filtersEndpointGet(endpoint, appId, appKey);
+        Filters response = api.filtersEndpointGet(endpoint, appId, appKey);
+
         // TODO: test validations
     }
-    
     /**
      * Lists available filters
      *
@@ -132,10 +132,10 @@ public class UtilityApiTest {
     public void filtersGetTest() throws ApiException {
         String appId = null;
         String appKey = null;
-                Filters response = api.filtersGet(appId, appKey);
+        Filters response = api.filtersGet(appId, appKey);
+
         // TODO: test validations
     }
-    
     /**
      * Lists available grammatical features in a monolingual dataset
      *
@@ -149,10 +149,10 @@ public class UtilityApiTest {
         String sourceLang = null;
         String appId = null;
         String appKey = null;
-                UtilityLabels response = api.grammaticalFeaturesSourceLangGet(sourceLang, appId, appKey);
+        UtilityLabels response = api.grammaticalFeaturesSourceLangGet(sourceLang, appId, appKey);
+
         // TODO: test validations
     }
-    
     /**
      * Lists available grammatical features in a bilingual dataset
      *
@@ -167,10 +167,10 @@ public class UtilityApiTest {
         String targetLangGrammatical = null;
         String appId = null;
         String appKey = null;
-                UtilityLabels response = api.grammaticalFeaturesSourceLangGrammaticalTargetLangGrammaticalGet(sourceLangGrammatical, targetLangGrammatical, appId, appKey);
+        UtilityLabels response = api.grammaticalFeaturesSourceLangGrammaticalTargetLangGrammaticalGet(sourceLangGrammatical, targetLangGrammatical, appId, appKey);
+
         // TODO: test validations
     }
-    
     /**
      * Returns the names of Dictionaries in the API
      *
@@ -185,10 +185,10 @@ public class UtilityApiTest {
         String appKey = null;
         String sourceLanguage = null;
         String targetLanguage = null;
-                Languages response = api.languagesGet(appId, appKey, sourceLanguage, targetLanguage);
+        Languages response = api.languagesGet(appId, appKey, sourceLanguage, targetLanguage);
+
         // TODO: test validations
     }
-    
     /**
      * Lists available lexical categories in a monolingual dataset
      *
@@ -202,10 +202,10 @@ public class UtilityApiTest {
         String sourceLang = null;
         String appId = null;
         String appKey = null;
-                UtilityLabels response = api.lexicalCategoriesSourceLangGet(sourceLang, appId, appKey);
+        UtilityLabels response = api.lexicalCategoriesSourceLangGet(sourceLang, appId, appKey);
+
         // TODO: test validations
     }
-    
     /**
      * Lists available lexical categories in a bilingual dataset
      *
@@ -220,10 +220,10 @@ public class UtilityApiTest {
         String targetLangLexical = null;
         String appId = null;
         String appKey = null;
-                UtilityLabels response = api.lexicalCategoriesSourceLangLexicalTargetLangLexicalGet(sourceLangLexical, targetLangLexical, appId, appKey);
+        UtilityLabels response = api.lexicalCategoriesSourceLangLexicalTargetLangLexicalGet(sourceLangLexical, targetLangLexical, appId, appKey);
+
         // TODO: test validations
     }
-    
     /**
      * Lists available registers in a  monolingual dataset
      *
@@ -237,10 +237,10 @@ public class UtilityApiTest {
         String sourceLang = null;
         String appId = null;
         String appKey = null;
-                UtilityLabels response = api.registersSourceLangGet(sourceLang, appId, appKey);
+        UtilityLabels response = api.registersSourceLangGet(sourceLang, appId, appKey);
+
         // TODO: test validations
     }
-    
     /**
      * Lists available registers in a bilingual dataset
      *
@@ -255,8 +255,8 @@ public class UtilityApiTest {
         String targetLangRegisters = null;
         String appId = null;
         String appKey = null;
-                UtilityLabels response = api.registersSourceLangRegistersTargetLangRegistersGet(sourceLangRegisters, targetLangRegisters, appId, appKey);
+        UtilityLabels response = api.registersSourceLangRegistersTargetLangRegistersGet(sourceLangRegisters, targetLangRegisters, appId, appKey);
+
         // TODO: test validations
     }
-    
 }

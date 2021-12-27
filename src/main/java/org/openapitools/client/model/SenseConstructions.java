@@ -15,47 +15,51 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.openapitools.client.model.DomainsList;
 import org.openapitools.client.model.RegionsList;
 import org.openapitools.client.model.RegistersList;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * SenseConstructions
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  SenseConstructions.JSON_PROPERTY_DOMAINS,
+  SenseConstructions.JSON_PROPERTY_EXAMPLES,
+  SenseConstructions.JSON_PROPERTY_NOTES,
+  SenseConstructions.JSON_PROPERTY_REGIONS,
+  SenseConstructions.JSON_PROPERTY_REGISTERS,
+  SenseConstructions.JSON_PROPERTY_TEXT
+})
+@JsonTypeName("Sense_constructions")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class SenseConstructions {
-  public static final String SERIALIZED_NAME_DOMAINS = "domains";
-  @SerializedName(SERIALIZED_NAME_DOMAINS)
+  public static final String JSON_PROPERTY_DOMAINS = "domains";
   private DomainsList domains;
 
-  public static final String SERIALIZED_NAME_EXAMPLES = "examples";
-  @SerializedName(SERIALIZED_NAME_EXAMPLES)
+  public static final String JSON_PROPERTY_EXAMPLES = "examples";
   private List<List<String>> examples = null;
 
-  public static final String SERIALIZED_NAME_NOTES = "notes";
-  @SerializedName(SERIALIZED_NAME_NOTES)
+  public static final String JSON_PROPERTY_NOTES = "notes";
   private List<Object> notes = null;
 
-  public static final String SERIALIZED_NAME_REGIONS = "regions";
-  @SerializedName(SERIALIZED_NAME_REGIONS)
+  public static final String JSON_PROPERTY_REGIONS = "regions";
   private RegionsList regions;
 
-  public static final String SERIALIZED_NAME_REGISTERS = "registers";
-  @SerializedName(SERIALIZED_NAME_REGISTERS)
+  public static final String JSON_PROPERTY_REGISTERS = "registers";
   private RegistersList registers;
 
-  public static final String SERIALIZED_NAME_TEXT = "text";
-  @SerializedName(SERIALIZED_NAME_TEXT)
+  public static final String JSON_PROPERTY_TEXT = "text";
   private String text;
 
   public SenseConstructions() { 
@@ -73,12 +77,16 @@ public class SenseConstructions {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_DOMAINS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public DomainsList getDomains() {
     return domains;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_DOMAINS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setDomains(DomainsList domains) {
     this.domains = domains;
   }
@@ -92,7 +100,7 @@ public class SenseConstructions {
 
   public SenseConstructions addExamplesItem(List<String> examplesItem) {
     if (this.examples == null) {
-      this.examples = new ArrayList<List<String>>();
+      this.examples = new ArrayList<>();
     }
     this.examples.add(examplesItem);
     return this;
@@ -104,12 +112,16 @@ public class SenseConstructions {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_EXAMPLES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<List<String>> getExamples() {
     return examples;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_EXAMPLES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setExamples(List<List<String>> examples) {
     this.examples = examples;
   }
@@ -123,7 +135,7 @@ public class SenseConstructions {
 
   public SenseConstructions addNotesItem(Object notesItem) {
     if (this.notes == null) {
-      this.notes = new ArrayList<Object>();
+      this.notes = new ArrayList<>();
     }
     this.notes.add(notesItem);
     return this;
@@ -135,12 +147,16 @@ public class SenseConstructions {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "various types of notes that appear")
+  @JsonProperty(JSON_PROPERTY_NOTES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public List<Object> getNotes() {
     return notes;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_NOTES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setNotes(List<Object> notes) {
     this.notes = notes;
   }
@@ -158,12 +174,16 @@ public class SenseConstructions {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_REGIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public RegionsList getRegions() {
     return regions;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_REGIONS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRegions(RegionsList regions) {
     this.regions = regions;
   }
@@ -181,12 +201,16 @@ public class SenseConstructions {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_REGISTERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public RegistersList getRegisters() {
     return registers;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_REGISTERS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setRegisters(RegistersList registers) {
     this.registers = registers;
   }
@@ -204,12 +228,16 @@ public class SenseConstructions {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "The construction text")
+  @JsonProperty(JSON_PROPERTY_TEXT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getText() {
     return text;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_TEXT)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setText(String text) {
     this.text = text;
   }

@@ -9,8 +9,9 @@ Method | HTTP request | Description
 [**searchTranslationsSourceLangSearchTargetLangSearchGet**](SearchApi.md#searchTranslationsSourceLangSearchTargetLangSearchGet) | **GET** /search/translations/{source_lang_search}/{target_lang_search} | Retrieves possible headwords with translations
 
 
-<a name="searchSourceLangGet"></a>
-# **searchSourceLangGet**
+
+## searchSourceLangGet
+
 > Wordlist searchSourceLangGet(sourceLang, q, appId, appKey, prefix, limit, offset)
 
 Retrieves possible dictionary matches to an input string
@@ -18,6 +19,7 @@ Retrieves possible dictionary matches to an input string
  Use this to retrieve possible [headword](documentation/glossary?term&#x3D;headword) matches for a given string of text. The results are calculated using headword matching, fuzzy matching, and [lemmatization](documentation/glossary?term&#x3D;lemma).    &lt;div id&#x3D;\&quot;search\&quot;&gt;&lt;/div&gt; 
 
 ### Example
+
 ```java
 // Import classes:
 import org.openapitools.client.ApiClient;
@@ -27,33 +29,34 @@ import org.openapitools.client.models.*;
 import org.openapitools.client.api.SearchApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://od-api.oxforddictionaries.com/api/v2");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://od-api.oxforddictionaries.com/api/v2");
 
-    SearchApi apiInstance = new SearchApi(defaultClient);
-    String sourceLang = "en-gb"; // String | Language code of the source language in a monolingual dataset.
-    String q = "q_example"; // String | Search string
-    String appId = "appId_example"; // String | App ID Authentication Parameter
-    String appKey = "appKey_example"; // String | App Key Authentication Parameter
-    Boolean prefix = true; // Boolean | Use prefix=true to return only results that start with the value of the \"q\" parameter.
-    Integer limit = 56; // Integer | Restricts number of returned results. Default and max. is 5000.
-    Integer offset = 56; // Integer | Pagination - results offset.  The sum of offset and limit must not exceed 10000.
-    try {
-      Wordlist result = apiInstance.searchSourceLangGet(sourceLang, q, appId, appKey, prefix, limit, offset);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling SearchApi#searchSourceLangGet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        SearchApi apiInstance = new SearchApi(defaultClient);
+        String sourceLang = "en-gb"; // String | Language code of the source language in a monolingual dataset.
+        String q = "q_example"; // String | Search string
+        String appId = "appId_example"; // String | App ID Authentication Parameter
+        String appKey = "appKey_example"; // String | App Key Authentication Parameter
+        Boolean prefix = true; // Boolean | Use prefix=true to return only results that start with the value of the \"q\" parameter.
+        Integer limit = 56; // Integer | Restricts number of returned results. Default and max. is 5000.
+        Integer offset = 56; // Integer | Pagination - results offset.  The sum of offset and limit must not exceed 10000.
+        try {
+            Wordlist result = apiInstance.searchSourceLangGet(sourceLang, q, appId, appKey, prefix, limit, offset);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling SearchApi#searchSourceLangGet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -75,19 +78,21 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response. The Search endpoint is able to retrieve a max of 10000 results per query. |  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  |
-**400** | source_lang and target_lang can not be same; no words matching source_lang and/or translations; offset and limit exceeded 10000 together. |  -  |
-**404** | No entry was found matching the selection parameters.  |  -  |
-**500** | Internal error. An error occurred during processing. |  -  |
+| **200** | Successful response. The Search endpoint is able to retrieve a max of 10000 results per query. |  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  |
+| **400** | source_lang and target_lang can not be same; no words matching source_lang and/or translations; offset and limit exceeded 10000 together. |  -  |
+| **404** | No entry was found matching the selection parameters.  |  -  |
+| **500** | Internal error. An error occurred during processing. |  -  |
 
-<a name="searchThesaurusSourceLangGet"></a>
-# **searchThesaurusSourceLangGet**
+
+## searchThesaurusSourceLangGet
+
 > Wordlist searchThesaurusSourceLangGet(sourceLang, q, appId, appKey, prefix, limit, offset)
 
 Retrieves possible dictionary matches to an input string
@@ -95,6 +100,7 @@ Retrieves possible dictionary matches to an input string
  Use this to retrieve possible [headword](documentation/glossary?term&#x3D;headword) matches for a given string of text. The results are calculated using headword matching, fuzzy matching, and [lemmatization](documentation/glossary?term&#x3D;lemma).    &lt;div id&#x3D;\&quot;search\&quot;&gt;&lt;/div&gt; 
 
 ### Example
+
 ```java
 // Import classes:
 import org.openapitools.client.ApiClient;
@@ -104,33 +110,34 @@ import org.openapitools.client.models.*;
 import org.openapitools.client.api.SearchApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://od-api.oxforddictionaries.com/api/v2");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://od-api.oxforddictionaries.com/api/v2");
 
-    SearchApi apiInstance = new SearchApi(defaultClient);
-    String sourceLang = "en"; // String | Language code of the source language in a Thesaurus dataset.
-    String q = "q_example"; // String | Search string
-    String appId = "appId_example"; // String | App ID Authentication Parameter
-    String appKey = "appKey_example"; // String | App Key Authentication Parameter
-    Boolean prefix = true; // Boolean | Use prefix=true to return only results that start with the value of the \"q\" parameter.
-    Integer limit = 56; // Integer | Restricts number of returned results. Default and max. is 5000.
-    Integer offset = 56; // Integer | Pagination - results offset.  The sum of offset and limit must not exceed 10000.
-    try {
-      Wordlist result = apiInstance.searchThesaurusSourceLangGet(sourceLang, q, appId, appKey, prefix, limit, offset);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling SearchApi#searchThesaurusSourceLangGet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        SearchApi apiInstance = new SearchApi(defaultClient);
+        String sourceLang = "en"; // String | Language code of the source language in a Thesaurus dataset.
+        String q = "q_example"; // String | Search string
+        String appId = "appId_example"; // String | App ID Authentication Parameter
+        String appKey = "appKey_example"; // String | App Key Authentication Parameter
+        Boolean prefix = true; // Boolean | Use prefix=true to return only results that start with the value of the \"q\" parameter.
+        Integer limit = 56; // Integer | Restricts number of returned results. Default and max. is 5000.
+        Integer offset = 56; // Integer | Pagination - results offset.  The sum of offset and limit must not exceed 10000.
+        try {
+            Wordlist result = apiInstance.searchThesaurusSourceLangGet(sourceLang, q, appId, appKey, prefix, limit, offset);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling SearchApi#searchThesaurusSourceLangGet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -152,19 +159,21 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response. The Search endpoint is able to retrieve a max of 10000 results per query. |  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  |
-**400** | source_lang and target_lang can not be same; no words matching source_lang and/or translations; offset and limit exceeded 10000 together. |  -  |
-**404** | No entry was found matching the selection parameters.  |  -  |
-**500** | Internal error. An error occurred during processing. |  -  |
+| **200** | Successful response. The Search endpoint is able to retrieve a max of 10000 results per query. |  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  |
+| **400** | source_lang and target_lang can not be same; no words matching source_lang and/or translations; offset and limit exceeded 10000 together. |  -  |
+| **404** | No entry was found matching the selection parameters.  |  -  |
+| **500** | Internal error. An error occurred during processing. |  -  |
 
-<a name="searchTranslationsSourceLangSearchTargetLangSearchGet"></a>
-# **searchTranslationsSourceLangSearchTargetLangSearchGet**
+
+## searchTranslationsSourceLangSearchTargetLangSearchGet
+
 > Wordlist searchTranslationsSourceLangSearchTargetLangSearchGet(sourceLangSearch, targetLangSearch, q, appId, appKey, prefix, limit, offset)
 
 Retrieves possible headwords with translations
@@ -172,6 +181,7 @@ Retrieves possible headwords with translations
  Use this to find possible headwords with translations for a given word.  &lt;div id&#x3D;\&quot;search_translation\&quot;&gt;&lt;/div&gt; 
 
 ### Example
+
 ```java
 // Import classes:
 import org.openapitools.client.ApiClient;
@@ -181,34 +191,35 @@ import org.openapitools.client.models.*;
 import org.openapitools.client.api.SearchApi;
 
 public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://od-api.oxforddictionaries.com/api/v2");
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://od-api.oxforddictionaries.com/api/v2");
 
-    SearchApi apiInstance = new SearchApi(defaultClient);
-    String sourceLangSearch = "en"; // String | Language code of the source language in a bilingual dataset.
-    String targetLangSearch = "en"; // String | Language code of the target language in a bilingual dataset.
-    String q = "q_example"; // String | Search string
-    String appId = "appId_example"; // String | App ID Authentication Parameter
-    String appKey = "appKey_example"; // String | App Key Authentication Parameter
-    Boolean prefix = true; // Boolean | Use prefix=true to return only results that start with the value of the \"q\" parameter.
-    Integer limit = 56; // Integer | Restricts number of returned results. Default and max. is 5000.
-    Integer offset = 56; // Integer | pagination - results offset.  The sum of offset and limit must not exceed 10000.
-    try {
-      Wordlist result = apiInstance.searchTranslationsSourceLangSearchTargetLangSearchGet(sourceLangSearch, targetLangSearch, q, appId, appKey, prefix, limit, offset);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling SearchApi#searchTranslationsSourceLangSearchTargetLangSearchGet");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
+        SearchApi apiInstance = new SearchApi(defaultClient);
+        String sourceLangSearch = "en"; // String | Language code of the source language in a bilingual dataset.
+        String targetLangSearch = "en"; // String | Language code of the target language in a bilingual dataset.
+        String q = "q_example"; // String | Search string
+        String appId = "appId_example"; // String | App ID Authentication Parameter
+        String appKey = "appKey_example"; // String | App Key Authentication Parameter
+        Boolean prefix = true; // Boolean | Use prefix=true to return only results that start with the value of the \"q\" parameter.
+        Integer limit = 56; // Integer | Restricts number of returned results. Default and max. is 5000.
+        Integer offset = 56; // Integer | pagination - results offset.  The sum of offset and limit must not exceed 10000.
+        try {
+            Wordlist result = apiInstance.searchTranslationsSourceLangSearchTargetLangSearchGet(sourceLangSearch, targetLangSearch, q, appId, appKey, prefix, limit, offset);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling SearchApi#searchTranslationsSourceLangSearchTargetLangSearchGet");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
     }
-  }
 }
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -231,14 +242,15 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: */*
+- **Content-Type**: Not defined
+- **Accept**: */*
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful response. The Search endpoint is able to retrieve a max of 10000 results per query. |  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  |
-**400** | source_lang and target_lang can not be same; no words matching source_lang and/or translations; offset and limit exceeded 10000 together. |  -  |
-**404** | No entry was found matching the selection parameters.  |  -  |
-**500** | Internal error. An error occurred during processing. |  -  |
+| **200** | Successful response. The Search endpoint is able to retrieve a max of 10000 results per query. |  * X-Request-Id - A unique ID generated for the request. When reporting a problem with a specific request, include the returned X-Request-Id.  <br>  |
+| **400** | source_lang and target_lang can not be same; no words matching source_lang and/or translations; offset and limit exceeded 10000 together. |  -  |
+| **404** | No entry was found matching the selection parameters.  |  -  |
+| **500** | Internal error. An error occurred during processing. |  -  |
 

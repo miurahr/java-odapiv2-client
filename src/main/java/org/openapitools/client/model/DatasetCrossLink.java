@@ -15,32 +15,36 @@ package org.openapitools.client.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
-import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 import org.openapitools.client.model.SenseLink;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Link to a specific sense of an entry in another dictionary
  */
 @ApiModel(description = "Link to a specific sense of an entry in another dictionary")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-26T13:13:15.302+09:00[Asia/Tokyo]")
+@JsonPropertyOrder({
+  DatasetCrossLink.JSON_PROPERTY_LANGUAGE,
+  DatasetCrossLink.JSON_PROPERTY_ENTRY_ID,
+  DatasetCrossLink.JSON_PROPERTY_SENSE_ID
+})
+@JsonTypeName("DatasetCrossLink")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-12-27T11:23:50.379+09:00[Asia/Tokyo]")
 public class DatasetCrossLink {
-  public static final String SERIALIZED_NAME_LANGUAGE = "language";
-  @SerializedName(SERIALIZED_NAME_LANGUAGE)
+  public static final String JSON_PROPERTY_LANGUAGE = "language";
   private String language;
 
-  public static final String SERIALIZED_NAME_ENTRY_ID = "entry_id";
-  @SerializedName(SERIALIZED_NAME_ENTRY_ID)
+  public static final String JSON_PROPERTY_ENTRY_ID = "entry_id";
   private String entryId;
 
-  public static final String SERIALIZED_NAME_SENSE_ID = "sense_id";
-  @SerializedName(SERIALIZED_NAME_SENSE_ID)
+  public static final String JSON_PROPERTY_SENSE_ID = "sense_id";
   private String senseId;
 
   public DatasetCrossLink() { 
@@ -58,12 +62,16 @@ public class DatasetCrossLink {
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "language of the dictionary where the linked sense can be found")
+  @JsonProperty(JSON_PROPERTY_LANGUAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getLanguage() {
     return language;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_LANGUAGE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
   public void setLanguage(String language) {
     this.language = language;
   }
@@ -81,12 +89,16 @@ public class DatasetCrossLink {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "identifier of a word")
+  @JsonProperty(JSON_PROPERTY_ENTRY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getEntryId() {
     return entryId;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_ENTRY_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setEntryId(String entryId) {
     this.entryId = entryId;
   }
@@ -104,12 +116,16 @@ public class DatasetCrossLink {
   **/
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "identifier of a sense")
+  @JsonProperty(JSON_PROPERTY_SENSE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getSenseId() {
     return senseId;
   }
 
 
+  @JsonProperty(JSON_PROPERTY_SENSE_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
   public void setSenseId(String senseId) {
     this.senseId = senseId;
   }

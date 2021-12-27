@@ -18,6 +18,7 @@ import org.openapitools.client.model.ErrorSchema;
 import org.openapitools.client.model.Inflections;
 import org.junit.Test;
 import org.junit.Ignore;
+import org.junit.Assert;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +33,6 @@ public class InflectionsApiTest {
 
     private final InflectionsApi api = new InflectionsApi();
 
-    
     /**
      * Retrieves the inflected forms of a given word.
      *
@@ -48,8 +48,8 @@ public class InflectionsApiTest {
         String appId = null;
         String appKey = null;
         Boolean strictMatch = null;
-                Inflections response = api.inflectionsSourceLangWordIdGet(sourceLang, wordId, appId, appKey, strictMatch);
+        Inflections response = api.inflectionsSourceLangWordIdGet(sourceLang, wordId, appId, appKey, strictMatch);
+
         // TODO: test validations
     }
-    
 }
