@@ -15,12 +15,12 @@ jobs:
         fetch-depth: 10
     - uses: actions/setup-java@v2.4.0
       with:
-        distribution: 'adopt'
+        distribution: 'temurin'
         java-version: '8'
     - uses: burrunan/gradle-cache-action@v1
       with:
         gradle-version: wrapper
-        arguments: check printVersion
+        arguments: check
       env:
         ORG_GRADLE_PROJECT_oxfordId: ${{ secrets.OXFORD_ID }}
         ORG_GRADLE_PROJECT_oxfordKey: ${{ secrets.OXFORD_KEY }}
