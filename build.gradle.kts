@@ -1,3 +1,7 @@
+import java.io.File
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     groovy
     jacoco
@@ -12,10 +16,29 @@ plugins {
     id("org.sonatype.gradle.plugins.scan") version "2.2.2"
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     id("org.openapi.generator") version "5.3.1"
+    id("com.palantir.git-version") version "0.12.3"
+}
+
+fun getProps(f: File): Properties {
+    val props = Properties()
+    try {
+        props.load(FileInputStream(f))
+    } catch (t: Throwable) {
+        println("Can't read $f: $t, assuming empty")
+    }
+    return props
+}
+
+val versionDetails: groovy.lang.Closure<com.palantir.gradle.gitversion.VersionDetails> by extra
+val details = versionDetails()
+val baseVersion = details.lastTag.substring(1)
+if (details.isCleanTag) {  // release version
+    version = baseVersion
+} else {  // snapshot version
+    version = baseVersion + "-" + details.commitDistance + "-" + details.gitHash + "-SNAPSHOT"
 }
 
 group = "tokyo.northside"
-version = "1.0.0"
 
 java {
     withSourcesJar()
