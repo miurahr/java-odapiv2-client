@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+  <Match>
+    <Or>
+      <Package name="tokyo.northside.odapi.model"/>
+      <Package name="tokyo.northside.odapi.v2"/>
+    </Or>
+  </Match>
+  <Match>
+    <Or>
+      <Package name="tokyo.northside.odapi"/>
+    </Or>
+    <Or>
+      <Bug code="EI"/>
+      <Bug code="EI2"/>
+    </Or>
+  </Match>
+  <Match>
+    <Class name="tokyo.northside.odapi.RFC3339DateFormat" />
+    <Bug code="CN"/>
+  </Match>
+  <Match>
+    <Class name="tokyo.northside.odapi.Configuration" />
+    <Bug code="MS" />
+  </Match>
+  <Match>
+    <Class name="tokyo.northside.odapi.CustomInstantDeserializer" />
+    <Bug code="Se" />
+  </Match>
+  <Match>
+    <Or>
+      <Class name="tokyo.northside.odapi.ServerConfiguration" />
+      <Class name="tokyo.northside.odapi.ServerVariable" />
+    </Or>
+    <Bug code="UrF" />
+  </Match>
+</FindBugsFilter>

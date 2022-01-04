@@ -12,7 +12,6 @@ plugins {
     idea
     id("com.github.spotbugs") version "5.0.3"
     id("com.diffplug.spotless") version "6.1.0"
-    id("com.github.kt3k.coveralls") version "2.12.0"
     id("org.sonatype.gradle.plugins.scan") version "2.2.2"
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     id("org.openapi.generator") version "5.3.1"
@@ -76,7 +75,12 @@ openApiGenerate {
             "modelPackage" to "tokyo.northside.odapi.model"
     ))
 }
-
+tasks.named<Test>("test") {
+    useJUnitPlatform()
+    onlyIf {
+        project.hasProperty("oxfordKey") && project.hasProperty("oxfordId")
+    }
+}
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
@@ -129,6 +133,20 @@ nexusPublishing {
         sonatype {
             username.set(System.getenv("SONATYPE_USER"))
             password.set(System.getenv("SONATYPE_PASS"))
+        }
+    }
+}
+
+spotbugs {
+    excludeFilter.set(project.file("config/spotbugs/exclude.xml"))
+    tasks.spotbugsMain {
+        reports.create("html") {
+            required.set(true)
+        }
+    }
+    tasks.spotbugsTest {
+        reports.create("html") {
+            required.set(true)
         }
     }
 }
