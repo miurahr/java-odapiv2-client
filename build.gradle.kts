@@ -14,7 +14,7 @@ plugins {
     id("com.diffplug.spotless") version "6.2.0"
     id("org.sonatype.gradle.plugins.scan") version "2.2.2"
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
-    id("org.openapi.generator") version "5.3.1"
+    id("org.openapi.generator") version "5.4.0"
     id("com.palantir.git-version") version "0.13.0"
 }
 
