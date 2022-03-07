@@ -62,7 +62,7 @@ dependencies {
     implementation("com.github.joschi.jackson:jackson-datatype-threetenbp:2.9.10")
     implementation("jakarta.annotation:jakarta.annotation-api:2.0.0")
     testImplementation("junit:junit:4.13.2")
-    testImplementation("org.codehaus.groovy:groovy-all:3.0.9")
+    testImplementation("org.codehaus.groovy:groovy-all:3.0.10")
 }
 
 openApiGenerate {
