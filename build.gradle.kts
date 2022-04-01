@@ -60,7 +60,7 @@ dependencies {
     implementation("org.openapitools:jackson-databind-nullable:0.2.2")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.2")
     implementation("com.github.joschi.jackson:jackson-datatype-threetenbp:2.9.10")
-    implementation("jakarta.annotation:jakarta.annotation-api:2.0.0")
+    implementation("jakarta.annotation:jakarta.annotation-api:2.1.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.codehaus.groovy:groovy-all:3.0.10")
 }
