@@ -49,7 +49,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.swagger:swagger-annotations:1.6.5")
+    implementation("io.swagger:swagger-annotations:1.6.6")
     implementation("com.google.code.findbugs:jsr305:3.0.2")
     implementation("org.apache.httpcomponents:httpclient:4.5.13")
     implementation("org.apache.httpcomponents:httpmime:4.5.13")
