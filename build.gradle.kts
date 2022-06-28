@@ -10,7 +10,7 @@ plugins {
     `java-library-distribution`
     `maven-publish`
     idea
-    id("com.github.spotbugs") version "5.0.6"
+    id("com.github.spotbugs") version "5.0.9"
     id("com.diffplug.spotless") version "6.7.2"
     id("org.sonatype.gradle.plugins.scan") version "2.3.0"
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
