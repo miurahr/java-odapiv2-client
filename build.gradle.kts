@@ -58,7 +58,7 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.13.3")
     implementation("com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.13.3")
     implementation("org.openapitools:jackson-databind-nullable:0.2.3")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.3")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.2")
     implementation("com.github.joschi.jackson:jackson-datatype-threetenbp:2.9.10")
     implementation("jakarta.annotation:jakarta.annotation-api:2.1.1")
     testImplementation("junit:junit:4.13.2")
