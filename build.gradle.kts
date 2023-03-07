@@ -15,7 +15,7 @@ plugins {
     id("org.sonatype.gradle.plugins.scan") version "2.3.0"
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     id("org.openapi.generator") version "6.0.1"
-    id("com.palantir.git-version") version "0.13.0"
+    id("com.palantir.git-version") version "2.0.0"
 }
 
 fun getProps(f: File): Properties {
